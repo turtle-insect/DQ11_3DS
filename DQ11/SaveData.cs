@@ -1,0 +1,119 @@
+﻿using Microsoft.Win32;
+using System;
+
+namespace DQ11
+{
+	class SaveData
+	{
+		private static SaveData mThis;
+		private String mFileName = null;
+		private Byte[] mBuffer = null;
+		private Crc32 mCrc32 = new Crc32();
+
+		private SaveData()
+		{}
+
+		public static SaveData Instance()
+		{
+			if (mThis == null) mThis = new SaveData();
+			return mThis;
+		}
+
+		public bool Open()
+		{
+			OpenFileDialog dlg = new OpenFileDialog();
+			if (dlg.ShowDialog() == false) return false;
+			mFileName = dlg.FileName;
+			mBuffer = System.IO.File.ReadAllBytes(mFileName);
+
+			if (mCrc32.Calc(ref mBuffer, 0, 0xC8A8) == ReadNumber(0xC8AC, 4))
+			{
+				Backup();
+				return true;
+			}
+
+			mFileName = null;
+			mBuffer = null;
+			return false;
+		}
+
+		public bool Save()
+		{
+			if (mFileName == null || mBuffer == null) return false;
+			WriteNumber(0xC8AC, 4, mCrc32.Calc(ref mBuffer, 0, 0xC8A8));
+			System.IO.File.WriteAllBytes(mFileName, mBuffer);
+			return true;
+		}
+
+		public bool SaveAs()
+		{
+			if (mBuffer == null) return false;
+			SaveFileDialog dlg = new SaveFileDialog();
+			if (dlg.ShowDialog() == false) return false;
+			mFileName = dlg.FileName;
+			return Save();
+		}
+
+		public uint ReadNumber(uint address, uint size)
+		{
+			if (mBuffer == null) return 0;
+			if (address + size > mBuffer.Length) return 0;
+			uint result = 0;
+			for(int i = 0; i < size; i++)
+			{
+				result += (uint)(mBuffer[address + i]) << (i * 8);
+			}
+			return result;
+		}
+
+		public String ReadUnicode(uint address, uint size)
+		{
+			if (mBuffer == null) return "";
+			if (address + size > mBuffer.Length) return "";
+
+			Byte[] tmp = new Byte[size];
+			for(int i = 0; i < size; i++)
+			{
+				tmp[i] = mBuffer[address + i];
+			}
+			return System.Text.Encoding.Unicode.GetString(tmp).Trim('\0');
+		}
+
+		public void WriteNumber(uint address, uint size, uint value)
+		{
+			if (mBuffer == null) return;
+			if (address + size > mBuffer.Length) return;
+			for (int i = 0; i < size; i++)
+			{
+				mBuffer[address + i] = (Byte)(value & 0xFF);
+				value >>= 8;
+			}
+		}
+
+		public void WriteUnicode(uint address, uint size, String value)
+		{
+			if (mBuffer == null) return;
+			if (address + size > mBuffer.Length) return;
+			Byte[] tmp = System.Text.Encoding.Unicode.GetBytes(value);
+			Array.Resize(ref tmp, (int)size);
+			for (int i = 0; i < size; i++)
+			{
+				mBuffer[address + i] = tmp[i];
+			}
+		}
+
+		private void Backup()
+		{
+			DateTime now = DateTime.Now;
+			String path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+			path = System.IO.Path.Combine(path, "backup");
+			if(!System.IO.Directory.Exists(path))
+			{
+				System.IO.Directory.CreateDirectory(path);
+			}
+			path = System.IO.Path.Combine(path, 
+				String.Format("{0:0000}-{1:00}-{2:00} {3:00}-{4:00}", now.Year, now.Month, now.Day, now.Hour, now.Minute));
+			System.IO.File.WriteAllBytes(path, mBuffer);
+		}
+	}
+}
