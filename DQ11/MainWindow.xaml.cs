@@ -13,7 +13,8 @@ namespace DQ11
 		private List<CharStatus> mChildStatusList;
 		private List<AllStatus> mAllStatusList;
 
-		BagToolMgr mToolBag;
+		BagToolMgr mBagTool;
+		BagEquipmentMgr mBagEquipment;
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -43,18 +44,18 @@ namespace DQ11
 			ComboBoxCharItemPage.Items.Add("1 / 2");
 			ComboBoxCharItemPage.Items.Add("2 / 2");
 			ComboBoxCharItemPage.SelectedIndex = 0;
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem1, ComboBoxCharItemCount1, 0, 2));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem2, ComboBoxCharItemCount2, 2, 2));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem3, ComboBoxCharItemCount3, 4, 2));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem4, ComboBoxCharItemCount4, 6, 2));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem5, ComboBoxCharItemCount5, 8, 2));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem6, ComboBoxCharItemCount6, 10, 2));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem7, ComboBoxCharItemCount7, 12, 2));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem8, ComboBoxCharItemCount8, 14, 2));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem9, ComboBoxCharItemCount9, 16, 2));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem10, ComboBoxCharItemCount10, 18, 2));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem11, ComboBoxCharItemCount11, 20, 2));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem12, ComboBoxCharItemCount12, 22, 2));
+			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem1, ComboBoxCharItemCount1, 0));
+			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem2, ComboBoxCharItemCount2, 2));
+			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem3, ComboBoxCharItemCount3, 4));
+			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem4, ComboBoxCharItemCount4, 6));
+			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem5, ComboBoxCharItemCount5, 8));
+			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem6, ComboBoxCharItemCount6, 10));
+			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem7, ComboBoxCharItemCount7, 12));
+			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem8, ComboBoxCharItemCount8, 14));
+			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem9, ComboBoxCharItemCount9, 16));
+			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem10, ComboBoxCharItemCount10, 18));
+			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem11, ComboBoxCharItemCount11, 20));
+			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem12, ComboBoxCharItemCount12, 22));
 			mChildStatusList.ForEach(x => x.Init());
 
 			mAllStatusList = new List<AllStatus>();
@@ -76,8 +77,10 @@ namespace DQ11
 			mAllStatusList.Add(new AllChoiceStatus(ComboBoxCameraRotate, 0x6FC2));
 			mAllStatusList.Add(new AllChoiceStatus(ComboBoxCStickRotate, 0x6FC3));
 
-			mToolBag = new BagToolMgr();
-			mToolBag.Init(mAllStatusList, StackPanelToolBag, 0x3E34, 174);
+			mBagTool = new BagToolMgr();
+			mBagTool.Init(mAllStatusList, StackPanelBagTool, ComboBoxBagToolPage, 0x3E34, 168);
+			mBagEquipment = new BagEquipmentMgr();
+			mBagEquipment.Init(mAllStatusList, StackPanelBagEquipment, ComboBoxBagEquipmentPage, 0x40EC, 2340);
 			mAllStatusList.ForEach(x => x.Init());
 		}
 
@@ -174,10 +177,8 @@ namespace DQ11
 			List<String> names = Util.GetPartyNames();
 			for (uint i = 0; i < names.Count; i++)
 			{
-				Token token = new Token();
-				token.Address = i * 0x200;
 				ListBoxItem item = new ListBoxItem();
-				item.Tag = token;
+				item.Tag = i * 0x200;
 				item.Content = names[(int)i];
 				ListBoxChar.Items.Add(item);
 			}

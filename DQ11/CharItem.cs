@@ -4,33 +4,34 @@ namespace DQ11
 {
 	class CharItem : CharStatus
 	{
-		private ComboBox mPage;
-		private ComboBox mItem;
-		private ComboBox mCount;
-		private Token mToken;
+		private readonly ComboBox mPage;
+		private readonly ComboBox mItem;
+		private readonly ComboBox mKind;
+		private readonly uint mAddress;
 
-		public CharItem(ComboBox page, ComboBox item, ComboBox count, uint address, uint size)
+		public CharItem(ComboBox page, ComboBox item, ComboBox kind, uint address)
 		{
 			mPage = page;
 			mItem = item;
-			mCount = count;
-			mToken = new Token(address, size);
-			item.SelectionChanged += Item_SelectionChanged;
+			mKind = kind;
+			mAddress = address;
+			mItem.SelectionChanged += Item_SelectionChanged;
 		}
 
 		private void Item_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			ItemInfo info = ((ComboBox)sender).SelectedItem as ItemInfo;
 			if (info == null) return;
-			mCount.Items.Clear();
-			mCount.IsEnabled = info.Count > 1;
+			mKind.Items.Clear();
+			mKind.IsEnabled = info.Count > 1;
 			if (info.Count > 1)
 			{
-				mCount.Items.Add("");
+				mKind.Items.Add("");
 				for (uint i = 1; i < info.Count; i++)
 				{
-					mCount.Items.Add("+" + i.ToString());
+					mKind.Items.Add("+" + i.ToString());
 				}
+				mKind.SelectedIndex = 0;
 			}
 		}
 
@@ -50,7 +51,7 @@ namespace DQ11
 
 		public override void Read()
 		{
-			uint id = SaveData.Instance().ReadNumber((uint)mPage.SelectedIndex * 24 + 0x24 + Address + mToken.Address, mToken.Size);
+			uint id = SaveData.Instance().ReadNumber((uint)mPage.SelectedIndex * 24 + 0x24 + Base + mAddress, 2);
 			Item item = Item.Instance();
 			// 不明があれば削る.
 			if(!(mItem.Items[mItem.Items.Count - 1] is ItemInfo))
@@ -69,7 +70,7 @@ namespace DQ11
 				mItem.Text = info.Name;
 				if(info.Count > 1)
 				{
-					mCount.SelectedIndex = (int)(id - info.ID);
+					mKind.SelectedIndex = (int)(id - info.ID);
 				}
 			}
 		}
@@ -78,12 +79,12 @@ namespace DQ11
 		{
 			ItemInfo info = mItem.SelectedItem as ItemInfo;
 			if (info == null) return;
-			uint count = 0;
+			uint kind = 0;
 			if(info.Count > 1)
 			{
-				count = (uint)mCount.SelectedIndex;
+				kind = (uint)mKind.SelectedIndex;
 			}
-			SaveData.Instance().WriteNumber((uint)mPage.SelectedIndex * 24 + 0x24 + Address + mToken.Address, mToken.Size, info.ID + count);
+			SaveData.Instance().WriteNumber((uint)mPage.SelectedIndex * 24 + 0x24 + Base + mAddress, 2, info.ID + kind);
 		}
 	}
 }

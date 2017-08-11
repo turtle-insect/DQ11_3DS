@@ -4,9 +4,9 @@ namespace DQ11
 {
 	class PlayTime : AllStatus
 	{
-		private TextBox mHour;
-		private TextBox mMinute;
-		private TextBox mSecond;
+		private readonly TextBox mHour;
+		private readonly TextBox mMinute;
+		private readonly TextBox mSecond;
 
 		public PlayTime(TextBox hour, TextBox minute, TextBox second)
 		{

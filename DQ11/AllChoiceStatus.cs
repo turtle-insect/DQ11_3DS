@@ -4,8 +4,8 @@ namespace DQ11
 {
 	class AllChoiceStatus : AllStatus
 	{
-		private ComboBox mValue;
-		private uint mAddress;
+		private readonly ComboBox mValue;
+		private readonly uint mAddress;
 		public AllChoiceStatus(ComboBox value, uint address)
 		{
 			mValue = value;

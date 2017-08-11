@@ -154,6 +154,25 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+            <TabItem Header="ふくろ">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel>
+                        <Label Content="どうぐぶくろ" DockPanel.Dock="Top"/>
+                        <ComboBox x:Name="ComboBoxBagToolPage"  DockPanel.Dock="Top"/>
+                        <StackPanel x:Name="StackPanelBagTool" Margin="0,5,0,0"/>
+                    </DockPanel>
+                    <DockPanel Grid.Column="1">
+                        <Label Content="そうびぶくろ" DockPanel.Dock="Top"/>
+                        <ComboBox x:Name="ComboBoxBagEquipmentPage"  DockPanel.Dock="Top"/>
+                        <StackPanel x:Name="StackPanelBagEquipment" Margin="0,5,0,0"/>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
             <TabItem Header="全体">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -209,12 +228,6 @@
                         <ComboBox x:Name="ComboBoxPartyOrder3" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2"/>
                         <ComboBox x:Name="ComboBoxPartyOrder4" Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2"/>
                     </Grid>
-                    <DockPanel Grid.Column="1">
-                        <Label Content="どうぐぶくろ" DockPanel.Dock="Top"/>
-                        <ScrollViewer>
-                            <StackPanel x:Name="StackPanelToolBag"/>
-                        </ScrollViewer>
-                    </DockPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="システム">

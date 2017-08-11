@@ -4,8 +4,8 @@ namespace DQ11
 {
 	class AllCheckBoxStatus : AllStatus
 	{
-		private CheckBox mValue;
-		private uint mAddress;
+		private readonly CheckBox mValue;
+		private readonly uint mAddress;
 
 		public AllCheckBoxStatus(CheckBox value, uint address)
 		{

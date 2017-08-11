@@ -5,22 +5,24 @@ namespace DQ11
 	class CharNumberStatus : CharStatus
 	{
 		private uint mCopy = uint.MaxValue;
-		private TextBox mValue;
-		private Token mToken;
+		private readonly TextBox mValue;
+		private readonly uint mAddress;
+		private readonly uint mSize;
 		private readonly uint mMinValue;
 		private readonly uint mMaxValue;
 
 		public CharNumberStatus(TextBox value, uint address, uint size, uint min, uint max)
 		{
 			mValue = value;
-			mToken = new Token(address, size);
+			mAddress = address;
+			mSize = size;
 			mMinValue = min;
 			mMaxValue = max;
 		}
 
 		public override void Read()
 		{
-			uint value = SaveData.Instance().ReadNumber(Address + mToken.Address, mToken.Size);
+			uint value = SaveData.Instance().ReadNumber(Base + mAddress, mSize);
 			mValue.Text = value.ToString();
 		}
 
@@ -30,7 +32,7 @@ namespace DQ11
 			if (!uint.TryParse(mValue.Text, out value)) return;
 			if (value < mMinValue) value = mMinValue;
 			if (value > mMaxValue) value = mMaxValue;
-			SaveData.Instance().WriteNumber(Address + mToken.Address, mToken.Size, value);
+			SaveData.Instance().WriteNumber(Base + mAddress, mSize, value);
 		}
 
 		public override void Copy()

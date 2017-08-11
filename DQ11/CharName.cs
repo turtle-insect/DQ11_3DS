@@ -4,7 +4,7 @@ namespace DQ11
 {
 	class CharName : CharStatus
 	{
-		private TextBox mName;
+		private readonly TextBox mName;
 
 		public CharName(TextBox name)
 		{
@@ -13,12 +13,12 @@ namespace DQ11
 
 		public override void Read()
 		{
-			mName.Text = SaveData.Instance().ReadUnicode(Address + 2, 12);
+			mName.Text = SaveData.Instance().ReadUnicode(Base + 2, 12);
 		}
 
 		public override void Write()
 		{
-			SaveData.Instance().WriteUnicode(Address + 2, 12, mName.Text);
+			SaveData.Instance().WriteUnicode(Base + 2, 12, mName.Text);
 		}
 	}
 }

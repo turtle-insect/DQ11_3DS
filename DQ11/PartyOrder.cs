@@ -6,8 +6,8 @@ namespace DQ11
 {
 	class PartyOrder : AllStatus
 	{
-		private ComboBox mParty;
-		private uint mAddress;
+		private readonly ComboBox mParty;
+		private readonly uint mAddress;
 		public PartyOrder(ComboBox party, uint address)
 		{
 			mParty = party;

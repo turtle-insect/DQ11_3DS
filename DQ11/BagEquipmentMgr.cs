@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
 
 namespace DQ11
 {
-	class BagToolMgr : BagBaseMgr
+	class BagEquipmentMgr : BagBaseMgr
 	{
 		public override void CreateComp(List<AllStatus> status, Panel panel)
 		{
@@ -13,6 +12,7 @@ namespace DQ11
 				Grid grid = new Grid();
 				grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new System.Windows.GridLength(30) });
 				grid.ColumnDefinitions.Add(new ColumnDefinition());
+				grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new System.Windows.GridLength(45) });
 				grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new System.Windows.GridLength(30) });
 
 				Button button = new Button();
@@ -25,12 +25,16 @@ namespace DQ11
 				item.SetValue(Grid.ColumnProperty, 1);
 				grid.Children.Add(item);
 
+				ComboBox kind = new ComboBox();
+				kind.SetValue(Grid.ColumnProperty, 2);
+				grid.Children.Add(kind);
+
 				TextBox count = new TextBox();
-				count.SetValue(Grid.ColumnProperty, 2);
+				count.SetValue(Grid.ColumnProperty, 3);
 				grid.Children.Add(count);
-				BagToolItem toolItem = new BagToolItem(item, count, i * 4);
-				status.Add(toolItem);
-				mItems.Add(toolItem);
+				BagEquipmentItem equipItem = new BagEquipmentItem(item, kind, count, i * 4);
+				status.Add(equipItem);
+				mItems.Add(equipItem);
 				panel.Children.Add(grid);
 			}
 		}
