@@ -102,6 +102,17 @@ namespace DQ11
 			}
 		}
 
+		public void Copy(uint from, uint to, uint size)
+		{
+			if (mBuffer == null) return;
+			if (from + size > mBuffer.Length) return;
+			if (to + size > mBuffer.Length) return;
+			for(int i = 0; i < size; i++)
+			{
+				mBuffer[to + i] = mBuffer[from + i];
+			}
+		}
+
 		private void Backup()
 		{
 			DateTime now = DateTime.Now;

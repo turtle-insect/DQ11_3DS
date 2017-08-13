@@ -7,10 +7,9 @@ namespace DQ11
 		protected uint Base { get; private set; } = 0;
 
 		public virtual void Init() { }
-		public void Load(Control parent)
+		public void Load(uint address)
 		{
-			if (parent == null) return;
-			Base = (uint)parent.Tag;
+			Base = address;
 		}
 
 		public abstract void Read();

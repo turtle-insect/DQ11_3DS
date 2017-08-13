@@ -39,8 +39,7 @@
                         <ColumnDefinition Width="5"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="ListBoxChar" Grid.Column="0" SelectionChanged="ListBoxChar_SelectionChanged">
-                    </ListBox>
+                    <ListBox x:Name="ListBoxChar" SelectionChanged="ListBoxChar_SelectionChanged"/>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -151,6 +150,78 @@
                             <Button x:Name="ButtonCharStatusMax" Content="最強" Grid.Row="2" Grid.Column="2" Click="ButtonCharStatusMax_Click"/>
                             <Button x:Name="ButtonCharStatusDecision" Content="決定" Grid.Row="4" Grid.ColumnSpan="3" Click="ButtonCharStatusDecision_Click"/>
                         </Grid>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="ヨッチ族">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">
+                            <Button x:Name="ButtonYochiRemove" Content="削除" Click="ButtonYochiRemove_Click"/>
+                            <Button x:Name="ButtonYochiAppend" Content="追加" Click="ButtonYochiAppend_Click"/>
+                        </StackPanel>
+                        <ListBox x:Name="ListBoxYochi" SelectionChanged="ListBoxYochi_SelectionChanged"/>
+                    </DockPanel>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="名前"/>
+                        <Label Content="色" Grid.Row="1"/>
+                        <Label Content="やる気" Grid.Row="2"/>
+                        <TextBox x:Name="TextBoxYochiName" Grid.Column="1"/>
+                        <ComboBox x:Name="ComboBoxYochiColor" Grid.Row="1" Grid.Column="1">
+                            <ComboBoxItem Content="赤"/>
+                            <ComboBoxItem Content="青"/>
+                            <ComboBoxItem Content="緑"/>
+                            <ComboBoxItem Content="黄"/>
+                            <ComboBoxItem Content="紫"/>
+                            <ComboBoxItem Content="白"/>
+                            <ComboBoxItem Content="メタル"/>
+                            <ComboBoxItem Content="赤青"/>
+                            <ComboBoxItem Content="赤緑"/>
+                            <ComboBoxItem Content="赤黄"/>
+                            <ComboBoxItem Content="赤紫"/>
+                            <ComboBoxItem Content="赤白"/>
+                            <ComboBoxItem Content="青緑"/>
+                            <ComboBoxItem Content="青黄"/>
+                            <ComboBoxItem Content="青紫"/>
+                            <ComboBoxItem Content="青白"/>
+                            <ComboBoxItem Content="緑黄"/>
+                            <ComboBoxItem Content="緑紫"/>
+                            <ComboBoxItem Content="緑白"/>
+                            <ComboBoxItem Content="黄紫"/>
+                            <ComboBoxItem Content="黄白"/>
+                            <ComboBoxItem Content="紫白"/>
+                        </ComboBox>
+                        <TextBox x:Name="TextBoxYochiMotivation" Grid.Row="2" Grid.Column="1"/>
+                    </Grid>
+                    <StackPanel Grid.Column="3" VerticalAlignment="Bottom">
+                        <Button x:Name="ButtonYochiStatusDecision" Content="決定" Height="50" Click="ButtonYochiStatusDecision_Click"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

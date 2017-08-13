@@ -10,7 +10,8 @@ namespace DQ11
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private List<CharStatus> mChildStatusList;
+		private List<CharStatus> mCharStatusList;
+		private List<CharStatus> mYochiStatusList;
 		private List<AllStatus> mAllStatusList;
 
 		BagToolMgr mBagTool;
@@ -24,44 +25,50 @@ namespace DQ11
 		{
 			Item.Instance();
 			SaveData.Instance();
-			mChildStatusList = new List<CharStatus>();
-			mChildStatusList.Add(new CharName(TextBoxCharName));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharLv, 0x10, 1, 1, 99));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharExp, 0x14, 4, 0, 99999999));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharSkill, 0x1E, 2, 0, 99));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharHP, 0x20, 2, 1, 999));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharMP, 0x22, 2, 0, 999));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharMaxHP, 0x100, 2, 0, 999));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharMaxMP, 0x102, 2, 0, 999));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharAttackMagic, 0x10C, 2, 0, 999));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharHealMagic, 0x10E, 2, 0, 999));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharAttack, 0x104, 2, 0, 999));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharDiffence, 0x10A, 2, 0, 999));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharSpeed, 0x108, 2, 0, 999));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharSkillful, 0x106, 2, 0, 999));
-			mChildStatusList.Add(new CharNumberStatus(TextBoxCharCharm, 0x110, 2, 0, 999));
+			mCharStatusList = new List<CharStatus>();
+			mCharStatusList.Add(new CharName(TextBoxCharName, 0x2));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharLv, 0x10, 1, 1, 99));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharExp, 0x14, 4, 0, 9999999));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharSkill, 0x1E, 2, 0, 99));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharHP, 0x20, 2, 1, 999));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharMP, 0x22, 2, 0, 999));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharMaxHP, 0x100, 2, 0, 999));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharMaxMP, 0x102, 2, 0, 999));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharAttackMagic, 0x10C, 2, 0, 999));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharHealMagic, 0x10E, 2, 0, 999));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharAttack, 0x104, 2, 0, 999));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharDiffence, 0x10A, 2, 0, 999));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharSpeed, 0x108, 2, 0, 999));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharSkillful, 0x106, 2, 0, 999));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharCharm, 0x110, 2, 0, 999));
+
+			mYochiStatusList = new List<CharStatus>();
+			mYochiStatusList.Add(new CharName(TextBoxYochiName, 0x0));
+			mYochiStatusList.Add(new CharNumberStatus(TextBoxYochiMotivation, 0x78, 2, 1, 999));
+			mYochiStatusList.Add(new CharSelectStatus(ComboBoxYochiColor, 0x7B, 1));
 
 			ComboBoxCharItemPage.Items.Add("1 / 2");
 			ComboBoxCharItemPage.Items.Add("2 / 2");
 			ComboBoxCharItemPage.SelectedIndex = 0;
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem1, ComboBoxCharItemCount1, 0));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem2, ComboBoxCharItemCount2, 2));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem3, ComboBoxCharItemCount3, 4));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem4, ComboBoxCharItemCount4, 6));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem5, ComboBoxCharItemCount5, 8));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem6, ComboBoxCharItemCount6, 10));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem7, ComboBoxCharItemCount7, 12));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem8, ComboBoxCharItemCount8, 14));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem9, ComboBoxCharItemCount9, 16));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem10, ComboBoxCharItemCount10, 18));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem11, ComboBoxCharItemCount11, 20));
-			mChildStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem12, ComboBoxCharItemCount12, 22));
-			mChildStatusList.ForEach(x => x.Init());
+			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem1, ComboBoxCharItemCount1, 0));
+			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem2, ComboBoxCharItemCount2, 2));
+			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem3, ComboBoxCharItemCount3, 4));
+			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem4, ComboBoxCharItemCount4, 6));
+			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem5, ComboBoxCharItemCount5, 8));
+			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem6, ComboBoxCharItemCount6, 10));
+			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem7, ComboBoxCharItemCount7, 12));
+			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem8, ComboBoxCharItemCount8, 14));
+			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem9, ComboBoxCharItemCount9, 16));
+			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem10, ComboBoxCharItemCount10, 18));
+			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem11, ComboBoxCharItemCount11, 20));
+			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem12, ComboBoxCharItemCount12, 22));
+			mCharStatusList.ForEach(x => x.Init());
 
 			mAllStatusList = new List<AllStatus>();
 			mAllStatusList.Add(new PlayTime(TextBoxPlayHour, TextBoxPlayMinute, TextBoxPlaySecond));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldHand, 0x3E28, 4, 0, 9999999));
-			
+			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldBank, 0x6584, 4, 0, 9999999));
+
 			mAllStatusList.Add(new PartyOrder(ComboBoxPartyOrder1, 0));
 			mAllStatusList.Add(new PartyOrder(ComboBoxPartyOrder2, 1));
 			mAllStatusList.Add(new PartyOrder(ComboBoxPartyOrder3, 2));
@@ -123,50 +130,114 @@ namespace DQ11
 
 		private void ButtonCharStatusCopy_Click(object sender, RoutedEventArgs e)
 		{
-			mChildStatusList.ForEach(x => x.Copy());
+			mCharStatusList.ForEach(x => x.Copy());
 		}
 
 		private void ButtonCharStatusPaste_Click(object sender, RoutedEventArgs e)
 		{
-			mChildStatusList.ForEach(x => x.Paste());
+			mCharStatusList.ForEach(x => x.Paste());
 		}
 
 		private void ButtonCharStatusMin_Click(object sender, RoutedEventArgs e)
 		{
-			mChildStatusList.ForEach(x => x.Min());
+			mCharStatusList.ForEach(x => x.Min());
 		}
 
 		private void ButtonCharStatusMax_Click(object sender, RoutedEventArgs e)
 		{
-			mChildStatusList.ForEach(x => x.Max());
+			mCharStatusList.ForEach(x => x.Max());
 		}
 
 		private void ButtonCharStatusDecision_Click(object sender, RoutedEventArgs e)
 		{
-			mChildStatusList.ForEach(x => x.Write());
+			mCharStatusList.ForEach(x => x.Write());
+		}
+
+		private void ButtonYochiRemove_Click(object sender, RoutedEventArgs e)
+		{
+			int index = ListBoxYochi.SelectedIndex;
+			if (index < 0) return;
+
+			SaveData saveDate = SaveData.Instance();
+			for(uint i = (uint)index; i < Util.YochiCount - 1; i++)
+			{
+				saveDate.Copy((i + 1) * Util.YochiDateSize + Util.YochiStartAddress,
+										i * Util.YochiDateSize + Util.YochiStartAddress,
+										Util.YochiDateSize);
+			}
+			saveDate.WriteNumber((Util.YochiCount - 1) * Util.YochiDateSize + Util.YochiStartAddress, Util.YochiDateSize, 0);
+			saveDate.WriteNumber((Util.YochiCount - 1) * Util.YochiDateSize + Util.YochiStartAddress - 4, 4, 0xFFFFFFFF);
+			ListBoxYochi.Items.RemoveAt(index);
+		}
+
+		private void ButtonYochiAppend_Click(object sender, RoutedEventArgs e)
+		{
+			int count = ListBoxYochi.Items.Count;
+			if (count >= Util.YochiCount)
+			{
+				MessageBox.Show("ヨッチ族の登録数が上限に達しています");
+				return;
+			}
+
+			Byte[] prof = { 0x4B, 0x30, 0x81, 0x30, 0x80, 0x30, 0x57, 0x30, 0xC3, 0x30, 0xC1, 0x30, 0x00, 0x00, 0x00, 0x00,
+										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x00, 0x01, 0x05, 0x00, 0x00, 0xA4, 0x00,
+										0x05, 0x00, 0x1B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, };
+
+			if(prof.Length != Util.YochiDateSize)
+			{
+				// Debug Message.
+				MessageBox.Show("ヨッチ族のプロフ確認");
+				return;
+			}
+			SaveData saveDate = SaveData.Instance();
+			for(uint i = 0; i < prof.Length; i++)
+			{
+				saveDate.WriteNumber((uint)count * Util.YochiDateSize + Util.YochiStartAddress + i, 1, prof[i]);
+			}
+			String name = saveDate.ReadUnicode((uint)count * Util.YochiDateSize + Util.YochiStartAddress, 12);
+			if (String.IsNullOrEmpty(name)) return;
+			ListBoxYochi.Items.Add(name);
+		}
+
+		private void ButtonYochiStatusDecision_Click(object sender, RoutedEventArgs e)
+		{
+			mYochiStatusList.ForEach(x => x.Write());
 		}
 
 		private void ListBoxChar_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			ListBoxItem item = ListBoxChar.SelectedItem as ListBoxItem;
-			if (item == null) return;
-			mChildStatusList.ForEach(x => x.Load(item));
-			mChildStatusList.ForEach(x => x.Read());
+			int index = ListBoxChar.SelectedIndex;
+			if (index < 0) return;
+			mCharStatusList.ForEach(x => x.Load((uint)index * Util.CharDateSize));
+			mCharStatusList.ForEach(x => x.Read());
+		}
+
+		private void ListBoxYochi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			int index = ListBoxYochi.SelectedIndex;
+			if (index < 0) return;
+			mYochiStatusList.ForEach(x => x.Load((uint)index * Util.YochiDateSize + Util.YochiStartAddress));
+			mYochiStatusList.ForEach(x => x.Read());
 		}
 
 		private void ComboBoxCharItemPage_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			if (ComboBoxCharItemPage.SelectedIndex < 0) return;
-			ListBoxItem item = ListBoxChar.SelectedItem as ListBoxItem;
-			if (item == null) return;
-			mChildStatusList.ForEach(x => x.Load(item));
-			mChildStatusList.ForEach(x => x.Read());
+			int index = ListBoxChar.SelectedIndex;
+			if (index < 0) return;
+			mCharStatusList.ForEach(x => x.Load((uint)index * Util.CharDateSize));
+			mCharStatusList.ForEach(x => x.Read());
 		}
 
 		private void Load()
 		{
-			SaveData data = SaveData.Instance();
-			if (data.Open() == false)
+			SaveData saveData = SaveData.Instance();
+			if (saveData.Open() == false)
 			{
 				MessageBox.Show("読込失敗");
 				return;
@@ -175,12 +246,20 @@ namespace DQ11
 			ListBoxChar.Items.Clear();
 			ComboBoxCharItemPage.SelectedIndex = 0;
 			List<String> names = Util.GetPartyNames();
-			for (uint i = 0; i < names.Count; i++)
+			for (int i = 0; i < names.Count; i++)
 			{
 				ListBoxItem item = new ListBoxItem();
-				item.Tag = i * 0x200;
-				item.Content = names[(int)i];
+				item.Content = names[i];
 				ListBoxChar.Items.Add(item);
+			}
+
+			ListBoxYochi.Items.Clear();
+			names = Util.GetYochiNames();
+			for (int i = 0; i < names.Count; i++)
+			{
+				ListBoxItem item = new ListBoxItem();
+				item.Content = names[i];
+				ListBoxYochi.Items.Add(item);
 			}
 
 			mAllStatusList.ForEach(x => x.Open());

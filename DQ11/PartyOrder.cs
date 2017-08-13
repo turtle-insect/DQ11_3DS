@@ -33,11 +33,6 @@ namespace DQ11
 			//uint charID = (uint)mParty.SelectedIndex;
 			//if (charID == mParty.Items.Count - 1) charID = 0xFF;
 			//SaveData.Instance().WriteNumber(0x3E04 + mAddress, 1, charID);
-			//if (charID != 0xFF)
-			//{
-			//	SaveData.Instance().WriteNumber(0x200 * charID + 0x2C, 1, charID);
-			//	SaveData.Instance().WriteNumber(0x200 * charID + 0x2D, 1, charID);
-			//}
 		}
 	}
 }
