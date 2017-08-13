@@ -16,6 +16,7 @@ namespace DQ11
 
 		BagToolMgr mBagTool;
 		BagEquipmentMgr mBagEquipment;
+		HatMgr mYochiHat;
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -63,6 +64,8 @@ namespace DQ11
 			mYochiStatusList.Add(new CharNumberStatus(TextBoxYochiMotivation, 0x78, 2, 1, 999));
 			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiRank, 0x7A, 1, 1));
 			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiColor, 0x7B, 1));
+			mYochiStatusList.Add(new YochiHat(ComboBoxYochiHat));
+			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiInfo, 0x84, 1));
 			mYochiStatusList.Add(new YochiWeapon(ComboBoxYochiWeapon));
 			mYochiStatusList.ForEach(x => x.Init());
 
@@ -75,6 +78,9 @@ namespace DQ11
 			mBagTool.Init(mAllStatusList, StackPanelBagTool, ComboBoxBagToolPage, 0x3E34, 168);
 			mBagEquipment = new BagEquipmentMgr();
 			mBagEquipment.Init(mAllStatusList, StackPanelBagEquipment, ComboBoxBagEquipmentPage, 0x40EC, 2340);
+
+			// 帽子の設定.
+			mYochiHat = new HatMgr(mAllStatusList, StackPanelHat);
 
 			// 雑多.
 			mAllStatusList.Add(new PlayTime(TextBoxPlayHour, TextBoxPlayMinute, TextBoxPlaySecond));
@@ -132,7 +138,7 @@ namespace DQ11
 
 		private void MenuItemAbout_Click(object sender, RoutedEventArgs e)
 		{
-
+			new AboutWindow().ShowDialog();
 		}
 
 		private void ButtonCharStatusCopy_Click(object sender, RoutedEventArgs e)
@@ -182,7 +188,7 @@ namespace DQ11
 			int count = ListBoxYochi.Items.Count;
 			if (count >= Util.YochiCount)
 			{
-				MessageBox.Show("ヨッチ族の登録数が上限に達しています");
+				//MessageBox.Show("ヨッチ族の登録数が上限に達しています");
 				return;
 			}
 

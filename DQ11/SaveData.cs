@@ -66,6 +66,18 @@ namespace DQ11
 			return result;
 		}
 
+		// 0 to 7.
+		public bool ReadBit(uint address, uint bit)
+		{
+			if (bit < 0) return false;
+			if (bit > 7) return false;
+			if (mBuffer == null) return false;
+			if (address > mBuffer.Length) return false;
+			Byte mask = (Byte)(1 << (int)bit);
+			Byte result = (Byte)(mBuffer[address] & mask);
+			return result != 0;
+		}
+
 		public String ReadUnicode(uint address, uint size)
 		{
 			if (mBuffer == null) return "";
@@ -88,6 +100,18 @@ namespace DQ11
 				mBuffer[address + i] = (Byte)(value & 0xFF);
 				value >>= 8;
 			}
+		}
+
+		// 0 to 7.
+		public void WriteBit(uint address, uint bit, bool value)
+		{
+			if (bit < 0) return;
+			if (bit > 7) return;
+			if (mBuffer == null) return;
+			if (address > mBuffer.Length) return;
+			Byte mask = (Byte)(1 << (int)bit);
+			if (value) mBuffer[address] = (Byte)(mBuffer[address] | mask);
+			else mBuffer[address] = (Byte)(mBuffer[address] & ~mask);
 		}
 
 		public void WriteUnicode(uint address, uint size, String value)

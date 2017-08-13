@@ -68,6 +68,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AllCheckBoxStatus.cs" />
     <Compile Include="AllChoiceStatus.cs" />
     <Compile Include="AllNumberStatus.cs" />
@@ -83,13 +86,20 @@
     <Compile Include="CharNumberStatus.cs" />
     <Compile Include="CharStatus.cs" />
     <Compile Include="Crc32.cs" />
+    <Compile Include="HatMgr.cs" />
+    <Compile Include="HatObtain.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemInfo.cs" />
     <Compile Include="PartyOrder.cs" />
     <Compile Include="PlayTime.cs" />
     <Compile Include="SaveData.cs" />
     <Compile Include="Util.cs" />
+    <Compile Include="YochiHat.cs" />
     <Compile Include="YochiWeapon.cs" />
+    <Page Include="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

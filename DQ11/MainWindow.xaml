@@ -199,6 +199,7 @@
                         <Label Content="やる気" Grid.Row="3"/>
                         <Label Content="武器" Grid.Row="4"/>
                         <Label Content="ぼうし" Grid.Row="5"/>
+                        <Label Content="情報" Grid.Row="6"/>
                         <TextBox x:Name="TextBoxYochiName" Grid.Column="1"/>
                         <ComboBox x:Name="ComboBoxYochiColor" Grid.Row="1" Grid.Column="1">
                             <ComboBoxItem Content="赤"/>
@@ -250,6 +251,11 @@
                         </ComboBox>
                         <TextBox x:Name="TextBoxYochiMotivation" Grid.Row="3" Grid.Column="1"/>
                         <ComboBox x:Name="ComboBoxYochiWeapon" Grid.Row="4" Grid.Column="1"/>
+                        <ComboBox x:Name="ComboBoxYochiHat" Grid.Row="5" Grid.Column="1"/>
+                        <ComboBox x:Name="ComboBoxYochiInfo" Grid.Row="6" Grid.Column="1">
+                            <ComboBoxItem Content="見てない"/>
+                            <ComboBoxItem Content="見た"/>
+                        </ComboBox>
                     </Grid>
                     <StackPanel Grid.Column="3" VerticalAlignment="Bottom">
                         <Button x:Name="ButtonYochiStatusDecision" Content="決定" Height="50" Click="ButtonYochiStatusDecision_Click"/>
@@ -330,6 +336,12 @@
                         <ComboBox x:Name="ComboBoxPartyOrder3" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2"/>
                         <ComboBox x:Name="ComboBoxPartyOrder4" Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2"/>
                     </Grid>
+                    <DockPanel Grid.Column="1">
+                        <Label Content="帽子" DockPanel.Dock="Top"/>
+                        <ScrollViewer Margin="0,5,0,0">
+                            <StackPanel Grid.Column="1" x:Name="StackPanelHat"/>
+                        </ScrollViewer>
+                    </DockPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="システム">

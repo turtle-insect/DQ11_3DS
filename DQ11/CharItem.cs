@@ -79,6 +79,7 @@ namespace DQ11
 		{
 			ItemInfo info = mItem.SelectedItem as ItemInfo;
 			if (info == null) return;
+
 			uint kind = 0;
 			if(info.Count > 1)
 			{

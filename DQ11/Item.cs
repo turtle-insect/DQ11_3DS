@@ -9,6 +9,7 @@ namespace DQ11
 		public ItemInfo None { get; private set; } = new ItemInfo(0xFFFF, "なし", 1);
 		public List<ItemInfo> Tools { get; private set; } = new List<ItemInfo>();
 		public List<ItemInfo> Equipments { get; private set; } = new List<ItemInfo>();
+		public List<ItemInfo> Hats { get; private set; } = new List<ItemInfo>();
 		// #で始まる文字はコメント扱い
 		// タブ区切りで解釈
 		// ID\t名前で区切られている前提として扱う
@@ -30,6 +31,7 @@ namespace DQ11
 		{
 			AppendList("tool.txt", Tools);
 			AppendList("equipment.txt", Equipments);
+			AppendList("hat.txt", Hats);
 			Tools.Sort((a, b) => (int)(a.ID - b.ID));
 			Equipments.Sort((a, b) => (int)(a.ID - b.ID));
 		}
@@ -75,6 +77,12 @@ namespace DQ11
 		{
 			if (None.ID == id) return None;
 			return SearchBinaryNear(Equipments, id);
+		}
+
+		public ItemInfo GetHatItemInfo(uint id)
+		{
+			if (None.ID == id) return None;
+			return SearchBinary(Tools, id);
 		}
 
 		public ItemInfo GetItemInfo(uint id)
