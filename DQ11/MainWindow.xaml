@@ -200,6 +200,7 @@
                         <Label Content="武器" Grid.Row="4"/>
                         <Label Content="ぼうし" Grid.Row="5"/>
                         <Label Content="情報" Grid.Row="6"/>
+                        <Label Content="ブースト" Grid.Row="7"/>
                         <TextBox x:Name="TextBoxYochiName" Grid.Column="1"/>
                         <ComboBox x:Name="ComboBoxYochiColor" Grid.Row="1" Grid.Column="1">
                             <ComboBoxItem Content="赤"/>
@@ -255,6 +256,14 @@
                         <ComboBox x:Name="ComboBoxYochiInfo" Grid.Row="6" Grid.Column="1">
                             <ComboBoxItem Content="見てない"/>
                             <ComboBoxItem Content="見た"/>
+                        </ComboBox>
+                        <ComboBox x:Name="ComboBoxYochiBoost" Grid.Row="7" Grid.Column="1">
+                            <ComboBoxItem Content=""/>
+                            <ComboBoxItem Content="+1"/>
+                            <ComboBoxItem Content="+2"/>
+                            <ComboBoxItem Content="+3"/>
+                            <ComboBoxItem Content="+4"/>
+                            <ComboBoxItem Content="+5"/>
                         </ComboBox>
                     </Grid>
                     <StackPanel Grid.Column="3" VerticalAlignment="Bottom">

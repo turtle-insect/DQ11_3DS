@@ -66,6 +66,7 @@ namespace DQ11
 			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiColor, 0x7B, 1));
 			mYochiStatusList.Add(new YochiHat(ComboBoxYochiHat));
 			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiInfo, 0x84, 1));
+			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiBoost, 0x85, 1));
 			mYochiStatusList.Add(new YochiWeapon(ComboBoxYochiWeapon));
 			mYochiStatusList.ForEach(x => x.Init());
 
@@ -185,10 +186,10 @@ namespace DQ11
 
 		private void ButtonYochiAppend_Click(object sender, RoutedEventArgs e)
 		{
-			int count = ListBoxYochi.Items.Count;
+			uint count = (uint)ListBoxYochi.Items.Count;
 			if (count >= Util.YochiCount)
 			{
-				//MessageBox.Show("ヨッチ族の登録数が上限に達しています");
+				MessageBox.Show("ヨッチ族の登録数が上限に達しています");
 				return;
 			}
 
@@ -211,9 +212,12 @@ namespace DQ11
 			SaveData saveDate = SaveData.Instance();
 			for(uint i = 0; i < prof.Length; i++)
 			{
-				saveDate.WriteNumber((uint)count * Util.YochiDateSize + Util.YochiStartAddress + i, 1, prof[i]);
+				saveDate.WriteNumber(count * Util.YochiDateSize + Util.YochiStartAddress + i, 1, prof[i]);
 			}
-			String name = saveDate.ReadUnicode((uint)count * Util.YochiDateSize + Util.YochiStartAddress, 12);
+			// Random Better ?
+			saveDate.WriteNumber(count * Util.YochiDateSize + Util.YochiStartAddress - 4, 4, count);
+
+			String name = saveDate.ReadUnicode(count * Util.YochiDateSize + Util.YochiStartAddress, 12);
 			if (String.IsNullOrEmpty(name)) return;
 			ListBoxYochi.Items.Add(name);
 		}
