@@ -6,20 +6,22 @@ namespace DQ11
 	{
 		private readonly ComboBox mValue;
 		private readonly uint mAddress;
-		public AllChoiceStatus(ComboBox value, uint address)
+		private readonly uint mSize;
+
+		public AllChoiceStatus(ComboBox value, uint address, uint size)
 		{
 			mValue = value;
 			mAddress = address;
+			mSize = size;
 		}
 		public override void Open()
 		{
-			mValue.SelectedIndex = (int)SaveData.Instance().ReadNumber(mAddress, 1);
+			mValue.SelectedIndex = (int)SaveData.Instance().ReadNumber(mAddress, mSize);
 		}
 
 		public override void Save()
 		{
-			uint value = (uint)mValue.SelectedIndex;
-			SaveData.Instance().WriteNumber(mAddress, 1, value);
+			SaveData.Instance().WriteNumber(mAddress, mSize, (uint)mValue.SelectedIndex);
 		}
 	}
 }

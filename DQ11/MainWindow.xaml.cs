@@ -25,6 +25,7 @@ namespace DQ11
 		{
 			Item.Instance();
 			SaveData.Instance();
+			// キャラクタの設定.
 			mCharStatusList = new List<CharStatus>();
 			mCharStatusList.Add(new CharName(TextBoxCharName, 0x2));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharLv, 0x10, 1, 1, 99));
@@ -41,15 +42,6 @@ namespace DQ11
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharSpeed, 0x108, 2, 0, 999));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharSkillful, 0x106, 2, 0, 999));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharCharm, 0x110, 2, 0, 999));
-
-			mYochiStatusList = new List<CharStatus>();
-			mYochiStatusList.Add(new CharName(TextBoxYochiName, 0x0));
-			mYochiStatusList.Add(new CharNumberStatus(TextBoxYochiMotivation, 0x78, 2, 1, 999));
-			mYochiStatusList.Add(new CharSelectStatus(ComboBoxYochiColor, 0x7B, 1));
-
-			ComboBoxCharItemPage.Items.Add("1 / 2");
-			ComboBoxCharItemPage.Items.Add("2 / 2");
-			ComboBoxCharItemPage.SelectedIndex = 0;
 			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem1, ComboBoxCharItemCount1, 0));
 			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem2, ComboBoxCharItemCount2, 2));
 			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem3, ComboBoxCharItemCount3, 4));
@@ -64,7 +56,27 @@ namespace DQ11
 			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem12, ComboBoxCharItemCount12, 22));
 			mCharStatusList.ForEach(x => x.Init());
 
+
+			// ヨッチ族の設定.
+			mYochiStatusList = new List<CharStatus>();
+			mYochiStatusList.Add(new CharName(TextBoxYochiName, 0x0));
+			mYochiStatusList.Add(new CharNumberStatus(TextBoxYochiMotivation, 0x78, 2, 1, 999));
+			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiRank, 0x7A, 1, 1));
+			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiColor, 0x7B, 1));
+			mYochiStatusList.Add(new YochiWeapon(ComboBoxYochiWeapon));
+			mYochiStatusList.ForEach(x => x.Init());
+
+
+			// 全体の設定.
 			mAllStatusList = new List<AllStatus>();
+
+			// ふくろの設定.
+			mBagTool = new BagToolMgr();
+			mBagTool.Init(mAllStatusList, StackPanelBagTool, ComboBoxBagToolPage, 0x3E34, 168);
+			mBagEquipment = new BagEquipmentMgr();
+			mBagEquipment.Init(mAllStatusList, StackPanelBagEquipment, ComboBoxBagEquipmentPage, 0x40EC, 2340);
+
+			// 雑多.
 			mAllStatusList.Add(new PlayTime(TextBoxPlayHour, TextBoxPlayMinute, TextBoxPlaySecond));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldHand, 0x3E28, 4, 0, 9999999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldBank, 0x6584, 4, 0, 9999999));
@@ -78,16 +90,11 @@ namespace DQ11
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxShopNG, 0x6A80));
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxArmorNG, 0x6A81));
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxAshamed, 0x6A83));
-			mAllStatusList.Add(new AllChoiceStatus(ComboBoxBattleSpeed, 0x6FBF));
-			mAllStatusList.Add(new AllChoiceStatus(ComboBoxBGMVolume, 0x6FC0));
-			mAllStatusList.Add(new AllChoiceStatus(ComboBoxSEVolume, 0x6FC1));
-			mAllStatusList.Add(new AllChoiceStatus(ComboBoxCameraRotate, 0x6FC2));
-			mAllStatusList.Add(new AllChoiceStatus(ComboBoxCStickRotate, 0x6FC3));
-
-			mBagTool = new BagToolMgr();
-			mBagTool.Init(mAllStatusList, StackPanelBagTool, ComboBoxBagToolPage, 0x3E34, 168);
-			mBagEquipment = new BagEquipmentMgr();
-			mBagEquipment.Init(mAllStatusList, StackPanelBagEquipment, ComboBoxBagEquipmentPage, 0x40EC, 2340);
+			mAllStatusList.Add(new AllChoiceStatus(ComboBoxBattleSpeed, 0x6FBF, 1));
+			mAllStatusList.Add(new AllChoiceStatus(ComboBoxBGMVolume, 0x6FC0, 1));
+			mAllStatusList.Add(new AllChoiceStatus(ComboBoxSEVolume, 0x6FC1, 1));
+			mAllStatusList.Add(new AllChoiceStatus(ComboBoxCameraRotate, 0x6FC2, 1));
+			mAllStatusList.Add(new AllChoiceStatus(ComboBoxCStickRotate, 0x6FC3, 1));
 			mAllStatusList.ForEach(x => x.Init());
 		}
 

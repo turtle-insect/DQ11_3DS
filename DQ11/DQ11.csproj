@@ -77,10 +77,10 @@
     <Compile Include="BagEquipmentMgr.cs" />
     <Compile Include="BagToolItem.cs" />
     <Compile Include="BagToolMgr.cs" />
+    <Compile Include="CharChoiceStatus.cs" />
     <Compile Include="CharItem.cs" />
     <Compile Include="CharName.cs" />
     <Compile Include="CharNumberStatus.cs" />
-    <Compile Include="CharSelectStatus.cs" />
     <Compile Include="CharStatus.cs" />
     <Compile Include="Crc32.cs" />
     <Compile Include="Item.cs" />
@@ -89,6 +89,7 @@
     <Compile Include="PlayTime.cs" />
     <Compile Include="SaveData.cs" />
     <Compile Include="Util.cs" />
+    <Compile Include="YochiWeapon.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
