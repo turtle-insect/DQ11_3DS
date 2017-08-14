@@ -83,6 +83,10 @@ namespace DQ11
 			// 帽子の設定.
 			mYochiHat = new HatMgr(mAllStatusList, StackPanelHat);
 
+			// すれちがい
+			mAllStatusList.Add(new AllStringStatus(TextBoxPassName, 0xC46C, 6));
+			mAllStatusList.Add(new AllStringStatus(TextBoxPassMessage, 0xC47A, 16));
+
 			// 雑多.
 			mAllStatusList.Add(new PlayTime(TextBoxPlayHour, TextBoxPlayMinute, TextBoxPlaySecond));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldHand, 0x3E28, 4, 0, 9999999));

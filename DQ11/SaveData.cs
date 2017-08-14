@@ -49,6 +49,7 @@ namespace DQ11
 		{
 			if (mBuffer == null) return false;
 			SaveFileDialog dlg = new SaveFileDialog();
+			dlg.FileName = System.IO.Path.GetFileName(mFileName);
 			if (dlg.ShowDialog() == false) return false;
 			mFileName = dlg.FileName;
 			return Save();

@@ -68,17 +68,12 @@ namespace DQ11
 			}
 			else
 			{
-				if(info.Count > 1)
-				{
-					mKind.IsEnabled = true;
-					mKind.Items.Add("");
-					for (uint i = 1; i < info.Count; i++)
-					{
-						mKind.Items.Add("+" + i.ToString());
-					}
-					mItem.SelectedIndex = (int)(info.ID - id);
-				}
 				mItem.Text = info.Name;
+				if (info.Count > 1)
+				{
+					mKind.SelectedIndex = (int)(id - info.ID);
+				}
+				
 			}
 
 			uint count = saveData.ReadNumber(address + 2, 2);

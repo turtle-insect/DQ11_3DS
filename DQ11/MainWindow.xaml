@@ -23,10 +23,10 @@
             <MenuItem x:Name="MenuItemAbout" Header="情報(_A)" Click="MenuItemAbout_Click"/>
         </Menu>
         <ToolBar Grid.Row="1">
-            <Button x:Name="ToolBarFileOpen" Width="32" Height="32" Click="ToolBarFileOpen_Click">
+            <Button x:Name="ToolBarFileOpen" Width="32" Height="32" Click="ToolBarFileOpen_Click" ToolTip="開く">
                 <Image Source="{StaticResource Open}"/>
             </Button>
-            <Button x:Name="ToolBarFileSave" Width="32" Height="32" Click="ToolBarFileSave_Click">
+            <Button x:Name="ToolBarFileSave" Width="32" Height="32" Click="ToolBarFileSave_Click" ToolTip="保存">
                 <Image Source="{StaticResource Save}"/>
             </Button>
         </ToolBar>
@@ -271,6 +271,55 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+            <TabItem Header="帽子">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel>
+                        <Label Content="帽子" DockPanel.Dock="Top"/>
+                        <ScrollViewer Margin="0,5,0,0">
+                            <StackPanel x:Name="StackPanelHat"/>
+                        </ScrollViewer>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="すれちがい">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="12*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="名前"/>
+                    <Label Content="メッセージ" Grid.Row="1"/>
+                    <Label Content="プロフィール" Grid.Row="2"/>
+                    <ListBox Grid.Row="3">
+                        <ListBoxItem Content="称号"/>
+                        <ListBoxItem Content="性別"/>
+                        <ListBoxItem Content="年代"/>
+                        <ListBoxItem Content="出身地"/>
+                        <ListBoxItem Content="性格"/>
+                        <ListBoxItem Content="趣味"/>
+                        <ListBoxItem Content="ドラクエ歴"/>
+                    </ListBox>
+                    <ListBox Grid.Row="3" Grid.Column="1">
+                    </ListBox>
+                    <ListBox Grid.Row="3" Grid.Column="2">
+                    </ListBox>
+                    <TextBox x:Name="TextBoxPassName" Grid.Column="1"/>
+                    <TextBox x:Name="TextBoxPassMessage" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <Button Content="決定" Grid.Row="4" Grid.Column="2"/>
+                </Grid>
+            </TabItem>
             <TabItem Header="ふくろ">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -345,12 +394,6 @@
                         <ComboBox x:Name="ComboBoxPartyOrder3" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2"/>
                         <ComboBox x:Name="ComboBoxPartyOrder4" Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2"/>
                     </Grid>
-                    <DockPanel Grid.Column="1">
-                        <Label Content="帽子" DockPanel.Dock="Top"/>
-                        <ScrollViewer Margin="0,5,0,0">
-                            <StackPanel Grid.Column="1" x:Name="StackPanelHat"/>
-                        </ScrollViewer>
-                    </DockPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="システム">
