@@ -10,13 +10,16 @@ namespace DQ11
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private List<CharStatus> mCharStatusList;
-		private List<CharStatus> mYochiStatusList;
+		private List<ListStatus> mCharStatusList;
+		private List<ListStatus> mYochiStatusList;
+		private List<ListStatus> mPartyStatusList;
 		private List<AllStatus> mAllStatusList;
 
 		BagToolMgr mBagTool;
 		BagEquipmentMgr mBagEquipment;
 		HatMgr mYochiHat;
+		ListActionObserver mParty;
+		ListActionObserver mYochi;
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -27,7 +30,7 @@ namespace DQ11
 			Item.Instance();
 			SaveData.Instance();
 			// キャラクタの設定.
-			mCharStatusList = new List<CharStatus>();
+			mCharStatusList = new List<ListStatus>();
 			mCharStatusList.Add(new CharName(TextBoxCharName, 0x2));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharLv, 0x10, 1, 1, 99));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharExp, 0x14, 4, 0, 9999999));
@@ -59,7 +62,9 @@ namespace DQ11
 
 
 			// ヨッチ族の設定.
-			mYochiStatusList = new List<CharStatus>();
+			mYochiStatusList = new List<ListStatus>();
+			mYochi = new ListActionObserver(ListBoxYochi,
+							ButtonYochiUp, ButtonYochiDown, ButtonYochiAppend, ButtonYochiRemove, new ListControlYochi());
 			mYochiStatusList.Add(new CharName(TextBoxYochiName, 0x0));
 			mYochiStatusList.Add(new CharNumberStatus(TextBoxYochiMotivation, 0x78, 2, 1, 999));
 			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiRank, 0x7A, 1, 1));
@@ -87,16 +92,20 @@ namespace DQ11
 			mAllStatusList.Add(new AllStringStatus(TextBoxPassName, 0xC46C, 6));
 			mAllStatusList.Add(new AllStringStatus(TextBoxPassMessage, 0xC47A, 16));
 
-			// 雑多.
+
+			// 基本.
 			mAllStatusList.Add(new PlayTime(TextBoxPlayHour, TextBoxPlayMinute, TextBoxPlaySecond));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldHand, 0x3E28, 4, 0, 9999999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldBank, 0x6584, 4, 0, 9999999));
 
-			mAllStatusList.Add(new PartyOrder(ComboBoxPartyOrder1, 0));
-			mAllStatusList.Add(new PartyOrder(ComboBoxPartyOrder2, 1));
-			mAllStatusList.Add(new PartyOrder(ComboBoxPartyOrder3, 2));
-			mAllStatusList.Add(new PartyOrder(ComboBoxPartyOrder4, 3));
+			// パーティー.
+			mPartyStatusList = new List<ListStatus>();
+			mParty = new ListActionObserver(ListBoxParty,
+							ButtonPartyUp, ButtonPartyDown, ButtonPartyAppend, ButtonPartyRemove, new ListControlParty());
+			mPartyStatusList.Add(new PartyOrder(ComboBoxPartyOrder));
+			mPartyStatusList.ForEach(x => x.Init());
 
+			// システム設定.
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxEscapeNG, 0x6A7F));
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxShopNG, 0x6A80));
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxArmorNG, 0x6A81));
@@ -168,67 +177,22 @@ namespace DQ11
 
 		private void ButtonCharStatusDecision_Click(object sender, RoutedEventArgs e)
 		{
+			if (ListBoxChar.SelectedIndex < 0) return;
 			mCharStatusList.ForEach(x => x.Write());
-		}
-
-		private void ButtonYochiRemove_Click(object sender, RoutedEventArgs e)
-		{
-			int index = ListBoxYochi.SelectedIndex;
-			if (index < 0) return;
-
-			SaveData saveDate = SaveData.Instance();
-			for(uint i = (uint)index; i < Util.YochiCount - 1; i++)
-			{
-				saveDate.Copy((i + 1) * Util.YochiDateSize + Util.YochiStartAddress,
-										i * Util.YochiDateSize + Util.YochiStartAddress,
-										Util.YochiDateSize);
-			}
-			saveDate.WriteNumber((Util.YochiCount - 1) * Util.YochiDateSize + Util.YochiStartAddress, Util.YochiDateSize, 0);
-			saveDate.WriteNumber((Util.YochiCount - 1) * Util.YochiDateSize + Util.YochiStartAddress - 4, 4, 0xFFFFFFFF);
-			ListBoxYochi.Items.RemoveAt(index);
-		}
-
-		private void ButtonYochiAppend_Click(object sender, RoutedEventArgs e)
-		{
-			uint count = (uint)ListBoxYochi.Items.Count;
-			if (count >= Util.YochiCount)
-			{
-				MessageBox.Show("ヨッチ族の登録数が上限に達しています");
-				return;
-			}
-
-			Byte[] prof = { 0x4B, 0x30, 0x81, 0x30, 0x80, 0x30, 0x57, 0x30, 0xC3, 0x30, 0xC1, 0x30, 0x00, 0x00, 0x00, 0x00,
-										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x00, 0x01, 0x05, 0x00, 0x00, 0xA4, 0x00,
-										0x05, 0x00, 0x1B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, };
-
-			if(prof.Length != Util.YochiDateSize)
-			{
-				// Debug Message.
-				MessageBox.Show("ヨッチ族のプロフ確認");
-				return;
-			}
-			SaveData saveDate = SaveData.Instance();
-			for(uint i = 0; i < prof.Length; i++)
-			{
-				saveDate.WriteNumber(count * Util.YochiDateSize + Util.YochiStartAddress + i, 1, prof[i]);
-			}
-			// Random Better ?
-			saveDate.WriteNumber(count * Util.YochiDateSize + Util.YochiStartAddress - 4, 4, count);
-
-			String name = saveDate.ReadUnicode(count * Util.YochiDateSize + Util.YochiStartAddress, 12);
-			if (String.IsNullOrEmpty(name)) return;
-			ListBoxYochi.Items.Add(name);
 		}
 
 		private void ButtonYochiStatusDecision_Click(object sender, RoutedEventArgs e)
 		{
+			if (ListBoxYochi.SelectedIndex < 0) return;
 			mYochiStatusList.ForEach(x => x.Write());
+			mYochi.Load();
+		}
+
+		private void ButtonPartyDecision_Click(object sender, RoutedEventArgs e)
+		{
+			if (ListBoxParty.SelectedIndex < 0) return;
+			mPartyStatusList.ForEach(x => x.Write());
+			mParty.Load();
 		}
 
 		private void ListBoxChar_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -245,6 +209,14 @@ namespace DQ11
 			if (index < 0) return;
 			mYochiStatusList.ForEach(x => x.Load((uint)index * Util.YochiDateSize + Util.YochiStartAddress));
 			mYochiStatusList.ForEach(x => x.Read());
+		}
+
+		private void ListBoxParty_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			int index = ListBoxParty.SelectedIndex;
+			if (index < 0) return;
+			mPartyStatusList.ForEach(x => x.Load((uint)index));
+			mPartyStatusList.ForEach(x => x.Read());
 		}
 
 		private void ComboBoxCharItemPage_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -274,14 +246,8 @@ namespace DQ11
 				ListBoxChar.Items.Add(item);
 			}
 
-			ListBoxYochi.Items.Clear();
-			names = Util.GetYochiNames();
-			for (int i = 0; i < names.Count; i++)
-			{
-				ListBoxItem item = new ListBoxItem();
-				item.Content = names[i];
-				ListBoxYochi.Items.Add(item);
-			}
+			mParty.Load();
+			mYochi.Load();
 
 			mAllStatusList.ForEach(x => x.Open());
 			MessageBox.Show("読込成功");

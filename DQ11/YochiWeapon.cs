@@ -2,7 +2,7 @@
 
 namespace DQ11
 {
-	class YochiWeapon : CharStatus
+	class YochiWeapon : ListStatus
 	{
 		private readonly ComboBox mItem;
 		public YochiWeapon(ComboBox item)

@@ -1,38 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Controls;
 
 namespace DQ11
 {
-	class PartyOrder : AllStatus
+	class PartyOrder : ListStatus
 	{
 		private readonly ComboBox mParty;
-		private readonly uint mAddress;
-		public PartyOrder(ComboBox party, uint address)
+		public PartyOrder(ComboBox party)
 		{
 			mParty = party;
-			mAddress = address;
 		}
 
-		public override void Open()
+		public override void Read()
 		{
 			mParty.Items.Clear();
-			List<String> names = Util.GetPartyNames();
-			foreach (String name in names)
+			foreach (String name in Util.GetPartyNames())
 			{
 				mParty.Items.Add(name);
 			}
-			mParty.Items.Add("-");
-			uint charID = SaveData.Instance().ReadNumber(0x3E04 + mAddress, 1);
-			if (charID == 0xFF) charID = (uint)(mParty.Items.Count - 1);
-			mParty.SelectedIndex = (int)charID;
+			mParty.SelectedIndex = 0;
+			uint value = SaveData.Instance().ReadNumber(Util.PartyStartAddress + Base, 1);
+			if (value == 0xFF) return;
+			mParty.SelectedIndex = (int)value;
 		}
 
-		public override void Save()
+		public override void Write()
 		{
-			//uint charID = (uint)mParty.SelectedIndex;
-			//if (charID == mParty.Items.Count - 1) charID = 0xFF;
-			//SaveData.Instance().WriteNumber(0x3E04 + mAddress, 1, charID);
+			SaveData.Instance().WriteNumber(Util.PartyStartAddress + Base, 1, (uint)mParty.SelectedIndex);
 		}
 	}
 }

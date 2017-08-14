@@ -31,6 +31,58 @@
             </Button>
         </ToolBar>
         <TabControl Grid.Row="2">
+            <TabItem Header="基本設定">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="85"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="35"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="プレイ時間" Grid.RowSpan="3" VerticalAlignment="Center"/>
+                        <Label Content="時間" Grid.Column="2"/>
+                        <Label Content="分"  Grid.Row="1" Grid.Column="2"/>
+                        <Label Content="秒"  Grid.Row="2" Grid.Column="2"/>
+                        <Label Content="もち金" Grid.Row="3"/>
+                        <Label Content="G" Grid.Row="3" Grid.Column="2"/>
+                        <Label Content="銀行" Grid.Row="4"/>
+                        <Label Content="G" Grid.Row="4" Grid.Column="2"/>
+                        <Label Content="カジノコイン" Grid.Row="5"/>
+                        <Label Content="枚" Grid.Row="5" Grid.Column="2"/>
+                        <Label Content="ちいさなメダル" Grid.Row="6"/>
+                        <Label Content="枚" Grid.Row="6" Grid.Column="2"/>
+                        <TextBox x:Name="TextBoxPlayHour" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxPlayMinute" Grid.Row="1" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxPlaySecond" Grid.Row="2" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxGoldHand" Grid.Row="3" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxGoldBank" Grid.Row="4" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxCasinoCoin" Grid.Row="5" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxSmallMedal" Grid.Row="6" Grid.Column="1"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
             <TabItem Header="人物">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -159,19 +211,46 @@
             <TabItem Header="ヨッチ族">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
                         <ColumnDefinition Width="5"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <DockPanel>
-                        <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">
-                            <Button x:Name="ButtonYochiRemove" Content="削除" Click="ButtonYochiRemove_Click"/>
-                            <Button x:Name="ButtonYochiAppend" Content="追加" Click="ButtonYochiAppend_Click"/>
-                        </StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="13*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
                         <ListBox x:Name="ListBoxYochi" SelectionChanged="ListBoxYochi_SelectionChanged"/>
-                    </DockPanel>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="ButtonYochiUp">
+                                <Image Source="{StaticResource Arrow}"/>
+                            </Button>
+                            <Button x:Name="ButtonYochiDown" Grid.Column="1" RenderTransformOrigin="0.5, 0.5">
+                                <Button.RenderTransform>
+                                    <ScaleTransform ScaleY="-1"/>
+                                </Button.RenderTransform>
+                                <Image Source="{StaticResource Arrow}"/>
+                            </Button>
+                            <Button x:Name="ButtonYochiAppend" Grid.Column="2">
+                                <Image Source="{StaticResource Append}"/>
+                            </Button>
+                            <Button x:Name="ButtonYochiRemove" Grid.Column="3">
+                                <Image Source="{StaticResource Remove}"/>
+                            </Button>
+                        </Grid>
+                    </Grid>
                     <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -189,10 +268,6 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
                         <Label Content="名前"/>
                         <Label Content="色" Grid.Row="1"/>
                         <Label Content="ランク" Grid.Row="2"/>
@@ -339,61 +414,48 @@
                     </DockPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="全体">
+            <TabItem Header="パーティー">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="12*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Content="一覧"/>
+                    <Label Content="対象" Grid.Column="1"/>
+                    <ListBox x:Name="ListBoxParty" Grid.Row="1" SelectionChanged="ListBoxParty_SelectionChanged"/>
+                    <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="85"/>
                             <ColumnDefinition/>
-                            <ColumnDefinition Width="35"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Label Content="プレイ時間" Grid.RowSpan="3" VerticalAlignment="Center"/>
-                        <Label Content="時間" Grid.Column="2"/>
-                        <Label Content="分"  Grid.Row="1" Grid.Column="2"/>
-                        <Label Content="秒"  Grid.Row="2" Grid.Column="2"/>
-                        <Label Content="もち金" Grid.Row="3"/>
-                        <Label Content="G" Grid.Row="3" Grid.Column="2"/>
-                        <Label Content="銀行" Grid.Row="4"/>
-                        <Label Content="G" Grid.Row="4" Grid.Column="2"/>
-                        <Label Content="カジノコイン" Grid.Row="5"/>
-                        <Label Content="枚" Grid.Row="5" Grid.Column="2"/>
-                        <Label Content="ちいさなメダル" Grid.Row="6"/>
-                        <Label Content="枚" Grid.Row="6" Grid.Column="2"/>
-                        <Label Content="並び順" Grid.Row=" 11" Grid.ColumnSpan="2"/>
-                        <TextBox x:Name="TextBoxPlayHour" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxPlayMinute" Grid.Row="1" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxPlaySecond" Grid.Row="2" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxGoldHand" Grid.Row="3" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxGoldBank" Grid.Row="4" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCasinoCoin" Grid.Row="5" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxSmallMedal" Grid.Row="6" Grid.Column="1"/>
-                        <ComboBox x:Name="ComboBoxPartyOrder1" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2"/>
-                        <ComboBox x:Name="ComboBoxPartyOrder2" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2"/>
-                        <ComboBox x:Name="ComboBoxPartyOrder3" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2"/>
-                        <ComboBox x:Name="ComboBoxPartyOrder4" Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2"/>
+                        <Button x:Name="ButtonPartyUp">
+                            <Image Source="{StaticResource Arrow}"/>
+                        </Button>
+                        <Button x:Name="ButtonPartyDown" Grid.Column="1" RenderTransformOrigin="0.5, 0.5">
+                            <Button.RenderTransform>
+                                <ScaleTransform ScaleY="-1"/>
+                            </Button.RenderTransform>
+                            <Image Source="{StaticResource Arrow}"/>
+                        </Button>
+                        <Button x:Name="ButtonPartyAppend" Grid.Column="2">
+                            <Image Source="{StaticResource Append}"/>
+                        </Button>
+                        <Button x:Name="ButtonPartyRemove" Grid.Column="3">
+                            <Image Source="{StaticResource Remove}"/>
+                        </Button>
                     </Grid>
+                    <StackPanel Grid.Row="1" Grid.Column="1">
+                        <ComboBox x:Name="ComboBoxPartyOrder"/>
+                        <Button x:Name="ButtonPartyDecision" Content="決定" Click="ButtonPartyDecision_Click"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="システム">

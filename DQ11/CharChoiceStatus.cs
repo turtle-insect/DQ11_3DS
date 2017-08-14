@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace DQ11
 {
-	class CharChoiceStatus : CharStatus
+	class CharChoiceStatus : ListStatus
 	{
 		private readonly ComboBox mValue;
 		private readonly uint mAddress;

@@ -2,7 +2,7 @@
 
 namespace DQ11
 {
-	class CharNumberStatus : CharStatus
+	class CharNumberStatus : ListStatus
 	{
 		private uint mCopy = uint.MaxValue;
 		private readonly TextBox mValue;

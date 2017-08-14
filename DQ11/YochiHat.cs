@@ -2,7 +2,7 @@
 
 namespace DQ11
 {
-	class YochiHat : CharStatus
+	class YochiHat : ListStatus
 	{
 		private readonly ComboBox mHat;
 

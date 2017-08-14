@@ -5,7 +5,9 @@ namespace DQ11
 {
 	class Util
 	{
+		public static readonly uint CharCount = 31;
 		public static readonly uint CharDateSize = 0x200;
+		public static readonly uint PartyStartAddress = 0x3E04;
 		public static readonly uint YochiStartAddress = 0x9DE4;
 		public static readonly uint YochiDateSize = 0x8C;
 		public static readonly uint YochiCount = 50;
@@ -17,7 +19,7 @@ namespace DQ11
 		{
 			List<String> result = new List<string>();
 			SaveData data = SaveData.Instance();
-			for (uint i = 0; i < 31; i++)
+			for (uint i = 0; i < CharCount; i++)
 			{
 				String name = data.ReadUnicode(i * CharDateSize + 2, 12);
 				result.Add(name);

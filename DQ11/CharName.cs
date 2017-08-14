@@ -2,7 +2,7 @@
 
 namespace DQ11
 {
-	class CharName : CharStatus
+	class CharName : ListStatus
 	{
 		private readonly TextBox mName;
 		private readonly uint mAddress;

@@ -1,8 +1,6 @@
-﻿using System.Windows.Controls;
-
-namespace DQ11
+﻿namespace DQ11
 {
-	abstract class CharStatus
+	abstract class ListStatus
 	{
 		protected uint Base { get; private set; } = 0;
 

@@ -85,12 +85,16 @@
     <Compile Include="CharItem.cs" />
     <Compile Include="CharName.cs" />
     <Compile Include="CharNumberStatus.cs" />
-    <Compile Include="CharStatus.cs" />
     <Compile Include="Crc32.cs" />
     <Compile Include="HatMgr.cs" />
     <Compile Include="HatObtain.cs" />
+    <Compile Include="IListControl.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemInfo.cs" />
+    <Compile Include="ListActionObserver.cs" />
+    <Compile Include="ListControlParty.cs" />
+    <Compile Include="ListControlYochi.cs" />
+    <Compile Include="ListStatus.cs" />
     <Compile Include="PartyOrder.cs" />
     <Compile Include="PlayTime.cs" />
     <Compile Include="SaveData.cs" />
@@ -150,6 +154,11 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Append.png" />
+    <Resource Include="Resource\Arrow.png" />
+    <Resource Include="Resource\Remove.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

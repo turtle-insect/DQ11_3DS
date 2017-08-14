@@ -2,7 +2,7 @@
 
 namespace DQ11
 {
-	class CharItem : CharStatus
+	class CharItem : ListStatus
 	{
 		private readonly ComboBox mPage;
 		private readonly ComboBox mItem;
