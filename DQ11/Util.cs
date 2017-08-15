@@ -14,6 +14,7 @@ namespace DQ11
 		public static readonly uint YochiHatCount = 118;
 		public static readonly uint HatStartAddress = 0xC66C;
 		public static readonly uint HatObtainStartAddress = 0x6754;
+		public static readonly uint TitleObtainStartAddress = 0x6764;
 
 		public static List<String> GetPartyNames()
 		{

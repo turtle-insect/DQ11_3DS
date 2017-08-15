@@ -10,6 +10,7 @@ namespace DQ11
 		public List<ItemInfo> Tools { get; private set; } = new List<ItemInfo>();
 		public List<ItemInfo> Equipments { get; private set; } = new List<ItemInfo>();
 		public List<ItemInfo> Hats { get; private set; } = new List<ItemInfo>();
+		public List<ItemInfo> Titles { get; private set; } = new List<ItemInfo>();
 		// #で始まる文字はコメント扱い
 		// タブ区切りで解釈
 		// ID\t名前で区切られている前提として扱う
@@ -32,6 +33,7 @@ namespace DQ11
 			AppendList("tool.txt", Tools);
 			AppendList("equipment.txt", Equipments);
 			AppendList("hat.txt", Hats);
+			AppendList("title.txt", Titles);
 			Tools.Sort((a, b) => (int)(a.ID - b.ID));
 			Equipments.Sort((a, b) => (int)(a.ID - b.ID));
 		}

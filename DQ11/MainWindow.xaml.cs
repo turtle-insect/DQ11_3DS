@@ -17,7 +17,6 @@ namespace DQ11
 
 		BagToolMgr mBagTool;
 		BagEquipmentMgr mBagEquipment;
-		HatMgr mYochiHat;
 		ListActionObserver mParty;
 		ListActionObserver mYochi;
 		public MainWindow()
@@ -29,7 +28,7 @@ namespace DQ11
 		{
 			Item.Instance();
 			SaveData.Instance();
-			// キャラクタの設定.
+			// キャラクタ.
 			mCharStatusList = new List<ListStatus>();
 			mCharStatusList.Add(new CharName(TextBoxCharName, 0x2));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharLv, 0x10, 1, 1, 99));
@@ -61,7 +60,7 @@ namespace DQ11
 			mCharStatusList.ForEach(x => x.Init());
 
 
-			// ヨッチ族の設定.
+			// ヨッチ族.
 			mYochiStatusList = new List<ListStatus>();
 			mYochi = new ListActionObserver(ListBoxYochi,
 							ButtonYochiUp, ButtonYochiDown, ButtonYochiAppend, ButtonYochiRemove, new ListControlYochi());
@@ -79,24 +78,27 @@ namespace DQ11
 			// 全体の設定.
 			mAllStatusList = new List<AllStatus>();
 
-			// ふくろの設定.
+			// ふくろ.
 			mBagTool = new BagToolMgr();
 			mBagTool.Init(mAllStatusList, StackPanelBagTool, ComboBoxBagToolPage, 0x3E34, 168);
 			mBagEquipment = new BagEquipmentMgr();
 			mBagEquipment.Init(mAllStatusList, StackPanelBagEquipment, ComboBoxBagEquipmentPage, 0x40EC, 2340);
 
-			// 帽子の設定.
-			mYochiHat = new HatMgr(mAllStatusList, StackPanelHat);
+			// 帽子.
+			CreateHat(mAllStatusList, StackPanelHat);
 
 			// すれちがい
 			mAllStatusList.Add(new AllStringStatus(TextBoxPassName, 0xC46C, 6));
 			mAllStatusList.Add(new AllStringStatus(TextBoxPassMessage, 0xC47A, 16));
 
+			// 称号.
+			CreateTitle(mAllStatusList, StackPanelTitle);
 
 			// 基本.
 			mAllStatusList.Add(new PlayTime(TextBoxPlayHour, TextBoxPlayMinute, TextBoxPlaySecond));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldHand, 0x3E28, 4, 0, 9999999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldBank, 0x6584, 4, 0, 9999999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxCamp, 0x67A8, 4, 0, 9999999));
 
 			// パーティー.
 			mPartyStatusList = new List<ListStatus>();
@@ -105,7 +107,7 @@ namespace DQ11
 			mPartyStatusList.Add(new PartyOrder(ComboBoxPartyOrder));
 			mPartyStatusList.ForEach(x => x.Init());
 
-			// システム設定.
+			// システム.
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxEscapeNG, 0x6A7F));
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxShopNG, 0x6A80));
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxArmorNG, 0x6A81));
@@ -258,6 +260,72 @@ namespace DQ11
 			mAllStatusList.ForEach(x => x.Save());
 			if (SaveData.Instance().Save() == true) MessageBox.Show("書込成功");
 			else MessageBox.Show("書込失敗");
+		}
+
+		private void CreateHat(List<AllStatus> status, Panel panel)
+		{
+			Item item = Item.Instance();
+			foreach (ItemInfo info in item.Hats)
+			{
+				Grid grid = new Grid();
+				grid.ColumnDefinitions.Add(new ColumnDefinition());
+				grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(45) });
+				grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(30) });
+
+				Label name = new Label();
+				name.Content = info.Name;
+				grid.Children.Add(name);
+
+				TextBox ticket = new TextBox();
+				status.Add(new AllNumberStatus(ticket, Util.HatStartAddress + info.ID, 1, 0, 999));
+				ticket.SetValue(Grid.ColumnProperty, 1);
+				grid.Children.Add(ticket);
+
+				CheckBox obtain = new CheckBox();
+				status.Add(new HatObtain(obtain, info.ID));
+				obtain.SetValue(Grid.ColumnProperty, 2);
+				obtain.HorizontalAlignment = HorizontalAlignment.Center;
+				obtain.VerticalAlignment = VerticalAlignment.Center;
+				grid.Children.Add(obtain);
+
+				panel.Children.Add(grid);
+			}
+		}
+
+		private void CreateTitle(List<AllStatus> status, Panel panel)
+		{
+			Item item = Item.Instance();
+			uint count = 0;
+			foreach (ItemInfo info in item.Titles)
+			{
+				Grid grid = new Grid();
+				grid.ColumnDefinitions.Add(new ColumnDefinition());
+				grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(30) });
+
+				Label name = new Label();
+				name.Content = info.Name;
+				grid.Children.Add(name);
+
+				CheckBox obtain = new CheckBox();
+				status.Add(new TitleObtain(obtain, info.ID));
+				obtain.SetValue(Grid.ColumnProperty, 1);
+				obtain.HorizontalAlignment = HorizontalAlignment.Center;
+				obtain.VerticalAlignment = VerticalAlignment.Center;
+				grid.Children.Add(obtain);
+
+				panel.Children.Add(grid);
+
+				count++;
+				if (count % 8 == 0)
+				{
+					var line = new System.Windows.Shapes.Line();
+					line.Stroke = System.Windows.Media.Brushes.Blue;
+					line.StrokeThickness = 2.0;
+					line.X1 = line.Y1 = line.Y2 = 0;
+					line.X2 = 500;
+					panel.Children.Add(line);
+				}
+			}
 		}
 	}
 }

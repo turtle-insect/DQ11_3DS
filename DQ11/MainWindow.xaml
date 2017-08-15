@@ -73,6 +73,8 @@
                         <Label Content="枚" Grid.Row="5" Grid.Column="2"/>
                         <Label Content="ちいさなメダル" Grid.Row="6"/>
                         <Label Content="枚" Grid.Row="6" Grid.Column="2"/>
+                        <Label Content="キャンプ" Grid.Row="7"/>
+                        <Label Content="回" Grid.Row="7" Grid.Column="2"/>
                         <TextBox x:Name="TextBoxPlayHour" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxPlayMinute" Grid.Row="1" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxPlaySecond" Grid.Row="2" Grid.Column="1"/>
@@ -80,6 +82,7 @@
                         <TextBox x:Name="TextBoxGoldBank" Grid.Row="4" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxCasinoCoin" Grid.Row="5" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxSmallMedal" Grid.Row="6" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxCamp" Grid.Row="7" Grid.Column="1"/>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -353,10 +356,28 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <DockPanel>
-                        <Label Content="帽子" DockPanel.Dock="Top"/>
-                        <ScrollViewer Margin="0,5,0,0">
+                        <ScrollViewer>
                             <StackPanel x:Name="StackPanelHat"/>
                         </ScrollViewer>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="ふくろ">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel>
+                        <Label Content="どうぐぶくろ" DockPanel.Dock="Top"/>
+                        <ComboBox x:Name="ComboBoxBagToolPage"  DockPanel.Dock="Top"/>
+                        <StackPanel x:Name="StackPanelBagTool" Margin="0,5,0,0"/>
+                    </DockPanel>
+                    <DockPanel Grid.Column="1">
+                        <Label Content="そうびぶくろ" DockPanel.Dock="Top"/>
+                        <ComboBox x:Name="ComboBoxBagEquipmentPage"  DockPanel.Dock="Top"/>
+                        <StackPanel x:Name="StackPanelBagEquipment" Margin="0,5,0,0"/>
                     </DockPanel>
                 </Grid>
             </TabItem>
@@ -395,23 +416,34 @@
                     <Button Content="決定" Grid.Row="4" Grid.Column="2"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="ふくろ">
+            <TabItem Header="称号">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <DockPanel>
-                        <Label Content="どうぐぶくろ" DockPanel.Dock="Top"/>
-                        <ComboBox x:Name="ComboBoxBagToolPage"  DockPanel.Dock="Top"/>
-                        <StackPanel x:Name="StackPanelBagTool" Margin="0,5,0,0"/>
+                        <ScrollViewer>
+                            <StackPanel x:Name="StackPanelTitle"/>
+                        </ScrollViewer>
                     </DockPanel>
-                    <DockPanel Grid.Column="1">
-                        <Label Content="そうびぶくろ" DockPanel.Dock="Top"/>
-                        <ComboBox x:Name="ComboBoxBagEquipmentPage"  DockPanel.Dock="Top"/>
-                        <StackPanel x:Name="StackPanelBagEquipment" Margin="0,5,0,0"/>
-                    </DockPanel>
+                    <StackPanel Grid.Column="1">
+                        <Label Content="■称号設定前に"/>
+                        <Label Content="セーブデータ上で称号はビットで管理されています。"/>
+                        <Label Content="1バイトは8ビットになります。"/>
+                        <Label Content="枠線で囲まれた部分が1バイトの称号になります。"/>
+                        <Label Content="枠内の称号名は間違っていないはずですが、"/>
+                        <Label Content="称号名と取得状況の紐づけが出来ていないので"/>
+                        <Label Content="チェックが意図した称号に反映されていない可能性が高いです。"/>
+                        <Label Content="※枠内の称号のビット位置が特定できていない為です。"/>
+                        <Label Content=""/>
+                        <Label Content="■お願い"/>
+                        <Label Content="称号の取得状況整理にご協力頂けるとうれしいです。"/>
+                        <Label Content=""/>
+                        <Label Content="■注意"/>
+                        <Label Content="枠内に『???????』がある場合、"/>
+                        <Label Content="個数分だけ通常プレイでは取得出来ない称号になります"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="パーティー">
