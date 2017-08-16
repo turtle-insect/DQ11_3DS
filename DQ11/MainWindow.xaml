@@ -35,14 +35,14 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="10"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="85"/>
+                            <ColumnDefinition Width="130"/>
                             <ColumnDefinition/>
-                            <ColumnDefinition Width="35"/>
+                            <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -73,8 +73,9 @@
                         <Label Content="枚" Grid.Row="5" Grid.Column="2"/>
                         <Label Content="ちいさなメダル" Grid.Row="6"/>
                         <Label Content="枚" Grid.Row="6" Grid.Column="2"/>
-                        <Label Content="キャンプ" Grid.Row="7"/>
-                        <Label Content="回" Grid.Row="7" Grid.Column="2"/>
+                        <Label Content="馬" Grid.Row="9"/>
+                        <Label Content="ルーラ" Grid.Row="10"/>
+                        <Label Content="船" Grid.Row="11"/>
                         <TextBox x:Name="TextBoxPlayHour" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxPlayMinute" Grid.Row="1" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxPlaySecond" Grid.Row="2" Grid.Column="1"/>
@@ -82,7 +83,58 @@
                         <TextBox x:Name="TextBoxGoldBank" Grid.Row="4" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxCasinoCoin" Grid.Row="5" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxSmallMedal" Grid.Row="6" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCamp" Grid.Row="7" Grid.Column="1"/>
+                        <CheckBox x:Name="CheckBoxHorse" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <CheckBox x:Name="CheckBoxZoom" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <CheckBox x:Name="CheckBoxShip" Grid.Row="11" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="戦闘勝利回数"/>
+                        <Label Content="回" Grid.Column="2"/>
+                        <Label Content="トータル獲得ゴールド" Grid.Row="1"/>
+                        <Label Content="G" Grid.Column="2" Grid.Row="1"/>
+                        <Label Content="ツボ・タル破壊" Grid.Row="2"/>
+                        <Label Content="回" Grid.Row="2" Grid.Column="2"/>
+                        <Label Content="キャンプ" Grid.Row="3"/>
+                        <Label Content="回" Grid.Row="3" Grid.Column="2"/>
+                        <Label Content="宿屋に泊まった回数" Grid.Row="4"/>
+                        <Label Content="回" Grid.Row="4" Grid.Column="2"/>
+                        <Label Content="れんけいを使用した回数" Grid.Row="5"/>
+                        <Label Content="回" Grid.Row="5" Grid.Column="2"/>
+                        <Label Content="メタル撃破" Grid.Row="6"/>
+                        <Label Content="匹" Grid.Row="6" Grid.Column="2"/>
+                        <Label Content="スロットを遊んだ回数" Grid.Row="7"/>
+                        <Label Content="回" Grid.Row="7" Grid.Column="2"/>
+                        <Label Content="ポーカーを遊んだ回数" Grid.Row="8"/>
+                        <Label Content="回" Grid.Row="8" Grid.Column="2"/>
+                        <Label Content="ルーレットを遊んだ回数" Grid.Row="9"/>
+                        <Label Content="回" Grid.Row="9" Grid.Column="2"/>
+                        <TextBox x:Name="TextBoxKnockDownMonster" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxTotalGold" Grid.Row="1" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxBreak" Grid.Row="2" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxCamp" Grid.Row="3" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxINI" Grid.Row="4" Grid.Column="1"/>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -97,6 +149,7 @@
                     <ListBox x:Name="ListBoxChar" SelectionChanged="ListBoxChar_SelectionChanged"/>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
+                            <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -132,6 +185,7 @@
                         <Label Content="きようさ+" Grid.Row="12"/>
                         <Label Content="みりょく+" Grid.Row="13"/>
                         <Label Content="スキル" Grid.Row="14"/>
+                        <Label Content="作戦" Grid.Row="15"/>
                         <TextBox x:Name="TextBoxCharName" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxCharLv" Grid.Row="1" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxCharExp" Grid.Row="2" Grid.Column="1"/>
@@ -147,6 +201,14 @@
                         <TextBox x:Name="TextBoxCharSkillful" Grid.Row="12" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxCharCharm" Grid.Row="13" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxCharSkill" Grid.Row="14" Grid.Column="1"/>
+                        <ComboBox x:Name="ComboBoxCharStrategy" Grid.Row="15" Grid.Column="1">
+                            <ComboBoxItem Content="ガンガンいこうぜ"/>
+                            <ComboBoxItem Content="バッチリがんばれ"/>
+                            <ComboBoxItem Content="いろいろやろうぜ"/>
+                            <ComboBoxItem Content="いのちだいじに"/>
+                            <ComboBoxItem Content="MPつかうな"/>
+                            <ComboBoxItem Content="めいれいさせろ"/>
+                        </ComboBox>
                     </Grid>
                     <StackPanel Grid.Column="3">
                         <ComboBox x:Name="ComboBoxCharItemPage" SelectionChanged="ComboBoxCharItemPage_SelectionChanged">
@@ -489,6 +551,9 @@
                         <Button x:Name="ButtonPartyDecision" Content="決定" Click="ButtonPartyDecision_Click"/>
                     </StackPanel>
                 </Grid>
+            </TabItem>
+            <TabItem Header="ルーラ">
+                <ListBox x:Name="ListBoxZoom"/>
             </TabItem>
             <TabItem Header="システム">
                 <Grid>

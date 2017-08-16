@@ -33,6 +33,7 @@ namespace DQ11
 			mCharStatusList.Add(new CharName(TextBoxCharName, 0x2));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharLv, 0x10, 1, 1, 99));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharExp, 0x14, 4, 0, 9999999));
+			mCharStatusList.Add(new CharChoiceStatus(ComboBoxCharStrategy, 0x1C, 1));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharSkill, 0x1E, 2, 0, 99));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharHP, 0x20, 2, 1, 999));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharMP, 0x22, 2, 0, 999));
@@ -97,8 +98,16 @@ namespace DQ11
 			// 基本.
 			mAllStatusList.Add(new PlayTime(TextBoxPlayHour, TextBoxPlayMinute, TextBoxPlaySecond));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldHand, 0x3E28, 4, 0, 9999999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxTotalGold, 0x3E2C, 4, 0, 9999999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldBank, 0x6584, 4, 0, 9999999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxCamp, 0x67A8, 4, 0, 9999999));
+			//mAllStatusList.Add(new AllNumberStatus(TextBoxSmallMedal, 0x6588, 4, 0, 9999999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxCamp, 0x67A8, 4, 0, 9999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxINI, 0x67AC, 4, 0, 9999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxBreak, 0x67B4, 4, 0, 9999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxKnockDownMonster, 0x3E30, 4, 0, 9999999));
+			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxHorse, 0x955C));
+			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxZoom, 0x6A7B));
+			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxShip, 0x6A13));
 
 			// パーティー.
 			mPartyStatusList = new List<ListStatus>();
@@ -106,6 +115,9 @@ namespace DQ11
 							ButtonPartyUp, ButtonPartyDown, ButtonPartyAppend, ButtonPartyRemove, new ListControlParty());
 			mPartyStatusList.Add(new PartyOrder(ComboBoxPartyOrder));
 			mPartyStatusList.ForEach(x => x.Init());
+
+			// ルーラ
+			mAllStatusList.Add(new Zoom(ListBoxZoom));
 
 			// システム.
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxEscapeNG, 0x6A7F));
