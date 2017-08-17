@@ -447,6 +447,9 @@
             <TabItem Header="だいじなもの">
                 <ListBox x:Name="ListBoxImportant"/>
             </TabItem>
+            <TabItem Header="レシピ">
+                <ListBox x:Name="ListBoxRecipe"/>
+            </TabItem>
             <TabItem Header="すれちがい">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -511,6 +514,9 @@
                         <Label Content="個数分だけ通常プレイでは取得出来ない称号になります"/>
                     </StackPanel>
                 </Grid>
+            </TabItem>
+            <TabItem Header="クエスト">
+                <ListBox x:Name="ListBoxQuest"/>
             </TabItem>
             <TabItem Header="パーティー">
                 <Grid>

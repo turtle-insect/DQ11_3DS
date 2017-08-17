@@ -88,15 +88,21 @@ namespace DQ11
 			// だいじなもの.
 			mAllStatusList.Add(new CheckBoxListItem(ListBoxImportant, Item.Instance().Importants, 0x65C4, 90));
 
+			// レシピ.
+			mAllStatusList.Add(new CheckBoxListItem(ListBoxRecipe, Item.Instance().Recipes, 0x6678, 105));
+
 			// 帽子.
 			CreateHat(mAllStatusList, StackPanelHat);
 
-			// すれちがい
+			// すれちがい.
 			mAllStatusList.Add(new AllStringStatus(TextBoxPassName, 0xC46C, 6));
 			mAllStatusList.Add(new AllStringStatus(TextBoxPassMessage, 0xC47A, 16));
 
 			// 称号.
 			CreateTitle(mAllStatusList, StackPanelTitle);
+
+			// クエスト.
+			mAllStatusList.Add(new Quest(ListBoxQuest));
 
 			// 基本.
 			mAllStatusList.Add(new PlayTime(TextBoxPlayHour, TextBoxPlayMinute, TextBoxPlaySecond));
