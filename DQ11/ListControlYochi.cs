@@ -44,7 +44,6 @@ namespace DQ11
 
 		public void Load(ListBox control)
 		{
-			control.Items.Clear();
 			List<String> names = Util.GetYochiNames();
 			for (int i = 0; i < names.Count; i++)
 			{

@@ -20,7 +20,6 @@ namespace DQ11
 
 		public void Load(ListBox control)
 		{
-			control.Items.Clear();
 			List<String> names = Util.GetPartyNames();
 			for (uint i = 0; i < Util.CharCount; i++)
 			{

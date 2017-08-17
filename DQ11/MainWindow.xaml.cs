@@ -85,6 +85,9 @@ namespace DQ11
 			mBagEquipment = new BagEquipmentMgr();
 			mBagEquipment.Init(mAllStatusList, StackPanelBagEquipment, ComboBoxBagEquipmentPage, 0x40EC, 2340);
 
+			// だいじなもの.
+			mAllStatusList.Add(new CheckBoxListItem(ListBoxImportant, Item.Instance().Importants, 0x65C4, 90));
+
 			// 帽子.
 			CreateHat(mAllStatusList, StackPanelHat);
 
@@ -134,12 +137,17 @@ namespace DQ11
 
 		private void ToolBarFileOpen_Click(object sender, RoutedEventArgs e)
 		{
-			Load();
+			Load(false);
 		}
 
 		private void MenuItemFileOpen_Click(object sender, RoutedEventArgs e)
 		{
-			Load();
+			Load(false);
+		}
+
+		private void MenuItemFileOpenForce_Click(object sender, RoutedEventArgs e)
+		{
+			Load(true);
 		}
 
 		private void ToolBarFileSave_Click(object sender, RoutedEventArgs e)
@@ -241,10 +249,10 @@ namespace DQ11
 			mCharStatusList.ForEach(x => x.Read());
 		}
 
-		private void Load()
+		private void Load(bool force)
 		{
 			SaveData saveData = SaveData.Instance();
-			if (saveData.Open() == false)
+			if (saveData.Open(force) == false)
 			{
 				MessageBox.Show("読込失敗");
 				return;

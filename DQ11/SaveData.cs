@@ -19,14 +19,14 @@ namespace DQ11
 			return mThis;
 		}
 
-		public bool Open()
+		public bool Open(bool force)
 		{
 			OpenFileDialog dlg = new OpenFileDialog();
 			if (dlg.ShowDialog() == false) return false;
 			mFileName = dlg.FileName;
 			mBuffer = System.IO.File.ReadAllBytes(mFileName);
 
-			if (mCrc32.Calc(ref mBuffer, 0, 0xC8A8) == ReadNumber(0xC8AC, 4))
+			if (force || mCrc32.Calc(ref mBuffer, 0, 0xC8A8) == ReadNumber(0xC8AC, 4))
 			{
 				Backup();
 				return true;
@@ -85,7 +85,7 @@ namespace DQ11
 			if (address + size > mBuffer.Length) return "";
 
 			Byte[] tmp = new Byte[size];
-			for(int i = 0; i < size; i++)
+			for(uint i = 0; i < size; i++)
 			{
 				tmp[i] = mBuffer[address + i];
 			}
@@ -96,7 +96,7 @@ namespace DQ11
 		{
 			if (mBuffer == null) return;
 			if (address + size > mBuffer.Length) return;
-			for (int i = 0; i < size; i++)
+			for (uint i = 0; i < size; i++)
 			{
 				mBuffer[address + i] = (Byte)(value & 0xFF);
 				value >>= 8;
@@ -121,9 +121,19 @@ namespace DQ11
 			if (address + size > mBuffer.Length) return;
 			Byte[] tmp = System.Text.Encoding.Unicode.GetBytes(value);
 			Array.Resize(ref tmp, (int)size);
-			for (int i = 0; i < size; i++)
+			for (uint i = 0; i < size; i++)
 			{
 				mBuffer[address + i] = tmp[i];
+			}
+		}
+
+		public void Fill(uint address, uint size, Byte number)
+		{
+			if (mBuffer == null) return;
+			if (address + size > mBuffer.Length) return;
+			for (uint i = 0; i < size; i++)
+			{
+				mBuffer[address + i] = number;
 			}
 		}
 
@@ -132,7 +142,7 @@ namespace DQ11
 			if (mBuffer == null) return;
 			if (from + size > mBuffer.Length) return;
 			if (to + size > mBuffer.Length) return;
-			for(int i = 0; i < size; i++)
+			for(uint i = 0; i < size; i++)
 			{
 				mBuffer[to + i] = mBuffer[from + i];
 			}

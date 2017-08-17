@@ -15,6 +15,7 @@
         <Menu Grid.Row="0">
             <MenuItem Header="ファイル(_F)">
                 <MenuItem x:Name="MenuItemFileOpen" Header="開く(_O)" Click="MenuItemFileOpen_Click"/>
+                <MenuItem x:Name="MenuItemFileOpenForce" Header="強制的に開く(_R)" Click="MenuItemFileOpenForce_Click"/>
                 <MenuItem x:Name="MenuItemFileSave" Header="上書き保存(_S)" Click="MenuItemFileSave_Click"/>
                 <MenuItem x:Name="MenuItemFileSaveAs" Header="名前を付けて保存(_S)" Click="MenuItemFileSaveAs_Click"/>
                 <Separator/>
@@ -442,6 +443,9 @@
                         <StackPanel x:Name="StackPanelBagEquipment" Margin="0,5,0,0"/>
                     </DockPanel>
                 </Grid>
+            </TabItem>
+            <TabItem Header="だいじなもの">
+                <ListBox x:Name="ListBoxImportant"/>
             </TabItem>
             <TabItem Header="すれちがい">
                 <Grid>

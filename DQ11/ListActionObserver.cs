@@ -28,6 +28,7 @@ namespace DQ11
 
 		public void Load()
 		{
+			mList.Items.Clear();
 			mOpe.Load(mList);
 		}
 
