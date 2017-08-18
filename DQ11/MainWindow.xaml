@@ -41,7 +41,7 @@
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="140"/>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
@@ -74,6 +74,8 @@
                         <Label Content="枚" Grid.Row="5" Grid.Column="2"/>
                         <Label Content="ちいさなメダル" Grid.Row="6"/>
                         <Label Content="枚" Grid.Row="6" Grid.Column="2"/>
+                        <Label Content="あずけたメダル" Grid.Row="7"/>
+                        <Label Content="枚" Grid.Row="7" Grid.Column="2"/>
                         <Label Content="馬" Grid.Row="9"/>
                         <Label Content="ルーラ" Grid.Row="10"/>
                         <Label Content="船" Grid.Row="11"/>
@@ -84,13 +86,14 @@
                         <TextBox x:Name="TextBoxGoldBank" Grid.Row="4" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxCasinoCoin" Grid.Row="5" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxSmallMedal" Grid.Row="6" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxDepositSmallMedal" Grid.Row="7" Grid.Column="1"/>
                         <CheckBox x:Name="CheckBoxHorse" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <CheckBox x:Name="CheckBoxZoom" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <CheckBox x:Name="CheckBoxShip" Grid.Row="11" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Column="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="140"/>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="30"/>
                         </Grid.ColumnDefinitions>
@@ -113,29 +116,39 @@
                         </Grid.RowDefinitions>
                         <Label Content="戦闘勝利回数"/>
                         <Label Content="回" Grid.Column="2"/>
-                        <Label Content="トータル獲得ゴールド" Grid.Row="1"/>
-                        <Label Content="G" Grid.Column="2" Grid.Row="1"/>
-                        <Label Content="ツボ・タル破壊" Grid.Row="2"/>
-                        <Label Content="回" Grid.Row="2" Grid.Column="2"/>
-                        <Label Content="キャンプ" Grid.Row="3"/>
-                        <Label Content="回" Grid.Row="3" Grid.Column="2"/>
-                        <Label Content="宿屋に泊まった回数" Grid.Row="4"/>
+                        <Label Content="ふしぎな鍛冶をした回数" Grid.Row="1"/>
+                        <Label Content="回" Grid.Row="1" Grid.Column="2"/>
+                        <Label Content="トータル獲得ゴールド" Grid.Row="2"/>
+                        <Label Content="G" Grid.Row="2" Grid.Column="2"/>
+                        <Label Content="トータル獲得ちいさなメダル" Grid.Row="3"/>
+                        <Label Content="枚" Grid.Row="3" Grid.Column="2"/>
+                        <Label Content="ツボ・タル破壊" Grid.Row="4"/>
                         <Label Content="回" Grid.Row="4" Grid.Column="2"/>
-                        <Label Content="れんけいを使用した回数" Grid.Row="5"/>
+                        <Label Content="キャンプ" Grid.Row="5"/>
                         <Label Content="回" Grid.Row="5" Grid.Column="2"/>
-                        <Label Content="メタル撃破" Grid.Row="6"/>
-                        <Label Content="匹" Grid.Row="6" Grid.Column="2"/>
-                        <Label Content="スロットを遊んだ回数" Grid.Row="7"/>
+                        <Label Content="宿屋に泊まった回数" Grid.Row="6"/>
+                        <Label Content="回" Grid.Row="6" Grid.Column="2"/>
+                        <Label Content="れんけいを使用した回数" Grid.Row="7"/>
                         <Label Content="回" Grid.Row="7" Grid.Column="2"/>
-                        <Label Content="ポーカーを遊んだ回数" Grid.Row="8"/>
-                        <Label Content="回" Grid.Row="8" Grid.Column="2"/>
-                        <Label Content="ルーレットを遊んだ回数" Grid.Row="9"/>
+                        <Label Content="メタル撃破" Grid.Row="8"/>
+                        <Label Content="匹" Grid.Row="8" Grid.Column="2"/>
+                        <Label Content="スロットを遊んだ回数" Grid.Row="9"/>
                         <Label Content="回" Grid.Row="9" Grid.Column="2"/>
+                        <Label Content="ポーカーを遊んだ回数" Grid.Row="10"/>
+                        <Label Content="回" Grid.Row="10" Grid.Column="2"/>
+                        <Label Content="ルーレットを遊んだ回数" Grid.Row="11"/>
+                        <Label Content="回" Grid.Row="11" Grid.Column="2"/>
                         <TextBox x:Name="TextBoxKnockDownMonster" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxTotalGold" Grid.Row="1" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxBreak" Grid.Row="2" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCamp" Grid.Row="3" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxINI" Grid.Row="4" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxBlackSmith" Grid.Row="1" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxTotalGold" Grid.Row="2" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxTotalSmallMedal" Grid.Row="3" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxBreak" Grid.Row="4" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxCamp" Grid.Row="5" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxINI" Grid.Row="6" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxCooperation" Grid.Row="7" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxSlot" Grid.Row="9" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxPoker" Grid.Row="10" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxRoulette" Grid.Row="11" Grid.Column="1"/>
                     </Grid>
                 </Grid>
             </TabItem>

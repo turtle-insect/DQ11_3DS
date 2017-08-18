@@ -109,10 +109,19 @@ namespace DQ11
 			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldHand, 0x3E28, 4, 0, 9999999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxTotalGold, 0x3E2C, 4, 0, 9999999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldBank, 0x6584, 4, 0, 9999999));
-			//mAllStatusList.Add(new AllNumberStatus(TextBoxSmallMedal, 0x6588, 4, 0, 9999999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxCasinoCoin, 0x6FF4, 4, 0, 9999999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxSmallMedal, 0x6FE4, 4, 0, 9999999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxTotalSmallMedal, 0x6FE8, 4, 0, 9999999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxDepositSmallMedal, 0x6FF0, 4, 0, 9999999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxBlackSmith, 0x67E8, 4, 0, 9999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxCamp, 0x67A8, 4, 0, 9999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxINI, 0x67AC, 4, 0, 9999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxBreak, 0x67B4, 4, 0, 9999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxCooperation, 0x6798, 4, 0, 9999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxSlot, 0x67DC, 4, 0, 9999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxPoker, 0x67C4, 4, 0, 9999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxRoulette, 0x67D0, 4, 0, 9999));
+
 			mAllStatusList.Add(new AllNumberStatus(TextBoxKnockDownMonster, 0x3E30, 4, 0, 9999999));
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxHorse, 0x955C));
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxZoom, 0x6A7B));
