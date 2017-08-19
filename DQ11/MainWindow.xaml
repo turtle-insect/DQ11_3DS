@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DQ11"
         mc:Ignorable="d"
-        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="600" Width="750" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="620" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -234,6 +234,10 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="50"/>
                             </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
                             <StackPanel>
                                 <ComboBox x:Name="ComboBoxCharItem1"/>
                                 <ComboBox x:Name="ComboBoxCharItem2"/>
@@ -262,6 +266,33 @@
                                 <ComboBox x:Name="ComboBoxCharItemCount11" Grid.Column="1"/>
                                 <ComboBox x:Name="ComboBoxCharItemCount12" Grid.Column="1"/>
                             </StackPanel>
+                            <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="装備"/>
+                                <Label Content="右手" Grid.Row="1"/>
+                                <Label Content="左手" Grid.Row="1" Grid.Column="2"/>
+                                <Label Content="頭" Grid.Row="2"/>
+                                <Label Content="体" Grid.Row="2" Grid.Column="2"/>
+                                <Label Content="アクセ1" Grid.Row="3"/>
+                                <Label Content="アクセ2" Grid.Row="3" Grid.Column="2"/>
+                                <ComboBox x:Name="ComboBoxCharRightHand" Grid.Row="1" Grid.Column="1"/>
+                                <ComboBox x:Name="ComboBoxCharLeftHand" Grid.Row="1" Grid.Column="3"/>
+                                <ComboBox x:Name="ComboBoxCharHead" Grid.Row="2" Grid.Column="1"/>
+                                <ComboBox x:Name="ComboBoxCharBody" Grid.Row="2" Grid.Column="3"/>
+                                <ComboBox x:Name="ComboBoxCharAccessory1" Grid.Row="3" Grid.Column="1"/>
+                                <ComboBox x:Name="ComboBoxCharAccessory2" Grid.Row="3" Grid.Column="3"/>
+                            </Grid>
                         </Grid>
                     </StackPanel>
                     <StackPanel Grid.Column="3" VerticalAlignment="Bottom">

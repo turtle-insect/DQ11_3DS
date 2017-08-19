@@ -82,6 +82,7 @@
     <Compile Include="BagToolItem.cs" />
     <Compile Include="BagToolMgr.cs" />
     <Compile Include="CharChoiceStatus.cs" />
+    <Compile Include="CharEquepment.cs" />
     <Compile Include="CharItem.cs" />
     <Compile Include="CharName.cs" />
     <Compile Include="CharNumberStatus.cs" />

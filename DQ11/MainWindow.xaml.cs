@@ -58,6 +58,12 @@ namespace DQ11
 			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem10, ComboBoxCharItemCount10, 18));
 			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem11, ComboBoxCharItemCount11, 20));
 			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem12, ComboBoxCharItemCount12, 22));
+			mCharStatusList.Add(new CharEquepment(ComboBoxCharRightHand, 0x54));
+			mCharStatusList.Add(new CharEquepment(ComboBoxCharLeftHand, 0x55));
+			mCharStatusList.Add(new CharEquepment(ComboBoxCharHead, 0x56));
+			mCharStatusList.Add(new CharEquepment(ComboBoxCharBody, 0x57));
+			mCharStatusList.Add(new CharEquepment(ComboBoxCharAccessory1, 0x58));
+			mCharStatusList.Add(new CharEquepment(ComboBoxCharAccessory2, 0x59));
 			mCharStatusList.ForEach(x => x.Init());
 
 
