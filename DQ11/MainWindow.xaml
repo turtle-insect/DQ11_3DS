@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DQ11"
         mc:Ignorable="d"
-        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="520" Width="750" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="600" Width="750" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -198,7 +198,7 @@
                         <Label Content="すばやさ+" Grid.Row="11"/>
                         <Label Content="きようさ+" Grid.Row="12"/>
                         <Label Content="みりょく+" Grid.Row="13"/>
-                        <Label Content="スキル" Grid.Row="14"/>
+                        <Label Content="スキル＋" Grid.Row="14"/>
                         <Label Content="作戦" Grid.Row="15"/>
                         <TextBox x:Name="TextBoxCharName" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxCharLv" Grid.Row="1" Grid.Column="1"/>
@@ -291,7 +291,6 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
                         <ColumnDefinition Width="5"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
@@ -325,7 +324,7 @@
                             </Button>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Column="1">
+                    <Grid Grid.Column="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="80"/>
                             <ColumnDefinition/>
@@ -419,30 +418,20 @@
                             <ComboBoxItem Content="+4"/>
                             <ComboBoxItem Content="+5"/>
                         </ComboBox>
+                        <Button x:Name="ButtonYochiStatusDecision" Grid.Row="13" Grid.RowSpan="2" Grid.ColumnSpan="2" Content="決定" Click="ButtonYochiStatusDecision_Click"/>
                     </Grid>
-                    <StackPanel Grid.Column="3" VerticalAlignment="Bottom">
-                        <Button x:Name="ButtonYochiStatusDecision" Content="決定" Height="50" Click="ButtonYochiStatusDecision_Click"/>
-                    </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="帽子">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <DockPanel>
-                        <ScrollViewer>
-                            <StackPanel x:Name="StackPanelHat"/>
-                        </ScrollViewer>
-                    </DockPanel>
-                </Grid>
+                <ScrollViewer>
+                    <StackPanel x:Name="StackPanelHat"/>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="ふくろ">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="5"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <DockPanel>
@@ -450,7 +439,7 @@
                         <ComboBox x:Name="ComboBoxBagToolPage"  DockPanel.Dock="Top"/>
                         <StackPanel x:Name="StackPanelBagTool" Margin="0,5,0,0"/>
                     </DockPanel>
-                    <DockPanel Grid.Column="1">
+                    <DockPanel Grid.Column="2">
                         <Label Content="そうびぶくろ" DockPanel.Dock="Top"/>
                         <ComboBox x:Name="ComboBoxBagEquipmentPage"  DockPanel.Dock="Top"/>
                         <StackPanel x:Name="StackPanelBagEquipment" Margin="0,5,0,0"/>
@@ -504,11 +493,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <DockPanel>
-                        <ScrollViewer>
-                            <StackPanel x:Name="StackPanelTitle"/>
-                        </ScrollViewer>
-                    </DockPanel>
+                    <ListBox x:Name="ListBoxTitle"/>
                     <StackPanel Grid.Column="1">
                         <Label Content="■称号設定前に"/>
                         <Label Content="セーブデータ上で称号はビットで管理されています。"/>
@@ -534,7 +519,6 @@
             <TabItem Header="パーティー">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>

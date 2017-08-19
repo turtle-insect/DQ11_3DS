@@ -34,7 +34,6 @@ namespace DQ11
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharLv, 0x10, 1, 1, 99));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharExp, 0x14, 4, 0, 9999999));
 			mCharStatusList.Add(new CharChoiceStatus(ComboBoxCharStrategy, 0x1C, 1));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharSkill, 0x1E, 2, 0, 99));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharHP, 0x20, 2, 1, 999));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharMP, 0x22, 2, 0, 999));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharMaxHP, 0x100, 2, 0, 999));
@@ -46,6 +45,7 @@ namespace DQ11
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharSpeed, 0x108, 2, 0, 999));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharSkillful, 0x106, 2, 0, 999));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharCharm, 0x110, 2, 0, 999));
+			mCharStatusList.Add(new CharNumberStatus(TextBoxCharSkill, 0x112, 2, 0, 999));
 			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem1, ComboBoxCharItemCount1, 0));
 			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem2, ComboBoxCharItemCount2, 2));
 			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, ComboBoxCharItem3, ComboBoxCharItemCount3, 4));
@@ -99,7 +99,7 @@ namespace DQ11
 			mAllStatusList.Add(new AllStringStatus(TextBoxPassMessage, 0xC47A, 16));
 
 			// 称号.
-			CreateTitle(mAllStatusList, StackPanelTitle);
+			CreateTitle(mAllStatusList, ListBoxTitle);
 
 			// クエスト.
 			mAllStatusList.Add(new Quest(ListBoxQuest));
@@ -297,7 +297,7 @@ namespace DQ11
 			else MessageBox.Show("書込失敗");
 		}
 
-		private void CreateHat(List<AllStatus> status, Panel panel)
+		private void CreateHat(List<AllStatus> status, StackPanel panel)
 		{
 			Item item = Item.Instance();
 			foreach (ItemInfo info in item.Hats)
@@ -305,50 +305,32 @@ namespace DQ11
 				Grid grid = new Grid();
 				grid.ColumnDefinitions.Add(new ColumnDefinition());
 				grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(45) });
-				grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(30) });
-
-				Label name = new Label();
-				name.Content = info.Name;
-				grid.Children.Add(name);
-
-				TextBox ticket = new TextBox();
-				status.Add(new AllNumberStatus(ticket, Util.HatStartAddress + info.ID, 1, 0, 999));
-				ticket.SetValue(Grid.ColumnProperty, 1);
-				grid.Children.Add(ticket);
 
 				CheckBox obtain = new CheckBox();
 				status.Add(new HatObtain(obtain, info.ID));
-				obtain.SetValue(Grid.ColumnProperty, 2);
-				obtain.HorizontalAlignment = HorizontalAlignment.Center;
+				obtain.Content = info.Name;
 				obtain.VerticalAlignment = VerticalAlignment.Center;
 				grid.Children.Add(obtain);
 
+				TextBox ticket = new TextBox();
+				status.Add(new AllNumberStatus(ticket, Util.HatStartAddress + info.ID, 1, 0, 99));
+				ticket.SetValue(Grid.ColumnProperty, 1);
+
+				grid.Children.Add(ticket);
 				panel.Children.Add(grid);
 			}
 		}
 
-		private void CreateTitle(List<AllStatus> status, Panel panel)
+		private void CreateTitle(List<AllStatus> status, ListBox list)
 		{
 			Item item = Item.Instance();
 			uint count = 0;
 			foreach (ItemInfo info in item.Titles)
 			{
-				Grid grid = new Grid();
-				grid.ColumnDefinitions.Add(new ColumnDefinition());
-				grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(30) });
-
-				Label name = new Label();
-				name.Content = info.Name;
-				grid.Children.Add(name);
-
 				CheckBox obtain = new CheckBox();
 				status.Add(new TitleObtain(obtain, info.ID));
-				obtain.SetValue(Grid.ColumnProperty, 1);
-				obtain.HorizontalAlignment = HorizontalAlignment.Center;
-				obtain.VerticalAlignment = VerticalAlignment.Center;
-				grid.Children.Add(obtain);
-
-				panel.Children.Add(grid);
+				obtain.Content = info.Name;
+				list.Items.Add(obtain);
 
 				count++;
 				if (count % 8 == 0)
@@ -358,7 +340,7 @@ namespace DQ11
 					line.StrokeThickness = 2.0;
 					line.X1 = line.Y1 = line.Y2 = 0;
 					line.X2 = 500;
-					panel.Children.Add(line);
+					list.Items.Add(line);
 				}
 			}
 		}
