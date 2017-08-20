@@ -132,6 +132,7 @@ namespace DQ11
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxHorse, 0x955C));
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxZoom, 0x6A7B));
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxShip, 0x6A13));
+			mAllStatusList.Add(new SkillPanel(ListBoxSkillPanel));
 
 			// パーティー.
 			mPartyStatusList = new List<ListStatus>();
