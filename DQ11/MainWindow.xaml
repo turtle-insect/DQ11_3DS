@@ -79,7 +79,8 @@
                         <Label Content="ルーラ" Grid.Row="8"/>
                         <Label Content="船" Grid.Row="9"/>
                         <Label Content="馬" Grid.Row="10"/>
-                        <Label Content="スキルパネル拡張" Grid.Row="11"/>
+                        <Label Content="勇者封印" Grid.Row="11"/>
+                        <Label Content="スキルパネル拡張" Grid.Row="12"/>
                         <TextBox x:Name="TextBoxPlayHour" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxPlayMinute" Grid.Row="1" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxPlaySecond" Grid.Row="2" Grid.Column="1"/>
@@ -91,7 +92,8 @@
                         <CheckBox x:Name="CheckBoxZoom" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <CheckBox x:Name="CheckBoxShip" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <CheckBox x:Name="CheckBoxHorse" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <ListBox x:Name="ListBoxSkillPanel" Grid.Row="11" Grid.Column="1" Grid.RowSpan="3"/>
+                        <CheckBox x:Name="CheckBoxHero" Grid.Row="11" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ListBox x:Name="ListBoxSkillPanel" Grid.Row="12" Grid.Column="1" Grid.RowSpan="3"/>
                     </Grid>
                     <Grid Grid.Column="2">
                         <Grid.ColumnDefinitions>
