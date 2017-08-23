@@ -27,10 +27,12 @@ namespace DQ11
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			String filter = "";
-			if (Info != null && Info != Item.Instance().None) filter = Info.Name;
-
-			CreateItemList(filter);
+			CreateItemList("");
+			if (Info != null && Info != Item.Instance().None)
+			{
+				ListBoxItem.SelectedItem = Info;
+				ListBoxItem.ScrollIntoView(Info);
+			}
 		}
 
 		private void TextBoxFilter_TextChanged(object sender, TextChangedEventArgs e)
