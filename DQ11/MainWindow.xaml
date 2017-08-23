@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DQ11"
         mc:Ignorable="d"
-        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="620" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="670" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -233,44 +233,53 @@
                             <ComboBoxItem Content="1 / 2"/>
                             <ComboBoxItem Content="2 / 2"/>
                         </ComboBox>
-                        <Grid Margin="0,5,0,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="50"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <StackPanel>
-                                <ComboBox x:Name="ComboBoxCharItem1"/>
-                                <ComboBox x:Name="ComboBoxCharItem2"/>
-                                <ComboBox x:Name="ComboBoxCharItem3"/>
-                                <ComboBox x:Name="ComboBoxCharItem4"/>
-                                <ComboBox x:Name="ComboBoxCharItem5"/>
-                                <ComboBox x:Name="ComboBoxCharItem6"/>
-                                <ComboBox x:Name="ComboBoxCharItem7"/>
-                                <ComboBox x:Name="ComboBoxCharItem8"/>
-                                <ComboBox x:Name="ComboBoxCharItem9"/>
-                                <ComboBox x:Name="ComboBoxCharItem10"/>
-                                <ComboBox x:Name="ComboBoxCharItem11"/>
-                                <ComboBox x:Name="ComboBoxCharItem12"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="1">
-                                <ComboBox x:Name="ComboBoxCharItemCount1" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharItemCount2" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharItemCount3" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharItemCount4" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharItemCount5" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharItemCount6" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharItemCount7" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharItemCount8" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharItemCount9" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharItemCount10" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharItemCount11" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharItemCount12" Grid.Column="1"/>
-                            </StackPanel>
-                            <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,0">
+                        <StackPanel Margin="0,5,0,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="LabelCharItemName01" Content=""/>
+                                <Label x:Name="LabelCharItemName02" Grid.Row="1" Content=""/>
+                                <Label x:Name="LabelCharItemName03" Grid.Row="2" Content=""/>
+                                <Label x:Name="LabelCharItemName04" Grid.Row="3" Content=""/>
+                                <Label x:Name="LabelCharItemName05" Grid.Row="4" Content=""/>
+                                <Label x:Name="LabelCharItemName06" Grid.Row="5" Content=""/>
+                                <Label x:Name="LabelCharItemName07" Grid.Row="6" Content=""/>
+                                <Label x:Name="LabelCharItemName08" Grid.Row="7" Content=""/>
+                                <Label x:Name="LabelCharItemName09"  Grid.Row="8" Content=""/>
+                                <Label x:Name="LabelCharItemName10" Grid.Row="9" Content=""/>
+                                <Label x:Name="LabelCharItemName11" Grid.Row="10" Content=""/>
+                                <Label x:Name="LabelCharItemName12" Grid.Row="11" Content=""/>
+
+                                <Button x:Name="ButtonCharItemChange01" Grid.Column="1" Content="..."/>
+                                <Button x:Name="ButtonCharItemChange02" Grid.Row="1" Grid.Column="1" Content="..."/>
+                                <Button x:Name="ButtonCharItemChange03" Grid.Row="2" Grid.Column="1" Content="..."/>
+                                <Button x:Name="ButtonCharItemChange04" Grid.Row="3" Grid.Column="1" Content="..."/>
+                                <Button x:Name="ButtonCharItemChange05" Grid.Row="4" Grid.Column="1" Content="..."/>
+                                <Button x:Name="ButtonCharItemChange06" Grid.Row="5" Grid.Column="1" Content="..."/>
+                                <Button x:Name="ButtonCharItemChange07" Grid.Row="6" Grid.Column="1" Content="..."/>
+                                <Button x:Name="ButtonCharItemChange08" Grid.Row="7" Grid.Column="1" Content="..."/>
+                                <Button x:Name="ButtonCharItemChange09" Grid.Row="8" Grid.Column="1" Content="..."/>
+                                <Button x:Name="ButtonCharItemChange10" Grid.Row="9" Grid.Column="1" Content="..."/>
+                                <Button x:Name="ButtonCharItemChange11" Grid.Row="10" Grid.Column="1" Content="..."/>
+                                <Button x:Name="ButtonCharItemChange12" Grid.Row="11" Grid.Column="1" Content="..."/>
+                            </Grid>
+                            <Grid Margin="0,5,0,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
@@ -297,7 +306,7 @@
                                 <ComboBox x:Name="ComboBoxCharAccessory1" Grid.Row="3" Grid.Column="1"/>
                                 <ComboBox x:Name="ComboBoxCharAccessory2" Grid.Row="3" Grid.Column="3"/>
                             </Grid>
-                        </Grid>
+                        </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Column="3" VerticalAlignment="Bottom">
                         <Grid>

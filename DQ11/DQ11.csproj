@@ -92,6 +92,9 @@
     <Compile Include="IListControl.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemInfo.cs" />
+    <Compile Include="ItemSelectWindow.xaml.cs">
+      <DependentUpon>ItemSelectWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ListActionObserver.cs" />
     <Compile Include="ListControlParty.cs" />
     <Compile Include="ListControlYochi.cs" />
@@ -107,6 +110,10 @@
     <Compile Include="YochiWeapon.cs" />
     <Compile Include="Zoom.cs" />
     <Page Include="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemSelectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -2,7 +2,7 @@
 
 namespace DQ11
 {
-	class ItemInfo
+	public class ItemInfo
 	{
 		public ItemInfo(uint id, String name, uint count)
 		{

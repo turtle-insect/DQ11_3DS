@@ -5,47 +5,31 @@ namespace DQ11
 	class CharItem : ListStatus
 	{
 		private readonly ComboBox mPage;
-		private readonly ComboBox mItem;
-		private readonly ComboBox mKind;
+		private readonly Label mItem;
 		private readonly uint mAddress;
+		private ItemInfo mInfo;
+		private uint mKind;
 
-		public CharItem(ComboBox page, ComboBox item, ComboBox kind, uint address)
+		public CharItem(ComboBox page, Label item, Button change, uint address)
 		{
 			mPage = page;
 			mItem = item;
-			mKind = kind;
 			mAddress = address;
-			mItem.SelectionChanged += Item_SelectionChanged;
+
+			change.Click += ItemChange_Click;
 		}
 
-		private void Item_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void ItemChange_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-			ItemInfo info = ((ComboBox)sender).SelectedItem as ItemInfo;
-			if (info == null) return;
-			mKind.Items.Clear();
-			mKind.IsEnabled = info.Count > 1;
-			if (info.Count > 1)
+			var dialog = new ItemSelectWindow();
+			dialog.Info = mInfo;
+			dialog.Kind = mKind;
+			dialog.ShowDialog();
+			if(dialog.Info != null)
 			{
-				mKind.Items.Add("");
-				for (uint i = 1; i < info.Count; i++)
-				{
-					mKind.Items.Add("+" + i.ToString());
-				}
-				mKind.SelectedIndex = 0;
-			}
-		}
-
-		public override void Init()
-		{
-			Item item = Item.Instance();
-			mItem.Items.Add(item.None);
-			foreach (ItemInfo info in item.Tools)
-			{
-				mItem.Items.Add(info);
-			}
-			foreach (ItemInfo info in item.Equipments)
-			{
-				mItem.Items.Add(info);
+				mInfo = dialog.Info;
+				mKind = dialog.Kind;
+				setItemName();
 			}
 		}
 
@@ -53,39 +37,34 @@ namespace DQ11
 		{
 			uint id = SaveData.Instance().ReadNumber((uint)mPage.SelectedIndex * 24 + 0x24 + Base + mAddress, 2);
 			Item item = Item.Instance();
-			// 不明があれば削る.
-			if(!(mItem.Items[mItem.Items.Count - 1] is ItemInfo))
-			{
-				mItem.Items.RemoveAt(mItem.Items.Count - 1);
-			}
 
-			ItemInfo info = item.GetItemInfo(id);
-			if (info == null)
-			{
-				mItem.Items.Add("不明" + id.ToString());
-				mItem.SelectedIndex = mItem.Items.Count - 1;
-			}
-			else
-			{
-				mItem.Text = info.Name;
-				if(info.Count > 1)
-				{
-					mKind.SelectedIndex = (int)(id - info.ID);
-				}
-			}
+			mInfo = item.GetItemInfo(id);
+			mKind = id - mInfo.ID;
+			setItemName();
 		}
 
 		public override void Write()
 		{
-			ItemInfo info = mItem.SelectedItem as ItemInfo;
-			if (info == null) return;
+			if (mInfo == null) return;
 
-			uint kind = 0;
-			if(info.Count > 1)
+			SaveData.Instance().WriteNumber((uint)mPage.SelectedIndex * 24 + 0x24 + Base + mAddress, 2, mInfo.ID + mKind);
+		}
+
+		private void setItemName()
+		{
+			if (mInfo == null)
 			{
-				kind = (uint)mKind.SelectedIndex;
+				mItem.Content = "不明";
 			}
-			SaveData.Instance().WriteNumber((uint)mPage.SelectedIndex * 24 + 0x24 + Base + mAddress, 2, info.ID + kind);
+			else
+			{
+				mItem.Content = mInfo.Name;
+				if (mKind > 0)
+				{
+
+					mItem.Content += "+" + mKind.ToString();
+				}
+			}
 		}
 	}
 }

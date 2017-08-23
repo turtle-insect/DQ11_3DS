@@ -1,0 +1,30 @@
+﻿<Window x:Class="DQ11.ItemSelectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DQ11"
+        mc:Ignorable="d"
+        Title="アイテム選択" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <Label Content="フィルタ"/>
+                <TextBox x:Name="TextBoxFilter" TextChanged="TextBoxFilter_TextChanged"/>
+            </DockPanel>
+            <Grid DockPanel.Dock="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="ButtonDecision" Content="決定" IsEnabled="False" Click="ButtonDecision_Click"/>
+                <Button x:Name="ButtonCancel" Content="キャンセル" Grid.Column="1" IsCancel="True"/>
+            </Grid>
+            <DockPanel DockPanel.Dock="Bottom">
+                <Label Content="オプション"/>
+                <ComboBox x:Name="ComboBoxOption" IsEnabled="False"/>
+            </DockPanel>
+            <ListBox x:Name="ListBoxItem" SelectionChanged="ListBoxItem_SelectionChanged"/>
+        </DockPanel>
+    </Grid>
+</Window>
