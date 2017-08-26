@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
 
 namespace DQ11
@@ -9,10 +6,12 @@ namespace DQ11
 	class Zoom : AllStatus
 	{
 		private readonly ListBox mZoom;
+		private readonly ButtonCheckObserver mButtonCheck;
 		Dictionary<uint, CheckBox> mDict = new Dictionary<uint, CheckBox>();
-		public Zoom(ListBox zoom)
+		public Zoom(ListBox zoom, Button check, Button uncheck)
 		{
 			mZoom = zoom;
+			mButtonCheck = new ButtonCheckObserver(check, uncheck);
 		}
 
 		public override void Init()
@@ -24,6 +23,8 @@ namespace DQ11
 				check.Content = info;
 				mDict.Add(info.ID, check);
 				mZoom.Items.Add(check);
+
+				mButtonCheck.Append(check);
 			}
 		}
 

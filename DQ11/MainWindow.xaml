@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DQ11"
         mc:Ignorable="d"
-        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="670" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="670" Width="820" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -467,9 +467,27 @@
                 </Grid>
             </TabItem>
             <TabItem Header="帽子">
-                <ScrollViewer>
-                    <StackPanel x:Name="StackPanelHat"/>
-                </ScrollViewer>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ScrollViewer>
+                        <StackPanel x:Name="StackPanelHat"/>
+                    </ScrollViewer>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonHatCheck">
+                            <Image Source="{StaticResource Check}"/>
+                        </Button>
+                        <Button x:Name="ButtonHatUnCheck" Grid.Column="1">
+                            <Image Source="{StaticResource UnCheck}"/>
+                        </Button>
+                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem Header="ふくろ">
                 <Grid>
@@ -491,10 +509,46 @@
                 </Grid>
             </TabItem>
             <TabItem Header="だいじなもの">
-                <ListBox x:Name="ListBoxImportant"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxImportant"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonImportantCheck">
+                            <Image Source="{StaticResource Check}"/>
+                        </Button>
+                        <Button x:Name="ButtonImportantUnCheck" Grid.Column="1">
+                            <Image Source="{StaticResource UnCheck}"/>
+                        </Button>
+                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem Header="レシピ">
-                <ListBox x:Name="ListBoxRecipe"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxRecipe"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonRecipeCheck">
+                            <Image Source="{StaticResource Check}"/>
+                        </Button>
+                        <Button x:Name="ButtonRecipeUnCheck" Grid.Column="1">
+                            <Image Source="{StaticResource UnCheck}"/>
+                        </Button>
+                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem Header="すれちがい">
                 <Grid>
@@ -532,10 +586,40 @@
                 </Grid>
             </TabItem>
             <TabItem Header="称号">
-                <ListBox x:Name="ListBoxTitle"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxTitle"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonTitleCheck">
+                            <Image Source="{StaticResource Check}"/>
+                        </Button>
+                        <Button x:Name="ButtonTitleUnCheck" Grid.Column="1">
+                            <Image Source="{StaticResource UnCheck}"/>
+                        </Button>
+                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem Header="クエスト">
-                <ListBox x:Name="ListBoxQuest"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxQuest"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem Header="パーティー">
                 <Grid>
@@ -581,7 +665,25 @@
                 </Grid>
             </TabItem>
             <TabItem Header="ルーラ">
-                <ListBox x:Name="ListBoxZoom"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxZoom"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonZoomCheck">
+                            <Image Source="{StaticResource Check}"/>
+                        </Button>
+                        <Button x:Name="ButtonZoomUnCheck" Grid.Column="1">
+                            <Image Source="{StaticResource UnCheck}"/>
+                        </Button>
+                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem Header="システム">
                 <Grid>

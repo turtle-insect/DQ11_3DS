@@ -81,6 +81,7 @@
     <Compile Include="BagEquipmentMgr.cs" />
     <Compile Include="BagToolItem.cs" />
     <Compile Include="BagToolMgr.cs" />
+    <Compile Include="ButtonCheckObserver.cs" />
     <Compile Include="CharChoiceStatus.cs" />
     <Compile Include="CharEquepment.cs" />
     <Compile Include="CharItem.cs" />
@@ -171,6 +172,10 @@
     <Resource Include="Resource\Append.png" />
     <Resource Include="Resource\Arrow.png" />
     <Resource Include="Resource\Remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Check.png" />
+    <Resource Include="Resource\UnCheck.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

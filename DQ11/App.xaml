@@ -9,5 +9,7 @@
         <BitmapImage x:Key="Arrow" UriSource="./Resource/Arrow.png"/>
         <BitmapImage x:Key="Append" UriSource="./Resource/Append.png"/>
         <BitmapImage x:Key="Remove" UriSource="./Resource/Remove.png"/>
+        <BitmapImage x:Key="Check" UriSource="./Resource/Check.png"/>
+        <BitmapImage x:Key="UnCheck" UriSource="./Resource/UnCheck.png"/>
     </Application.Resources>
 </Application>

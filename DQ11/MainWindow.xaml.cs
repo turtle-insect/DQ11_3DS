@@ -19,6 +19,9 @@ namespace DQ11
 		BagEquipmentMgr mBagEquipment;
 		ListActionObserver mParty;
 		ListActionObserver mYochi;
+
+		ButtonCheckObserver mHatButtonCheck;
+		ButtonCheckObserver mTitleButtonCheck;
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -92,12 +95,13 @@ namespace DQ11
 			mBagEquipment.Init(mAllStatusList, StackPanelBagEquipment, ComboBoxBagEquipmentPage, 0x40EC, 2340);
 
 			// だいじなもの.
-			mAllStatusList.Add(new CheckBoxListItem(ListBoxImportant, Item.Instance().Importants, 0x65C4, 90));
+			mAllStatusList.Add(new CheckBoxListItem(ListBoxImportant, ButtonImportantCheck, ButtonImportantUnCheck, Item.Instance().Importants, 0x65C4, 90));
 
 			// レシピ.
-			mAllStatusList.Add(new CheckBoxListItem(ListBoxRecipe, Item.Instance().Recipes, 0x6678, 105));
+			mAllStatusList.Add(new CheckBoxListItem(ListBoxRecipe, ButtonRecipeCheck, ButtonRecipeUnCheck, Item.Instance().Recipes, 0x6678, 105));
 
 			// 帽子.
+			mHatButtonCheck = new ButtonCheckObserver(ButtonHatCheck, ButtonHatUnCheck);
 			CreateHat(mAllStatusList, StackPanelHat);
 
 			// すれちがい.
@@ -105,6 +109,7 @@ namespace DQ11
 			mAllStatusList.Add(new AllStringStatus(TextBoxPassMessage, 0xC47A, 16));
 
 			// 称号.
+			mTitleButtonCheck = new ButtonCheckObserver(ButtonTitleCheck, ButtonTitleUnCheck);
 			CreateTitle(mAllStatusList, ListBoxTitle);
 
 			// クエスト.
@@ -143,7 +148,7 @@ namespace DQ11
 			mPartyStatusList.ForEach(x => x.Init());
 
 			// ルーラ
-			mAllStatusList.Add(new Zoom(ListBoxZoom));
+			mAllStatusList.Add(new Zoom(ListBoxZoom, ButtonZoomCheck, ButtonZoomUnCheck));
 
 			// システム.
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxEscapeNG, 0x6A7F));
@@ -316,6 +321,7 @@ namespace DQ11
 
 				CheckBox obtain = new CheckBox();
 				status.Add(new HatObtain(obtain, info.ID));
+				mHatButtonCheck.Append(obtain);
 				obtain.Content = info.Name;
 				obtain.VerticalAlignment = VerticalAlignment.Center;
 				grid.Children.Add(obtain);
@@ -336,6 +342,7 @@ namespace DQ11
 			{
 				CheckBox obtain = new CheckBox();
 				status.Add(new TitleObtain(obtain, info.ID));
+				mTitleButtonCheck.Append(obtain);
 				obtain.Content = info.Name;
 				list.Items.Add(obtain);
 			}

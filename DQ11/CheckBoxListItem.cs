@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
 
 namespace DQ11
@@ -10,16 +7,19 @@ namespace DQ11
 	{
 		private readonly ListBox mList;
 		private readonly List<ItemInfo> mInfos;
+		private readonly ButtonCheckObserver mButtonCheck;
 		private readonly uint mAddress;
 		private readonly uint mCount;
 		Dictionary<uint, CheckBox> mDict = new Dictionary<uint, CheckBox>();
 
-		public CheckBoxListItem(ListBox list, List<ItemInfo> infos, uint address, uint count)
+		public CheckBoxListItem(ListBox list, Button check, Button uncheck, List<ItemInfo> infos, uint address, uint count)
 		{
 			mList = list;
 			mInfos = infos;
 			mAddress = address;
 			mCount = count;
+
+			mButtonCheck = new ButtonCheckObserver(check, uncheck);
 		}
 
 		public override void Init()
@@ -31,6 +31,8 @@ namespace DQ11
 				check.Content = info;
 				mDict.Add(info.ID, check);
 				mList.Items.Add(check);
+
+				mButtonCheck.Append(check);
 			}
 		}
 
