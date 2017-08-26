@@ -532,30 +532,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="称号">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <ListBox x:Name="ListBoxTitle"/>
-                    <StackPanel Grid.Column="1">
-                        <Label Content="■称号設定前に"/>
-                        <Label Content="セーブデータ上で称号はビットで管理されています。"/>
-                        <Label Content="1バイトは8ビットになります。"/>
-                        <Label Content="枠線で囲まれた部分が1バイトの称号になります。"/>
-                        <Label Content="枠内の称号名は間違っていないはずですが、"/>
-                        <Label Content="称号名と取得状況の紐づけが出来ていないので"/>
-                        <Label Content="チェックが意図した称号に反映されていない可能性が高いです。"/>
-                        <Label Content="※枠内の称号のビット位置が特定できていない為です。"/>
-                        <Label Content=""/>
-                        <Label Content="■お願い"/>
-                        <Label Content="称号の取得状況整理にご協力頂けるとうれしいです。"/>
-                        <Label Content=""/>
-                        <Label Content="■注意"/>
-                        <Label Content="枠内に『???????』がある場合、"/>
-                        <Label Content="個数分だけ通常プレイでは取得出来ない称号になります"/>
-                    </StackPanel>
-                </Grid>
+                <ListBox x:Name="ListBoxTitle"/>
             </TabItem>
             <TabItem Header="クエスト">
                 <ListBox x:Name="ListBoxQuest"/>

@@ -332,24 +332,12 @@ namespace DQ11
 		private void CreateTitle(List<AllStatus> status, ListBox list)
 		{
 			Item item = Item.Instance();
-			uint count = 0;
 			foreach (ItemInfo info in item.Titles)
 			{
 				CheckBox obtain = new CheckBox();
 				status.Add(new TitleObtain(obtain, info.ID));
 				obtain.Content = info.Name;
 				list.Items.Add(obtain);
-
-				count++;
-				if (count % 8 == 0)
-				{
-					var line = new System.Windows.Shapes.Line();
-					line.Stroke = System.Windows.Media.Brushes.Blue;
-					line.StrokeThickness = 2.0;
-					line.X1 = line.Y1 = line.Y2 = 0;
-					line.X2 = 500;
-					list.Items.Add(line);
-				}
 			}
 		}
 	}
