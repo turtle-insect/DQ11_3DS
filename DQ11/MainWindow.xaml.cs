@@ -113,7 +113,7 @@ namespace DQ11
 			CreateTitle(mAllStatusList, ListBoxTitle);
 
 			// クエスト.
-			mAllStatusList.Add(new Quest(ListBoxQuest));
+			mAllStatusList.Add(new Quest(ListBoxQuest, ComboBoxQuestState, ButtonQuestPatch));
 
 			// 基本.
 			mAllStatusList.Add(new PlayTime(TextBoxPlayHour, TextBoxPlayMinute, TextBoxPlaySecond));

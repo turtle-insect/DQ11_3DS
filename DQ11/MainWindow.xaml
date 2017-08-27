@@ -613,12 +613,19 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <ListBox x:Name="ListBoxQuest"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                    </Grid>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <Label Content="全て" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="ComboBoxQuestState" Width="100"  VerticalAlignment="Center">
+                            <ComboBoxItem Content="詳細不明"/>
+                            <ComboBoxItem Content="詳細判明"/>
+                            <ComboBoxItem Content="受注中"/>
+                            <ComboBoxItem Content="クリア"/>
+                            <ComboBoxItem Content="見えない"/>
+                            <ComboBoxItem Content="不定"/>
+                        </ComboBox>
+                        <Label Content="に" VerticalAlignment="Center"/>
+                        <Button x:Name="ButtonQuestPatch" Content="設定"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="パーティー">

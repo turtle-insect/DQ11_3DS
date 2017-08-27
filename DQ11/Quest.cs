@@ -6,11 +6,14 @@ namespace DQ11
 	class Quest : AllStatus
 	{
 		private readonly ListBox mQuest;
+		private readonly ComboBox mBase;
 		private readonly Dictionary<ItemInfo, ComboBox> mStatus = new Dictionary<ItemInfo, ComboBox>();
 
-		public Quest(ListBox quest)
+		public Quest(ListBox quest, ComboBox combo, Button patch)
 		{
 			mQuest = quest;
+			mBase = combo;
+			patch.Click += Patch_Click;
 		}
 
 		public override void Init()
@@ -21,13 +24,13 @@ namespace DQ11
 				panel.Orientation = Orientation.Horizontal;
 
 				ComboBox status = new ComboBox();
-				status.Width = 100;
-				status.Items.Add("詳細不明");
-				status.Items.Add("詳細判明");
-				status.Items.Add("受注中");
-				status.Items.Add("クリア");
-				status.Items.Add("見えない");
-				status.Items.Add("不定");
+				status.Width = mBase.Width;
+				foreach(var obj in mBase.Items)
+				{
+					ComboBoxItem item = obj as ComboBoxItem;
+					if (item == null) continue;
+					status.Items.Add(item.Content);
+				}
 				panel.Children.Add(status);
 				mStatus.Add(info, status);
 
@@ -94,6 +97,14 @@ namespace DQ11
 						break;
 				}
 				saveData.WriteNumber(0x6F65 + info.ID, 1, value);
+			}
+		}
+
+		private void Patch_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			foreach(var item in mStatus)
+			{
+				item.Value.SelectedIndex = mBase.SelectedIndex;
 			}
 		}
 	}
