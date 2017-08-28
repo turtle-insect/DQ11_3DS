@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using Microsoft.Win32;
 
 namespace DQ11
 {
@@ -132,13 +133,7 @@ namespace DQ11
 			mAllStatusList.Add(new AllNumberStatus(TextBoxSlot, 0x67DC, 4, 0, 9999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxPoker, 0x67C4, 4, 0, 9999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxRoulette, 0x67D0, 4, 0, 9999));
-
 			mAllStatusList.Add(new AllNumberStatus(TextBoxKnockDownMonster, 0x3E30, 4, 0, 9999999));
-			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxHorse, 0x955C));
-			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxZoom, 0x6A7B));
-			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxShip, 0x6A13));
-			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxHero, 0x6A10));
-			mAllStatusList.Add(new SkillPanel(ListBoxSkillPanel));
 
 			// パーティー.
 			mPartyStatusList = new List<ListStatus>();
@@ -147,8 +142,11 @@ namespace DQ11
 			mPartyStatusList.Add(new PartyOrder(ComboBoxPartyOrder));
 			mPartyStatusList.ForEach(x => x.Init());
 
-			// ルーラ
+			// ルーラ.
 			mAllStatusList.Add(new Zoom(ListBoxZoom, ButtonZoomCheck, ButtonZoomUnCheck));
+
+			// ストーリー.
+			mAllStatusList.Add(new Story(ListBoxStory, ButtonStoryCheck, ButtonStoryUnCheck));
 
 			// システム.
 			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxEscapeNG, 0x6A7F));
@@ -161,6 +159,28 @@ namespace DQ11
 			mAllStatusList.Add(new AllChoiceStatus(ComboBoxCameraRotate, 0x6FC2, 1));
 			mAllStatusList.Add(new AllChoiceStatus(ComboBoxCStickRotate, 0x6FC3, 1));
 			mAllStatusList.ForEach(x => x.Init());
+		}
+
+		private void Window_Drop(object sender, DragEventArgs e)
+		{
+			String[] files = e.Data.GetData(DataFormats.FileDrop) as String[];
+			if (files == null) return;
+			if (!System.IO.File.Exists(files[0])) return;
+
+			SaveData saveData = SaveData.Instance();
+			if (saveData.Open(files[0], false) == false)
+			{
+				MessageBox.Show("読込失敗");
+				return;
+			}
+
+			Init();
+			MessageBox.Show("読込成功");
+		}
+
+		private void Window_PreviewDragOver(object sender, DragEventArgs e)
+		{
+			e.Handled = e.Data.GetDataPresent(DataFormats.FileDrop);
 		}
 
 		private void ToolBarFileOpen_Click(object sender, RoutedEventArgs e)
@@ -191,7 +211,11 @@ namespace DQ11
 		private void MenuItemFileSaveAs_Click(object sender, RoutedEventArgs e)
 		{
 			mAllStatusList.ForEach(x => x.Save());
-			if (SaveData.Instance().SaveAs() == true) MessageBox.Show("書込成功");
+
+			SaveFileDialog dlg = new SaveFileDialog();
+			if (dlg.ShowDialog() == false) return;
+
+			if (SaveData.Instance().SaveAs(dlg.FileName) == true) MessageBox.Show("書込成功");
 			else MessageBox.Show("書込失敗");
 		}
 
@@ -279,13 +303,28 @@ namespace DQ11
 
 		private void Load(bool force)
 		{
-			SaveData saveData = SaveData.Instance();
-			if (saveData.Open(force) == false)
+			OpenFileDialog dlg = new OpenFileDialog();
+			if (dlg.ShowDialog() == false) return;
+
+			if (SaveData.Instance().Open(dlg.FileName, force) == false)
 			{
 				MessageBox.Show("読込失敗");
 				return;
 			}
 
+			Init();
+			MessageBox.Show("読込成功");
+		}
+
+		private void Save()
+		{
+			mAllStatusList.ForEach(x => x.Save());
+			if (SaveData.Instance().Save() == true) MessageBox.Show("書込成功");
+			else MessageBox.Show("書込失敗");
+		}
+
+		private void Init()
+		{
 			ListBoxChar.Items.Clear();
 			ComboBoxCharItemPage.SelectedIndex = 0;
 			List<String> names = Util.GetPartyNames();
@@ -300,14 +339,6 @@ namespace DQ11
 			mYochi.Load();
 
 			mAllStatusList.ForEach(x => x.Open());
-			MessageBox.Show("読込成功");
-		}
-
-		private void Save()
-		{
-			mAllStatusList.ForEach(x => x.Save());
-			if (SaveData.Instance().Save() == true) MessageBox.Show("書込成功");
-			else MessageBox.Show("書込失敗");
 		}
 
 		private void CreateHat(List<AllStatus> status, StackPanel panel)

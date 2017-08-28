@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 
 namespace DQ11
 {
@@ -19,11 +18,9 @@ namespace DQ11
 			return mThis;
 		}
 
-		public bool Open(bool force)
+		public bool Open(String filename, bool force)
 		{
-			OpenFileDialog dlg = new OpenFileDialog();
-			if (dlg.ShowDialog() == false) return false;
-			mFileName = dlg.FileName;
+			mFileName = filename;
 			mBuffer = System.IO.File.ReadAllBytes(mFileName);
 
 			if (force || mCrc32.Calc(ref mBuffer, 0, 0xC8A8) == ReadNumber(0xC8AC, 4))
@@ -45,13 +42,10 @@ namespace DQ11
 			return true;
 		}
 
-		public bool SaveAs()
+		public bool SaveAs(String filenname)
 		{
 			if (mBuffer == null) return false;
-			SaveFileDialog dlg = new SaveFileDialog();
-			dlg.FileName = System.IO.Path.GetFileName(mFileName);
-			if (dlg.ShowDialog() == false) return false;
-			mFileName = dlg.FileName;
+			mFileName = filenname;
 			return Save();
 		}
 

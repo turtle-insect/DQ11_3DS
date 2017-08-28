@@ -15,6 +15,7 @@ namespace DQ11
 		public List<ItemInfo> Importants { get; private set; } = new List<ItemInfo>();
 		public List<ItemInfo> Recipes { get; private set; } = new List<ItemInfo>();
 		public List<ItemInfo> Quests { get; private set; } = new List<ItemInfo>();
+		public List<ItemInfo> Storys { get; private set; } = new List<ItemInfo>();
 		// #で始まる文字はコメント扱い
 		// タブ区切りで解釈
 		// ID\t名前で区切られている前提として扱う
@@ -42,6 +43,7 @@ namespace DQ11
 			AppendList("item\\important.txt", Importants);
 			AppendList("item\\recipe.txt", Recipes);
 			AppendList("item\\quest.txt", Quests);
+			AppendList("item\\story.txt", Storys);
 			Tools.Sort((a, b) => (int)(a.ID - b.ID));
 			Equipments.Sort((a, b) => (int)(a.ID - b.ID));
 		}
@@ -112,9 +114,13 @@ namespace DQ11
 				if (line[0] == '#') continue;
 				String[] values = line.Split('\t');
 				if (values.Length < 2) continue;
+				uint id = 0;
+				if (values[0].Length > 1 && values[0][1] == 'x') id = Convert.ToUInt32(values[0], 16);
+				else id = Convert.ToUInt32(values[0]);
+
 				uint count = 1;
 				if (values.Length >= 3) count = Convert.ToUInt32(values[2]);
-				items.Add(new ItemInfo(Convert.ToUInt32(values[0]), values[1], count));
+				items.Add(new ItemInfo(id, values[1], count));
 			}
 		}
 	}

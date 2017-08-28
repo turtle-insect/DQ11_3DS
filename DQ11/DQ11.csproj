@@ -104,7 +104,7 @@
     <Compile Include="PlayTime.cs" />
     <Compile Include="Quest.cs" />
     <Compile Include="SaveData.cs" />
-    <Compile Include="SkillPanel.cs" />
+    <Compile Include="Story.cs" />
     <Compile Include="TitleObtain.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="YochiHat.cs" />
