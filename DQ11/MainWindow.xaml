@@ -779,6 +779,13 @@
                     </Grid>
                 </Grid>
             </TabItem>
+            <TabItem Header="パッチコード">
+                <DockPanel>
+                    <Label Content="0、1、2、4コードに対応" DockPanel.Dock="Top"/>
+                    <Button x:Name="ButtonPatchReflection" DockPanel.Dock="Bottom" Content="適応" Height="50" Click="ButtonPatchReflection_Click"/>
+                    <TextBox x:Name="TextBoxPatchCode" AcceptsReturn="True"/>
+                </DockPanel>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

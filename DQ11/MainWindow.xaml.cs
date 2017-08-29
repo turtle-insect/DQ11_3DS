@@ -269,6 +269,89 @@ namespace DQ11
 			mParty.Load();
 		}
 
+		private void ButtonPatchReflection_Click(object sender, RoutedEventArgs e)
+		{
+			String patch = TextBoxPatchCode.Text;
+			patch = patch.Replace("\t", " ");
+			patch = patch.Replace("\r\n", "\n");
+			String[] lines = patch.Split('\n');
+
+			SaveData save = SaveData.Instance();
+			for(int i = 0; i < lines.Length; i++)
+			{
+				uint size = 0;
+				uint address = 0;
+				uint value = 0;
+				uint loop = 1;
+				uint move = 0;
+				uint add = 0;
+
+				String[] code = lines[i].Split(' ');
+				if(code.Length != 2)
+				{
+					MessageBox.Show((i + 1).ToString() + "行目に誤りがあります");
+					return;
+				}
+
+				address = Convert.ToUInt32(code[0].Substring(1), 16);
+				value = Convert.ToUInt32(code[1], 16);
+				switch (code[0][0])
+				{
+					case '0':
+						size = 1;
+						break;
+
+					case '1':
+						size = 2;
+						break;
+
+					case '2':
+						size = 4;
+						break;
+
+					case '4':
+						if(i + 1 >= lines.Length)
+						{
+							MessageBox.Show((i + 1).ToString() + "行目に誤りがあります");
+							return;
+						}
+						switch(code[1][0])
+						{
+							case '2':
+								size = 1;
+								break;
+
+							case '1':
+								size = 2;
+								break;
+
+							case '0':
+								size = 4;
+								break;
+						}
+						loop = Convert.ToUInt32(code[1].Substring(1, 3), 16);
+						move = Convert.ToUInt32(code[1].Substring(4), 16);
+
+						i++;
+						code = lines[i].Split(' ');
+						value = Convert.ToUInt32(code[0], 16);
+						add = Convert.ToUInt32(code[1], 16);
+						break;
+
+					default:
+						MessageBox.Show((i + 1).ToString() + "行目に解読不可の命令があります");
+						return;
+				}
+
+				for(uint j = 0; j < loop; j++)
+				{
+					save.WriteNumber(address + move * j, size, value + add * j);
+				}
+			}
+			Init();
+			MessageBox.Show("適応");
+		}
+
 		private void ListBoxChar_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			int index = ListBoxChar.SelectedIndex;
