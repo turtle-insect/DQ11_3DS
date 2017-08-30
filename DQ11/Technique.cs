@@ -2,11 +2,11 @@
 
 namespace DQ11
 {
-	class Story : AllStatus
+	class Technique : AllStatus
 	{
 		private readonly ListBox mList;
 		private readonly ButtonCheckObserver mButtonCheck;
-		public Story(ListBox list, Button check, Button uncheck)
+		public Technique(ListBox list, Button check, Button uncheck)
 		{
 			mList = list;
 			mButtonCheck = new ButtonCheckObserver(check, uncheck);
@@ -15,7 +15,7 @@ namespace DQ11
 		public override void Init()
 		{
 			mList.Items.Clear();
-			foreach (ItemInfo info in Item.Instance().Storys)
+			foreach (ItemInfo info in Item.Instance().Techniques)
 			{
 				CheckBox check = new CheckBox();
 				check.Content = info;
@@ -34,7 +34,7 @@ namespace DQ11
 				if (check == null) continue;
 				ItemInfo info = check.Content as ItemInfo;
 				if (info == null) continue;
-				check.IsChecked = saveData.ReadNumber(info.ID, 1) == 1;
+				check.IsChecked = saveData.ReadBit(info.ID, info.Count);
 			}
 		}
 
@@ -47,9 +47,7 @@ namespace DQ11
 				if (check == null) continue;
 				ItemInfo info = check.Content as ItemInfo;
 				if (info == null) continue;
-				uint value = 0;
-				if (check.IsChecked == true) value = 1;
-				saveData.WriteNumber(info.ID, 1, value);
+				saveData.WriteBit(info.ID, info.Count, check.IsChecked == true);
 			}
 		}
 	}

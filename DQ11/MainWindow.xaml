@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DQ11"
         mc:Ignorable="d"
-        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="670" Width="820"
+        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="670" Width="900"
         WindowStartupLocation="CenterScreen"
         AllowDrop="True" Drop="Window_Drop" PreviewDragOver="Window_PreviewDragOver"
         Loaded="Window_Loaded">
@@ -324,6 +324,216 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+            <TabItem Header="れんけい・スキル">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxTechnique"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonTechniqueCheck">
+                            <Image Source="{StaticResource Check}"/>
+                        </Button>
+                        <Button x:Name="ButtonTechniqueUnCheck" Grid.Column="1">
+                            <Image Source="{StaticResource UnCheck}"/>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="ふくろ">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel>
+                        <Label Content="どうぐぶくろ" DockPanel.Dock="Top"/>
+                        <ComboBox x:Name="ComboBoxBagToolPage"  DockPanel.Dock="Top"/>
+                        <StackPanel x:Name="StackPanelBagTool" Margin="0,5,0,0"/>
+                    </DockPanel>
+                    <DockPanel Grid.Column="2">
+                        <Label Content="そうびぶくろ" DockPanel.Dock="Top"/>
+                        <ComboBox x:Name="ComboBoxBagEquipmentPage"  DockPanel.Dock="Top"/>
+                        <StackPanel x:Name="StackPanelBagEquipment" Margin="0,5,0,0"/>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="だいじなもの">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxImportant"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonImportantCheck">
+                            <Image Source="{StaticResource Check}"/>
+                        </Button>
+                        <Button x:Name="ButtonImportantUnCheck" Grid.Column="1">
+                            <Image Source="{StaticResource UnCheck}"/>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="レシピ">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxRecipe"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonRecipeCheck">
+                            <Image Source="{StaticResource Check}"/>
+                        </Button>
+                        <Button x:Name="ButtonRecipeUnCheck" Grid.Column="1">
+                            <Image Source="{StaticResource UnCheck}"/>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="称号">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxTitle"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonTitleCheck">
+                            <Image Source="{StaticResource Check}"/>
+                        </Button>
+                        <Button x:Name="ButtonTitleUnCheck" Grid.Column="1">
+                            <Image Source="{StaticResource UnCheck}"/>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="クエスト">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxQuest"/>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <Label Content="全て" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="ComboBoxQuestState" Width="100"  VerticalAlignment="Center">
+                            <ComboBoxItem Content="詳細不明"/>
+                            <ComboBoxItem Content="詳細判明"/>
+                            <ComboBoxItem Content="受注中"/>
+                            <ComboBoxItem Content="クリア"/>
+                            <ComboBoxItem Content="見えない"/>
+                            <ComboBoxItem Content="不定"/>
+                        </ComboBox>
+                        <Label Content="に" VerticalAlignment="Center"/>
+                        <Button x:Name="ButtonQuestPatch" Content="設定"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="ルーラ">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxZoom"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonZoomCheck">
+                            <Image Source="{StaticResource Check}"/>
+                        </Button>
+                        <Button x:Name="ButtonZoomUnCheck" Grid.Column="1">
+                            <Image Source="{StaticResource UnCheck}"/>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="パーティー">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="12*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Content="一覧"/>
+                    <Label Content="対象" Grid.Column="1"/>
+                    <ListBox x:Name="ListBoxParty" Grid.Row="1" SelectionChanged="ListBoxParty_SelectionChanged"/>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonPartyUp">
+                            <Image Source="{StaticResource Arrow}"/>
+                        </Button>
+                        <Button x:Name="ButtonPartyDown" Grid.Column="1" RenderTransformOrigin="0.5, 0.5">
+                            <Button.RenderTransform>
+                                <ScaleTransform ScaleY="-1"/>
+                            </Button.RenderTransform>
+                            <Image Source="{StaticResource Arrow}"/>
+                        </Button>
+                        <Button x:Name="ButtonPartyAppend" Grid.Column="2">
+                            <Image Source="{StaticResource Append}"/>
+                        </Button>
+                        <Button x:Name="ButtonPartyRemove" Grid.Column="3">
+                            <Image Source="{StaticResource Remove}"/>
+                        </Button>
+                    </Grid>
+                    <StackPanel Grid.Row="1" Grid.Column="1">
+                        <ComboBox x:Name="ComboBoxPartyOrder"/>
+                        <Button x:Name="ButtonPartyDecision" Content="決定" Click="ButtonPartyDecision_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="ストーリー">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxStory"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonStoryCheck">
+                            <Image Source="{StaticResource Check}"/>
+                        </Button>
+                        <Button x:Name="ButtonStoryUnCheck" Grid.Column="1">
+                            <Image Source="{StaticResource UnCheck}"/>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
             <TabItem Header="ヨッチ族">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -482,67 +692,6 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="ふくろ">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="5"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <DockPanel>
-                        <Label Content="どうぐぶくろ" DockPanel.Dock="Top"/>
-                        <ComboBox x:Name="ComboBoxBagToolPage"  DockPanel.Dock="Top"/>
-                        <StackPanel x:Name="StackPanelBagTool" Margin="0,5,0,0"/>
-                    </DockPanel>
-                    <DockPanel Grid.Column="2">
-                        <Label Content="そうびぶくろ" DockPanel.Dock="Top"/>
-                        <ComboBox x:Name="ComboBoxBagEquipmentPage"  DockPanel.Dock="Top"/>
-                        <StackPanel x:Name="StackPanelBagEquipment" Margin="0,5,0,0"/>
-                    </DockPanel>
-                </Grid>
-            </TabItem>
-            <TabItem Header="だいじなもの">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="13*"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <ListBox x:Name="ListBoxImportant"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="ButtonImportantCheck">
-                            <Image Source="{StaticResource Check}"/>
-                        </Button>
-                        <Button x:Name="ButtonImportantUnCheck" Grid.Column="1">
-                            <Image Source="{StaticResource UnCheck}"/>
-                        </Button>
-                    </Grid>
-                </Grid>
-            </TabItem>
-            <TabItem Header="レシピ">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="13*"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <ListBox x:Name="ListBoxRecipe"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="ButtonRecipeCheck">
-                            <Image Source="{StaticResource Check}"/>
-                        </Button>
-                        <Button x:Name="ButtonRecipeUnCheck" Grid.Column="1">
-                            <Image Source="{StaticResource UnCheck}"/>
-                        </Button>
-                    </Grid>
-                </Grid>
-            </TabItem>
             <TabItem Header="すれちがい">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -576,134 +725,6 @@
                     <TextBox x:Name="TextBoxPassName" Grid.Column="1"/>
                     <TextBox x:Name="TextBoxPassMessage" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
                     <Button Content="決定" Grid.Row="4" Grid.Column="2"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="称号">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="13*"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <ListBox x:Name="ListBoxTitle"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="ButtonTitleCheck">
-                            <Image Source="{StaticResource Check}"/>
-                        </Button>
-                        <Button x:Name="ButtonTitleUnCheck" Grid.Column="1">
-                            <Image Source="{StaticResource UnCheck}"/>
-                        </Button>
-                    </Grid>
-                </Grid>
-            </TabItem>
-            <TabItem Header="クエスト">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="13*"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <ListBox x:Name="ListBoxQuest"/>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Label Content="全て" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="ComboBoxQuestState" Width="100"  VerticalAlignment="Center">
-                            <ComboBoxItem Content="詳細不明"/>
-                            <ComboBoxItem Content="詳細判明"/>
-                            <ComboBoxItem Content="受注中"/>
-                            <ComboBoxItem Content="クリア"/>
-                            <ComboBoxItem Content="見えない"/>
-                            <ComboBoxItem Content="不定"/>
-                        </ComboBox>
-                        <Label Content="に" VerticalAlignment="Center"/>
-                        <Button x:Name="ButtonQuestPatch" Content="設定"/>
-                    </StackPanel>
-                </Grid>
-            </TabItem>
-            <TabItem Header="パーティー">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="12*"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Label Content="一覧"/>
-                    <Label Content="対象" Grid.Column="1"/>
-                    <ListBox x:Name="ListBoxParty" Grid.Row="1" SelectionChanged="ListBoxParty_SelectionChanged"/>
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="ButtonPartyUp">
-                            <Image Source="{StaticResource Arrow}"/>
-                        </Button>
-                        <Button x:Name="ButtonPartyDown" Grid.Column="1" RenderTransformOrigin="0.5, 0.5">
-                            <Button.RenderTransform>
-                                <ScaleTransform ScaleY="-1"/>
-                            </Button.RenderTransform>
-                            <Image Source="{StaticResource Arrow}"/>
-                        </Button>
-                        <Button x:Name="ButtonPartyAppend" Grid.Column="2">
-                            <Image Source="{StaticResource Append}"/>
-                        </Button>
-                        <Button x:Name="ButtonPartyRemove" Grid.Column="3">
-                            <Image Source="{StaticResource Remove}"/>
-                        </Button>
-                    </Grid>
-                    <StackPanel Grid.Row="1" Grid.Column="1">
-                        <ComboBox x:Name="ComboBoxPartyOrder"/>
-                        <Button x:Name="ButtonPartyDecision" Content="決定" Click="ButtonPartyDecision_Click"/>
-                    </StackPanel>
-                </Grid>
-            </TabItem>
-            <TabItem Header="ルーラ">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="13*"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <ListBox x:Name="ListBoxZoom"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="ButtonZoomCheck">
-                            <Image Source="{StaticResource Check}"/>
-                        </Button>
-                        <Button x:Name="ButtonZoomUnCheck" Grid.Column="1">
-                            <Image Source="{StaticResource UnCheck}"/>
-                        </Button>
-                    </Grid>
-                </Grid>
-            </TabItem>
-            <TabItem Header="ストーリー">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="13*"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <ListBox x:Name="ListBoxStory"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="ButtonStoryCheck">
-                            <Image Source="{StaticResource Check}"/>
-                        </Button>
-                        <Button x:Name="ButtonStoryUnCheck" Grid.Column="1">
-                            <Image Source="{StaticResource UnCheck}"/>
-                        </Button>
-                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="システム">

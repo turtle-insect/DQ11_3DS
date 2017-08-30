@@ -70,7 +70,6 @@ namespace DQ11
 			mCharStatusList.Add(new CharEquepment(ComboBoxCharAccessory2, 0x59));
 			mCharStatusList.ForEach(x => x.Init());
 
-
 			// ヨッチ族.
 			mYochiStatusList = new List<ListStatus>();
 			mYochi = new ListActionObserver(ListBoxYochi,
@@ -88,6 +87,9 @@ namespace DQ11
 
 			// 全体の設定.
 			mAllStatusList = new List<AllStatus>();
+
+			// れんけい・スキル.
+			mAllStatusList.Add(new Technique(ListBoxTechnique, ButtonTechniqueCheck, ButtonTechniqueUnCheck));
 
 			// ふくろ.
 			mBagTool = new BagToolMgr();
