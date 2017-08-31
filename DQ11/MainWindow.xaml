@@ -601,6 +601,7 @@
                         <Label Content="ぼうし" Grid.Row="5"/>
                         <Label Content="情報" Grid.Row="6"/>
                         <Label Content="ブースト" Grid.Row="7"/>
+                        <Label Content="一人称" Grid.Row="8"/>
                         <TextBox x:Name="TextBoxYochiName" Grid.Column="1"/>
                         <ComboBox x:Name="ComboBoxYochiColor" Grid.Row="1" Grid.Column="1">
                             <ComboBoxItem Content="赤"/>
@@ -664,6 +665,15 @@
                             <ComboBoxItem Content="+3"/>
                             <ComboBoxItem Content="+4"/>
                             <ComboBoxItem Content="+5"/>
+                        </ComboBox>
+                        <ComboBox x:Name="ComboBoxHowToCall" Grid.Row="8" Grid.Column="1">
+                            <ComboBoxItem Content="オレ"/>
+                            <ComboBoxItem Content="わたくし"/>
+                            <ComboBoxItem Content="オラ"/>
+                            <ComboBoxItem Content="オイラ"/>
+                            <ComboBoxItem Content="ボク"/>
+                            <ComboBoxItem Content="ボク"/>
+                            <ComboBoxItem Content="オレさま"/>
                         </ComboBox>
                         <Button x:Name="ButtonYochiStatusDecision" Grid.Row="13" Grid.RowSpan="2" Grid.ColumnSpan="2" Content="決定" Click="ButtonYochiStatusDecision_Click"/>
                     </Grid>

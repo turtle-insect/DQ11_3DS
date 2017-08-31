@@ -78,6 +78,7 @@ namespace DQ11
 			mYochiStatusList.Add(new CharNumberStatus(TextBoxYochiMotivation, 0x78, 2, 1, 999));
 			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiRank, 0x7A, 1, 1));
 			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiColor, 0x7B, 1));
+			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxHowToCall, 0x80, 1));
 			mYochiStatusList.Add(new YochiHat(ComboBoxYochiHat));
 			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiInfo, 0x84, 1));
 			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiBoost, 0x85, 1));
