@@ -282,6 +282,8 @@ namespace DQ11
 			SaveData save = SaveData.Instance();
 			for(int i = 0; i < lines.Length; i++)
 			{
+				if (String.IsNullOrEmpty(lines[i])) continue;
+
 				uint size = 0;
 				uint address = 0;
 				uint value = 0;
