@@ -9,6 +9,7 @@ namespace DQ11
 		public static readonly uint CharDateSize = 0x200;
 		public static readonly uint PartyStartAddress = 0x3E04;
 		public static readonly uint YochiStartAddress = 0x9DE4;
+		public static readonly uint MonsterStartAddress = 0x78E4;
 		public static readonly uint YochiDateSize = 0x8C;
 		public static readonly uint YochiCount = 50;
 		public static readonly uint YochiHatCount = 118;

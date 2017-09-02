@@ -92,6 +92,9 @@ namespace DQ11
 			// れんけい・スキル.
 			mAllStatusList.Add(new Technique(ListBoxTechnique, ButtonTechniqueCheck, ButtonTechniqueUnCheck));
 
+			// モンスター図鑑.
+			mAllStatusList.Add(new Monster(StackPanelMonster, RadioButtonAll, RadioButtonNone, RadioButtonHave, TextBoxMonsterCount, ButtonMonsterDecision));
+
 			// ふくろ.
 			mBagTool = new BagToolMgr();
 			mBagTool.Init(mAllStatusList, StackPanelBagTool, ComboBoxBagToolPage, 0x3E34, 168);

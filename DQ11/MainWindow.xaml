@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DQ11"
         mc:Ignorable="d"
-        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="670" Width="900"
+        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="670" Width="800"
         WindowStartupLocation="CenterScreen"
         AllowDrop="True" Drop="Window_Drop" PreviewDragOver="Window_PreviewDragOver"
         Loaded="Window_Loaded">
@@ -512,6 +512,20 @@
                         <Button x:Name="ButtonPartyDecision" Content="決定" Click="ButtonPartyDecision_Click"/>
                     </StackPanel>
                 </Grid>
+            </TabItem>
+            <TabItem Header="モンスター図鑑">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+                        <RadioButton x:Name="RadioButtonAll" VerticalAlignment="Center" IsChecked="True" Content="全て"/>
+                        <RadioButton x:Name="RadioButtonNone" VerticalAlignment="Center" Content="討伐数0"/>
+                        <RadioButton x:Name="RadioButtonHave" VerticalAlignment="Center" Content="討伐数0以外"/>
+                        <TextBox x:Name="TextBoxMonsterCount" Margin="10,0,0,0" Width="100" Text=""/>
+                        <Button x:Name="ButtonMonsterDecision" Content="に設定"/>
+                    </StackPanel>
+                    <ScrollViewer>
+                        <StackPanel x:Name="StackPanelMonster"/>
+                    </ScrollViewer>
+                </DockPanel>
             </TabItem>
             <TabItem Header="ストーリー">
                 <Grid>
