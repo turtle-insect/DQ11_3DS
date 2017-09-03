@@ -57,7 +57,6 @@ namespace DQ11
 		public override void Save()
 		{
 			SaveData savedata = SaveData.Instance();
-			uint num = 1;
 			foreach (var comp in mPanel.Children)
 			{
 				Grid grid = comp as Grid;

@@ -789,7 +789,8 @@
                         <Label Content="効果音" Grid.Row="7"/>
                         <Label Content="カメラ回転" Grid.Row="8"/>
                         <Label Content="Cスティック" Grid.Row="9"/>
-                        
+                        <Label Content="表示モード" Grid.Row="10"/>
+
                         <CheckBox x:Name="CheckBoxEscapeNG" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <CheckBox x:Name="CheckBoxShopNG" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <CheckBox x:Name="CheckBoxArmorNG" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -820,6 +821,11 @@
                         <ComboBox x:Name="ComboBoxCStickRotate" Grid.Row="9" Grid.Column="1">
                             <ComboBoxItem Content="ノーマル"/>
                             <ComboBoxItem Content="リバース"/>
+                        </ComboBox>
+                        <ComboBox x:Name="ComboBoxViewMode" Grid.Row="10" Grid.Column="1">
+                            <ComboBoxItem Content="2D"/>
+                            <ComboBoxItem Content="3D"/>
+                            <ComboBoxItem Content="両方"/>
                         </ComboBox>
                     </Grid>
                 </Grid>

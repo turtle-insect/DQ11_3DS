@@ -164,6 +164,7 @@ namespace DQ11
 			mAllStatusList.Add(new AllChoiceStatus(ComboBoxSEVolume, 0x6FC1, 1));
 			mAllStatusList.Add(new AllChoiceStatus(ComboBoxCameraRotate, 0x6FC2, 1));
 			mAllStatusList.Add(new AllChoiceStatus(ComboBoxCStickRotate, 0x6FC3, 1));
+			mAllStatusList.Add(new AllChoiceStatus(ComboBoxViewMode, 0x6FCC, 1));
 			mAllStatusList.ForEach(x => x.Init());
 		}
 
