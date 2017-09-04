@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace DQ11
 {
-    class AllStringStatus : AllStatus
+	class AllStringStatus : AllStatus
     {
 		private readonly TextBox mValue;
 		private readonly uint mAddress;
