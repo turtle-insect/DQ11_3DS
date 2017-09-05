@@ -84,7 +84,7 @@
     <Compile Include="CharChoiceStatus.cs" />
     <Compile Include="CharEquepment.cs" />
     <Compile Include="CharItem.cs" />
-    <Compile Include="CharName.cs" />
+    <Compile Include="CharStringStatus.cs" />
     <Compile Include="CharNumberStatus.cs" />
     <Compile Include="CheckBoxListItem.cs" />
     <Compile Include="Crc32.cs" />

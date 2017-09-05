@@ -585,112 +585,161 @@
                             </Button>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Column="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Label Content="名前"/>
-                        <Label Content="色" Grid.Row="1"/>
-                        <Label Content="ランク" Grid.Row="2"/>
-                        <Label Content="やる気" Grid.Row="3"/>
-                        <Label Content="武器" Grid.Row="4"/>
-                        <Label Content="ぼうし" Grid.Row="5"/>
-                        <Label Content="情報" Grid.Row="6"/>
-                        <Label Content="ブースト" Grid.Row="7"/>
-                        <Label Content="一人称" Grid.Row="8"/>
-                        <TextBox x:Name="TextBoxYochiName" Grid.Column="1"/>
-                        <ComboBox x:Name="ComboBoxYochiColor" Grid.Row="1" Grid.Column="1">
-                            <ComboBoxItem Content="赤"/>
-                            <ComboBoxItem Content="青"/>
-                            <ComboBoxItem Content="緑"/>
-                            <ComboBoxItem Content="黄"/>
-                            <ComboBoxItem Content="紫"/>
-                            <ComboBoxItem Content="白"/>
-                            <ComboBoxItem Content="メタル"/>
-                            <ComboBoxItem Content="赤青"/>
-                            <ComboBoxItem Content="赤緑"/>
-                            <ComboBoxItem Content="赤黄"/>
-                            <ComboBoxItem Content="赤紫"/>
-                            <ComboBoxItem Content="赤白"/>
-                            <ComboBoxItem Content="青緑"/>
-                            <ComboBoxItem Content="青黄"/>
-                            <ComboBoxItem Content="青紫"/>
-                            <ComboBoxItem Content="青白"/>
-                            <ComboBoxItem Content="緑黄"/>
-                            <ComboBoxItem Content="緑紫"/>
-                            <ComboBoxItem Content="緑白"/>
-                            <ComboBoxItem Content="黄紫"/>
-                            <ComboBoxItem Content="黄白"/>
-                            <ComboBoxItem Content="紫白"/>
-                            <ComboBoxItem Content="赤青 v2"/>
-                            <ComboBoxItem Content="赤緑 v2"/>
-                            <ComboBoxItem Content="赤黄 v2"/>
-                            <ComboBoxItem Content="赤紫 v2"/>
-                            <ComboBoxItem Content="赤白 v2"/>
-                            <ComboBoxItem Content="青緑 v2"/>
-                            <ComboBoxItem Content="青黄 v2"/>
-                            <ComboBoxItem Content="青紫 v2"/>
-                            <ComboBoxItem Content="青白 v2"/>
-                            <ComboBoxItem Content="緑黄 v2"/>
-                            <ComboBoxItem Content="緑紫 v2"/>
-                            <ComboBoxItem Content="緑白 v2"/>
-                            <ComboBoxItem Content="黄紫 v2"/>
-                            <ComboBoxItem Content="黄白 v2"/>
-                            <ComboBoxItem Content="紫白 v2"/>
-                        </ComboBox>
-                        <ComboBox x:Name="ComboBoxYochiRank" Grid.Row="2" Grid.Column="1">
-                            <ComboBoxItem Content="F"/>
-                            <ComboBoxItem Content="E"/>
-                            <ComboBoxItem Content="D"/>
-                            <ComboBoxItem Content="C"/>
-                            <ComboBoxItem Content="B"/>
-                            <ComboBoxItem Content="A"/>
-                            <ComboBoxItem Content="S"/>
-                        </ComboBox>
-                        <TextBox x:Name="TextBoxYochiMotivation" Grid.Row="3" Grid.Column="1"/>
-                        <ComboBox x:Name="ComboBoxYochiWeapon" Grid.Row="4" Grid.Column="1"/>
-                        <ComboBox x:Name="ComboBoxYochiHat" Grid.Row="5" Grid.Column="1"/>
-                        <ComboBox x:Name="ComboBoxYochiInfo" Grid.Row="6" Grid.Column="1">
-                            <ComboBoxItem Content="見てない"/>
-                            <ComboBoxItem Content="見た"/>
-                        </ComboBox>
-                        <ComboBox x:Name="ComboBoxYochiBoost" Grid.Row="7" Grid.Column="1">
-                            <ComboBoxItem Content=""/>
-                            <ComboBoxItem Content="+1"/>
-                            <ComboBoxItem Content="+2"/>
-                            <ComboBoxItem Content="+3"/>
-                            <ComboBoxItem Content="+4"/>
-                            <ComboBoxItem Content="+5"/>
-                        </ComboBox>
-                        <ComboBox x:Name="ComboBoxHowToCall" Grid.Row="8" Grid.Column="1">
-                            <ComboBoxItem Content="オレ"/>
-                            <ComboBoxItem Content="わたくし"/>
-                            <ComboBoxItem Content="オラ"/>
-                            <ComboBoxItem Content="オイラ"/>
-                            <ComboBoxItem Content="ボク"/>
-                            <ComboBoxItem Content="ボク"/>
-                            <ComboBoxItem Content="オレさま"/>
-                        </ComboBox>
-                        <Button x:Name="ButtonYochiStatusDecision" Grid.Row="13" Grid.RowSpan="2" Grid.ColumnSpan="2" Content="決定" Click="ButtonYochiStatusDecision_Click"/>
-                    </Grid>
+                    <TabControl Grid.Column="2">
+                        <TabItem Header="基本">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label Content="名前"/>
+                                <Label Content="色" Grid.Row="1"/>
+                                <Label Content="ランク" Grid.Row="2"/>
+                                <Label Content="やる気" Grid.Row="3"/>
+                                <Label Content="武器" Grid.Row="4"/>
+                                <Label Content="ぼうし" Grid.Row="5"/>
+                                <Label Content="情報" Grid.Row="6"/>
+                                <Label Content="ブースト" Grid.Row="7"/>
+                                <Label Content="一人称" Grid.Row="8"/>
+                                <Label Content="第一発見者" Grid.Row="9"/>
+                                <Label Content="配信2人目" Grid.Row="10"/>
+                                <Label Content="配信3人目" Grid.Row="11"/>
+                                <Label Content="配信4人目" Grid.Row="12"/>
+                                <TextBox x:Name="TextBoxYochiName" Grid.Column="1"/>
+                                <ComboBox x:Name="ComboBoxYochiColor" Grid.Row="1" Grid.Column="1">
+                                    <ComboBoxItem Content="赤"/>
+                                    <ComboBoxItem Content="青"/>
+                                    <ComboBoxItem Content="緑"/>
+                                    <ComboBoxItem Content="黄"/>
+                                    <ComboBoxItem Content="紫"/>
+                                    <ComboBoxItem Content="白"/>
+                                    <ComboBoxItem Content="メタル"/>
+                                    <ComboBoxItem Content="赤青"/>
+                                    <ComboBoxItem Content="赤緑"/>
+                                    <ComboBoxItem Content="赤黄"/>
+                                    <ComboBoxItem Content="赤紫"/>
+                                    <ComboBoxItem Content="赤白"/>
+                                    <ComboBoxItem Content="青緑"/>
+                                    <ComboBoxItem Content="青黄"/>
+                                    <ComboBoxItem Content="青紫"/>
+                                    <ComboBoxItem Content="青白"/>
+                                    <ComboBoxItem Content="緑黄"/>
+                                    <ComboBoxItem Content="緑紫"/>
+                                    <ComboBoxItem Content="緑白"/>
+                                    <ComboBoxItem Content="黄紫"/>
+                                    <ComboBoxItem Content="黄白"/>
+                                    <ComboBoxItem Content="紫白"/>
+                                    <ComboBoxItem Content="赤青 v2"/>
+                                    <ComboBoxItem Content="赤緑 v2"/>
+                                    <ComboBoxItem Content="赤黄 v2"/>
+                                    <ComboBoxItem Content="赤紫 v2"/>
+                                    <ComboBoxItem Content="赤白 v2"/>
+                                    <ComboBoxItem Content="青緑 v2"/>
+                                    <ComboBoxItem Content="青黄 v2"/>
+                                    <ComboBoxItem Content="青紫 v2"/>
+                                    <ComboBoxItem Content="青白 v2"/>
+                                    <ComboBoxItem Content="緑黄 v2"/>
+                                    <ComboBoxItem Content="緑紫 v2"/>
+                                    <ComboBoxItem Content="緑白 v2"/>
+                                    <ComboBoxItem Content="黄紫 v2"/>
+                                    <ComboBoxItem Content="黄白 v2"/>
+                                    <ComboBoxItem Content="紫白 v2"/>
+                                </ComboBox>
+                                <ComboBox x:Name="ComboBoxYochiRank" Grid.Row="2" Grid.Column="1">
+                                    <ComboBoxItem Content="F"/>
+                                    <ComboBoxItem Content="E"/>
+                                    <ComboBoxItem Content="D"/>
+                                    <ComboBoxItem Content="C"/>
+                                    <ComboBoxItem Content="B"/>
+                                    <ComboBoxItem Content="A"/>
+                                    <ComboBoxItem Content="S"/>
+                                </ComboBox>
+                                <TextBox x:Name="TextBoxYochiMotivation" Grid.Row="3" Grid.Column="1"/>
+                                <ComboBox x:Name="ComboBoxYochiWeapon" Grid.Row="4" Grid.Column="1"/>
+                                <ComboBox x:Name="ComboBoxYochiHat" Grid.Row="5" Grid.Column="1"/>
+                                <ComboBox x:Name="ComboBoxYochiInfo" Grid.Row="6" Grid.Column="1">
+                                    <ComboBoxItem Content="見てない"/>
+                                    <ComboBoxItem Content="見た"/>
+                                </ComboBox>
+                                <ComboBox x:Name="ComboBoxYochiBoost" Grid.Row="7" Grid.Column="1">
+                                    <ComboBoxItem Content=""/>
+                                    <ComboBoxItem Content="+1"/>
+                                    <ComboBoxItem Content="+2"/>
+                                    <ComboBoxItem Content="+3"/>
+                                    <ComboBoxItem Content="+4"/>
+                                    <ComboBoxItem Content="+5"/>
+                                </ComboBox>
+                                <ComboBox x:Name="ComboBoxHowToCall" Grid.Row="8" Grid.Column="1">
+                                    <ComboBoxItem Content="オレ"/>
+                                    <ComboBoxItem Content="わたくし"/>
+                                    <ComboBoxItem Content="オラ"/>
+                                    <ComboBoxItem Content="オイラ"/>
+                                    <ComboBoxItem Content="ボク"/>
+                                    <ComboBoxItem Content="ボク"/>
+                                    <ComboBoxItem Content="オレさま"/>
+                                </ComboBox>
+                                <TextBox x:Name="TextBoxYochiFirst" Grid.Row="9" Grid.Column="1"/>
+                                <TextBox x:Name="TextBoxYochiSecond" Grid.Row="10" Grid.Column="1"/>
+                                <TextBox x:Name="TextBoxYochiThird" Grid.Row="11" Grid.Column="1"/>
+                                <TextBox x:Name="TextBoxYochiFour" Grid.Row="12" Grid.Column="1"/>
+                                <Button x:Name="ButtonYochiStatusDecision" Grid.Row="13" Grid.RowSpan="2" Grid.ColumnSpan="2" Content="決定" Click="ButtonYochiStatusDecision_Click"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="プロフィール">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label Content="称号"/>
+                                <Label Content="Lv" Grid.Row="1"/>
+                                <Label Content="ストーリー進行度" Grid.Row="2"/>
+                                <Label Content="性別" Grid.Row="3"/>
+                                <Label Content="性格" Grid.Row="4"/>
+                                <Label Content="年代" Grid.Row="5"/>
+                                <Label Content="趣味" Grid.Row="6"/>
+                                <Label Content="出身地" Grid.Row="7"/>
+                                <Label Content="ドラクエ歴" Grid.Row="8"/>
+                                <Label Content="メッセージ" Grid.Row="9"/>
+                                <Label Content="しばりプレイ" Grid.Row="10"/>
+                                <TextBox x:Name="TextBoxYochiMessage" Grid.Row="9" Grid.Column="1"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
                 </Grid>
             </TabItem>
             <TabItem Header="帽子">

@@ -34,7 +34,7 @@ namespace DQ11
 			SaveData.Instance();
 			// キャラクタ.
 			mCharStatusList = new List<ListStatus>();
-			mCharStatusList.Add(new CharName(TextBoxCharName, 0x2));
+			mCharStatusList.Add(new CharStringStatus(TextBoxCharName, 0x2, 6));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharLv, 0x10, 1, 1, 99));
 			mCharStatusList.Add(new CharNumberStatus(TextBoxCharExp, 0x14, 4, 0, 9999999));
 			mCharStatusList.Add(new CharChoiceStatus(ComboBoxCharStrategy, 0x1C, 1));
@@ -74,7 +74,7 @@ namespace DQ11
 			mYochiStatusList = new List<ListStatus>();
 			mYochi = new ListActionObserver(ListBoxYochi,
 							ButtonYochiUp, ButtonYochiDown, ButtonYochiAppend, ButtonYochiRemove, new ListControlYochi());
-			mYochiStatusList.Add(new CharName(TextBoxYochiName, 0x0));
+			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiName, 0x0, 6));
 			mYochiStatusList.Add(new CharNumberStatus(TextBoxYochiMotivation, 0x78, 2, 1, 999));
 			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiRank, 0x7A, 1, 1));
 			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiColor, 0x7B, 1));
@@ -83,6 +83,26 @@ namespace DQ11
 			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiInfo, 0x84, 1));
 			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiBoost, 0x85, 1));
 			mYochiStatusList.Add(new YochiWeapon(ComboBoxYochiWeapon));
+			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiSecond, 0x0E, 6));
+			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiThird, 0x1C, 6));
+			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiFour, 0x2A, 6));
+			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiFirst, 0x3C, 6));
+			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiMessage, 0x4A, 16));
+			// 0x6C 1byte ストーリー進行度
+			// 0x6D 1byte 称号？
+			// 0x6E 1byte 性別
+			// 0x6F 1byte 出身地
+			// 0x70 1byte Lv
+			// 0x71 1byte 年代
+			// 0x72 1byte 性格
+			// 0x73 1byte 趣味
+			// 0x74 1byte ドラクエ歴
+			// 0x75 1byte しばりプレイ
+			//			0x01 戦闘から逃げられない
+			//			0x02 買い物ができない
+			//			0x04 防具を装備できない
+			//			0x08 はずかしい呪い
+
 			mYochiStatusList.ForEach(x => x.Init());
 
 
