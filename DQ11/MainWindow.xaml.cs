@@ -87,21 +87,21 @@ namespace DQ11
 			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiThird, 0x1C, 6));
 			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiFour, 0x2A, 6));
 			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiFirst, 0x3C, 6));
-			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiMessage, 0x4A, 16));
-			// 0x6C 1byte ストーリー進行度
-			// 0x6D 1byte 称号？
-			// 0x6E 1byte 性別
-			// 0x6F 1byte 出身地
-			// 0x70 1byte Lv
-			// 0x71 1byte 年代
-			// 0x72 1byte 性格
-			// 0x73 1byte 趣味
-			// 0x74 1byte ドラクエ歴
-			// 0x75 1byte しばりプレイ
-			//			0x01 戦闘から逃げられない
-			//			0x02 買い物ができない
-			//			0x04 防具を装備できない
-			//			0x08 はずかしい呪い
+
+			// ヨッチ・プロフィール
+			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiPassMessage, 0x4A, 16));
+			mYochiStatusList.Add(new CharNumberStatus(TextBoxYochiPassStory, 0x6C, 1, 1, 0xFF));
+			mYochiStatusList.Add(new CharNumberStatus(TextBoxYochiPassLv, 0x70, 1, 1, 99));
+			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiPassSex, 0x6E, 1));
+			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiPassGraduate, 0x6F, 1));
+			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiPassAge, 0x71, 1));
+			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiPassPersonality, 0x72, 1));
+			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiPassHobby, 0x73, 1));
+			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiPassHistory, 0x74, 1));
+			mYochiStatusList.Add(new CheckStatusBit(CheckBoxYochiPassEscapeNG, 0x75, 0));
+			mYochiStatusList.Add(new CheckStatusBit(CheckBoxYochiPassShopNG, 0x75, 1));
+			mYochiStatusList.Add(new CheckStatusBit(CheckBoxYochiPassArmorNG, 0x75, 2));
+			mYochiStatusList.Add(new CheckStatusBit(CheckBoxYochiPassAshamed, 0x75, 3));
 
 			mYochiStatusList.ForEach(x => x.Init());
 

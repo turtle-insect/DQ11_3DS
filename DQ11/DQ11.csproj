@@ -87,6 +87,7 @@
     <Compile Include="CharStringStatus.cs" />
     <Compile Include="CharNumberStatus.cs" />
     <Compile Include="CheckBoxListItem.cs" />
+    <Compile Include="CheckStatusBit.cs" />
     <Compile Include="Crc32.cs" />
     <Compile Include="HatObtain.cs" />
     <Compile Include="IListControl.cs" />

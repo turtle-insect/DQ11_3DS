@@ -608,6 +608,7 @@
                                     <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
+                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Label Content="名前"/>
                                 <Label Content="色" Grid.Row="1"/>
@@ -699,7 +700,7 @@
                                 <TextBox x:Name="TextBoxYochiSecond" Grid.Row="10" Grid.Column="1"/>
                                 <TextBox x:Name="TextBoxYochiThird" Grid.Row="11" Grid.Column="1"/>
                                 <TextBox x:Name="TextBoxYochiFour" Grid.Row="12" Grid.Column="1"/>
-                                <Button x:Name="ButtonYochiStatusDecision" Grid.Row="13" Grid.RowSpan="2" Grid.ColumnSpan="2" Content="決定" Click="ButtonYochiStatusDecision_Click"/>
+                                <Button Grid.Row="14" Grid.RowSpan="2" Grid.ColumnSpan="2" Content="決定" Click="ButtonYochiStatusDecision_Click"/>
                             </Grid>
                         </TabItem>
                         <TabItem Header="プロフィール">
@@ -709,6 +710,7 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
@@ -736,7 +738,263 @@
                                 <Label Content="ドラクエ歴" Grid.Row="8"/>
                                 <Label Content="メッセージ" Grid.Row="9"/>
                                 <Label Content="しばりプレイ" Grid.Row="10"/>
-                                <TextBox x:Name="TextBoxYochiMessage" Grid.Row="9" Grid.Column="1"/>
+                                <ComboBox Grid.Column="1"/>
+                                <TextBox x:Name="TextBoxYochiPassLv" Grid.Row="1" Grid.Column="1"/>
+                                <TextBox x:Name="TextBoxYochiPassStory" Grid.Row="2" Grid.Column="1"/>
+                                <ComboBox x:Name="ComboBoxYochiPassSex" Grid.Row="3" Grid.Column="1">
+                                    <ComboBoxItem Content="ないしょ"/>
+                                    <ComboBoxItem Content="男"/>
+                                    <ComboBoxItem Content="女"/>
+                                </ComboBox>
+                                <ComboBox x:Name="ComboBoxYochiPassPersonality" Grid.Row="4" Grid.Column="1">
+                                    <ComboBoxItem Content="ないしょ"/>
+                                    <ComboBoxItem Content="あたまでっかち"/>
+                                    <ComboBoxItem Content="あまえんぼう"/>
+                                    <ComboBoxItem Content="いくじなし"/>
+                                    <ComboBoxItem Content="いっぴきおおかみ"/>
+                                    <ComboBoxItem Content="いのちしらず"/>
+                                    <ComboBoxItem Content="うっかりもの"/>
+                                    <ComboBoxItem Content="おおぐらい"/>
+                                    <ComboBoxItem Content="おじょうさま"/>
+                                    <ComboBoxItem Content="おせっかい"/>
+                                    <ComboBoxItem Content="おちょうしもの"/>
+                                    <ComboBoxItem Content="おっちょこちょい"/>
+                                    <ComboBoxItem Content="おてんば"/>
+                                    <ComboBoxItem Content="おとこまさり"/>
+                                    <ComboBoxItem Content="がんこもの"/>
+                                    <ComboBoxItem Content="がんばりや"/>
+                                    <ComboBoxItem Content="きれもの"/>
+                                    <ComboBoxItem Content="くろうにん"/>
+                                    <ComboBoxItem Content="ごうけつ"/>
+                                    <ComboBoxItem Content="さびしがりや"/>
+                                    <ComboBoxItem Content="しあわせもの"/>
+                                    <ComboBoxItem Content="しょうじきもの"/>
+                                    <ComboBoxItem Content="ずのうめいせき"/>
+                                    <ComboBoxItem Content="すばしっこい"/>
+                                    <ComboBoxItem Content="セクシーギャル"/>
+                                    <ComboBoxItem Content="せけんしらず"/>
+                                    <ComboBoxItem Content="タフガイ"/>
+                                    <ComboBoxItem Content="ちからじまん"/>
+                                    <ComboBoxItem Content="てつじん"/>
+                                    <ComboBoxItem Content="でんこうせっか"/>
+                                    <ComboBoxItem Content="なきむし"/>
+                                    <ComboBoxItem Content="なまけもの"/>
+                                    <ComboBoxItem Content="ぬけめがない"/>
+                                    <ComboBoxItem Content="ねっけつかん"/>
+                                    <ComboBoxItem Content="のんきもの"/>
+                                    <ComboBoxItem Content="ひっこみじあん"/>
+                                    <ComboBoxItem Content="ひねくれもの"/>
+                                    <ComboBoxItem Content="ふつう"/>
+                                    <ComboBoxItem Content="へこたれない"/>
+                                    <ComboBoxItem Content="まけずぎらい"/>
+                                    <ComboBoxItem Content="みえっぱり"/>
+                                    <ComboBoxItem Content="むっちりスケベ"/>
+                                    <ComboBoxItem Content="やさしいひと"/>
+                                    <ComboBoxItem Content="ラッキーマン"/>
+                                    <ComboBoxItem Content="らんぼうもの"/>
+                                    <ComboBoxItem Content="ロマンチスト"/>
+                                    <ComboBoxItem Content="わがまま"/>
+                                    <ComboBoxItem Content="ヘンタイ2号"/>
+                                </ComboBox>
+                                <ComboBox x:Name="ComboBoxYochiPassAge" Grid.Row="5" Grid.Column="1">
+                                    <ComboBoxItem Content="ないしょ"/>
+                                    <ComboBoxItem Content="10代未満"/>
+                                    <ComboBoxItem Content="10代"/>
+                                    <ComboBoxItem Content="20代"/>
+                                    <ComboBoxItem Content="30代"/>
+                                    <ComboBoxItem Content="40代"/>
+                                    <ComboBoxItem Content="50代"/>
+                                    <ComboBoxItem Content="60代"/>
+                                    <ComboBoxItem Content="70代以上"/>
+                                </ComboBox>
+                                <ComboBox x:Name="ComboBoxYochiPassHobby" Grid.Row="6" Grid.Column="1">
+                                    <ComboBoxItem Content="ないしょ"/>
+                                    <ComboBoxItem Content="アウトドア"/>
+                                    <ComboBoxItem Content="水泳"/>
+                                    <ComboBoxItem Content="野球"/>
+                                    <ComboBoxItem Content="射撃"/>
+                                    <ComboBoxItem Content="筋トレ"/>
+                                    <ComboBoxItem Content="散歩"/>
+                                    <ComboBoxItem Content="自転車"/>
+                                    <ComboBoxItem Content="カヌー"/>
+                                    <ComboBoxItem Content="ゴルフ"/>
+                                    <ComboBoxItem Content="サーフィン"/>
+                                    <ComboBoxItem Content="サッカー"/>
+                                    <ComboBoxItem Content="乗馬"/>
+                                    <ComboBoxItem Content="サバゲー"/>
+                                    <ComboBoxItem Content="ダイビング"/>
+                                    <ComboBoxItem Content="スポーツ観戦"/>
+                                    <ComboBoxItem Content="ハイキング"/>
+                                    <ComboBoxItem Content="バスケットボール"/>
+                                    <ComboBoxItem Content="ダンス"/>
+                                    <ComboBoxItem Content="テニス"/>
+                                    <ComboBoxItem Content="ボルダリング"/>
+                                    <ComboBoxItem Content="アイドル"/>
+                                    <ComboBoxItem Content="ライブ"/>
+                                    <ComboBoxItem Content="ボイトレ"/>
+                                    <ComboBoxItem Content="楽器演奏"/>
+                                    <ComboBoxItem Content="カラオケ"/>
+                                    <ComboBoxItem Content="映像配信"/>
+                                    <ComboBoxItem Content="実況"/>
+                                    <ComboBoxItem Content="アニソン"/>
+                                    <ComboBoxItem Content="コスプレ"/>
+                                    <ComboBoxItem Content="お絵描き"/>
+                                    <ComboBoxItem Content="アニメ"/>
+                                    <ComboBoxItem Content="ゲーム"/>
+                                    <ComboBoxItem Content="ボードゲーム"/>
+                                    <ComboBoxItem Content="ネットゲーム"/>
+                                    <ComboBoxItem Content="カードゲーム"/>
+                                    <ComboBoxItem Content="人狼ゲーム"/>
+                                    <ComboBoxItem Content="謎解き"/>
+                                    <ComboBoxItem Content="麻雀"/>
+                                    <ComboBoxItem Content="パズル"/>
+                                    <ComboBoxItem Content="スマホ"/>
+                                    <ComboBoxItem Content="SNS"/>
+                                    <ComboBoxItem Content="ブログ"/>
+                                    <ComboBoxItem Content="インターネット"/>
+                                    <ComboBoxItem Content="オークション"/>
+                                    <ComboBoxItem Content="ショッピング"/>
+                                    <ComboBoxItem Content="ホームパーティー"/>
+                                    <ComboBoxItem Content="宴会"/>
+                                    <ComboBoxItem Content="旅行"/>
+                                    <ComboBoxItem Content="ドライブ"/>
+                                    <ComboBoxItem Content="廃墟巡り"/>
+                                    <ComboBoxItem Content="カメラ"/>
+                                    <ComboBoxItem Content="読書"/>
+                                    <ComboBoxItem Content="映画"/>
+                                    <ComboBoxItem Content="囲碁"/>
+                                    <ComboBoxItem Content="将棋"/>
+                                    <ComboBoxItem Content="株"/>
+                                    <ComboBoxItem Content="親孝行"/>
+                                    <ComboBoxItem Content="自分探し"/>
+                                    <ComboBoxItem Content="じゃんけん"/>
+                                    <ComboBoxItem Content="ツチノコ探し"/>
+                                    <ComboBoxItem Content="日曜大工"/>
+                                    <ComboBoxItem Content="プラモデル"/>
+                                    <ComboBoxItem Content="フルコンプ"/>
+                                    <ComboBoxItem Content="妄想"/>
+                                    <ComboBoxItem Content="食べること"/>
+                                    <ComboBoxItem Content="料理"/>
+                                    <ComboBoxItem Content="歴史"/>
+                                    <ComboBoxItem Content="人助け"/>
+                                    <ComboBoxItem Content="切手集め"/>
+                                    <ComboBoxItem Content="占い"/>
+                                    <ComboBoxItem Content="茶道"/>
+                                    <ComboBoxItem Content="貯金"/>
+                                    <ComboBoxItem Content="釣り"/>
+                                    <ComboBoxItem Content="鉄道"/>
+                                    <ComboBoxItem Content="勉強"/>
+                                    <ComboBoxItem Content="盆栽"/>
+                                    <ComboBoxItem Content="手芸"/>
+                                    <ComboBoxItem Content="おしゃべり"/>
+                                    <ComboBoxItem Content="オシャレ"/>
+                                    <ComboBoxItem Content="おそうじ"/>
+                                    <ComboBoxItem Content="ダイエット"/>
+                                    <ComboBoxItem Content="ネイルアート"/>
+                                    <ComboBoxItem Content="ネコ"/>
+                                    <ComboBoxItem Content="イヌ"/>
+                                    <ComboBoxItem Content="ねること"/>
+                                    <ComboBoxItem Content="冒険"/>
+                                    <ComboBoxItem Content="レベル上げ"/>
+                                    <ComboBoxItem Content="錬金・"/>
+                                    <ComboBoxItem Content="しばりプレイ"/>
+                                    <ComboBoxItem Content="ぱふぱふ"/>
+                                    <ComboBoxItem Content="メタル狩り"/>
+                                    <ComboBoxItem Content="ルーレット"/>
+                                    <ComboBoxItem Content="ポーカー"/>
+                                    <ComboBoxItem Content="スロット"/>
+                                    <ComboBoxItem Content="ひとりキャンプ"/>
+                                </ComboBox>
+                                <ComboBox x:Name="ComboBoxYochiPassGraduate" Grid.Row="7" Grid.Column="1">
+                                    <ComboBoxItem Content="ないしょ"/>
+                                    <ComboBoxItem Content="北海道"/>
+                                    <ComboBoxItem Content="青森"/>
+                                    <ComboBoxItem Content="岩手"/>
+                                    <ComboBoxItem Content="宮城"/>
+                                    <ComboBoxItem Content="秋田"/>
+                                    <ComboBoxItem Content="山形"/>
+                                    <ComboBoxItem Content="福島"/>
+                                    <ComboBoxItem Content="茨木"/>
+                                    <ComboBoxItem Content="栃木"/>
+                                    <ComboBoxItem Content="群馬"/>
+                                    <ComboBoxItem Content="埼玉"/>
+                                    <ComboBoxItem Content="千葉"/>
+                                    <ComboBoxItem Content="東京"/>
+                                    <ComboBoxItem Content="神奈川"/>
+                                    <ComboBoxItem Content="新潟"/>
+                                    <ComboBoxItem Content="山梨"/>
+                                    <ComboBoxItem Content="長野"/>
+                                    <ComboBoxItem Content="富山"/>
+                                    <ComboBoxItem Content="石川"/>
+                                    <ComboBoxItem Content="福井"/>
+                                    <ComboBoxItem Content="岐阜"/>
+                                    <ComboBoxItem Content="静岡"/>
+                                    <ComboBoxItem Content="愛知"/>
+                                    <ComboBoxItem Content="三重"/>
+                                    <ComboBoxItem Content="滋賀"/>
+                                    <ComboBoxItem Content="京都"/>
+                                    <ComboBoxItem Content="大阪"/>
+                                    <ComboBoxItem Content="兵庫"/>
+                                    <ComboBoxItem Content="奈良"/>
+                                    <ComboBoxItem Content="和歌山"/>
+                                    <ComboBoxItem Content="鳥取"/>
+                                    <ComboBoxItem Content="島根"/>
+                                    <ComboBoxItem Content="岡山"/>
+                                    <ComboBoxItem Content="広島"/>
+                                    <ComboBoxItem Content="山口"/>
+                                    <ComboBoxItem Content="徳島"/>
+                                    <ComboBoxItem Content="香川"/>
+                                    <ComboBoxItem Content="愛知"/>
+                                    <ComboBoxItem Content="高知"/>
+                                    <ComboBoxItem Content="福岡"/>
+                                    <ComboBoxItem Content="佐賀"/>
+                                    <ComboBoxItem Content="長崎"/>
+                                    <ComboBoxItem Content="熊本"/>
+                                    <ComboBoxItem Content="大分"/>
+                                    <ComboBoxItem Content="宮崎"/>
+                                    <ComboBoxItem Content="鹿児島"/>
+                                    <ComboBoxItem Content="沖縄"/>
+                                    <ComboBoxItem Content="アジア"/>
+                                    <ComboBoxItem Content="ヨーロッパ"/>
+                                    <ComboBoxItem Content="アフリカ"/>
+                                    <ComboBoxItem Content="アメリカ"/>
+                                    <ComboBoxItem Content="オセアニア"/>
+                                    <ComboBoxItem Content="南極"/>
+                                    <ComboBoxItem Content="いなか"/>
+                                    <ComboBoxItem Content="都会"/>
+                                    <ComboBoxItem Content="遠い国"/>
+                                    <ComboBoxItem Content="アレフガルド"/>
+                                    <ComboBoxItem Content="ロトゼタシア"/>
+                                    <ComboBoxItem Content="アストルティア"/>
+                                    <ComboBoxItem Content="ラダトーム"/>
+                                    <ComboBoxItem Content="ローレンシア"/>
+                                    <ComboBoxItem Content="アリアハン"/>
+                                    <ComboBoxItem Content="山奥の村"/>
+                                    <ComboBoxItem Content="サンタローズ"/>
+                                    <ComboBoxItem Content="ライフコッド"/>
+                                    <ComboBoxItem Content="フィッシュベル"/>
+                                    <ComboBoxItem Content="トラペッタ"/>
+                                    <ComboBoxItem Content="ウォルロ村"/>
+                                    <ComboBoxItem Content="エテーネの村"/>
+                                    <ComboBoxItem Content="イシの村"/>
+                                    <ComboBoxItem Content="ぱふぱふ小屋"/>
+                                    <ComboBoxItem Content="森の中"/>
+                                    <ComboBoxItem Content="こたつ"/>
+                                </ComboBox>
+                                <ComboBox x:Name="ComboBoxYochiPassHistory" Grid.Row="8" Grid.Column="1">
+                                    <ComboBoxItem Content="ないしょ"/>
+                                    <ComboBoxItem Content="みならい"/>
+                                    <ComboBoxItem Content="かけだし"/>
+                                    <ComboBoxItem Content="うできき"/>
+                                    <ComboBoxItem Content="れきせん"/>
+                                    <ComboBoxItem Content="ふるかぶ"/>
+                                </ComboBox>
+                                <TextBox x:Name="TextBoxYochiPassMessage" Grid.Row="9" Grid.Column="1"/>
+                                <CheckBox x:Name="CheckBoxYochiPassEscapeNG" Content="戦闘から逃げられない" Grid.Row="10" Grid.Column="1" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="CheckBoxYochiPassShopNG" Content="買い物ができない" Grid.Row="11" Grid.Column="1" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="CheckBoxYochiPassArmorNG" Content="防具を装備できない" Grid.Row="12" Grid.Column="1" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="CheckBoxYochiPassAshamed" Content="はずかしい呪い" Grid.Row="13" Grid.Column="1" VerticalAlignment="Center"/>
+                                <Button Grid.Row="14" Grid.RowSpan="2" Grid.ColumnSpan="2" Content="決定" Click="ButtonYochiStatusDecision_Click"/>
                             </Grid>
                         </TabItem>
                     </TabControl>
