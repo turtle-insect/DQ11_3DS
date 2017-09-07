@@ -1023,6 +1023,27 @@
                     </Grid>
                 </Grid>
             </TabItem>
+            <TabItem Header="冒険の書の合言葉">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxWatchWorld"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonWatchWorldCheck">
+                            <Image Source="{StaticResource Check}"/>
+                        </Button>
+                        <Button x:Name="ButtonWatchWorldUnCheck" Grid.Column="1">
+                            <Image Source="{StaticResource UnCheck}"/>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
             <TabItem Header="すれちがい">
                 <Grid>
                     <Grid.ColumnDefinitions>

@@ -131,6 +131,9 @@ namespace DQ11
 			mHatButtonCheck = new ButtonCheckObserver(ButtonHatCheck, ButtonHatUnCheck);
 			CreateHat(mAllStatusList, StackPanelHat);
 
+			// 冒険の書の合言葉.
+			mAllStatusList.Add(new WatchWord(ListBoxWatchWorld, ButtonWatchWorldCheck, ButtonWatchWorldUnCheck));
+
 			// すれちがい.
 			mAllStatusList.Add(new AllStringStatus(TextBoxPassName, 0xC46C, 6));
 			mAllStatusList.Add(new AllStringStatus(TextBoxPassMessage, 0xC47A, 16));

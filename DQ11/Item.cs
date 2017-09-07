@@ -18,6 +18,7 @@ namespace DQ11
 		public List<ItemInfo> Storys { get; private set; } = new List<ItemInfo>();
 		public List<ItemInfo> Techniques { get; private set; } = new List<ItemInfo>();
 		public List<ItemInfo> Monsters { get; private set; } = new List<ItemInfo>();
+		public List<ItemInfo> WatchWords { get; private set; } = new List<ItemInfo>();
 		// #で始まる文字はコメント扱い
 		// タブ区切りで解釈
 		// ID\t名前で区切られている前提として扱う
@@ -48,6 +49,7 @@ namespace DQ11
 			AppendList("item\\story.txt", Storys);
 			AppendList("item\\technique.txt", Techniques);
 			AppendList("item\\monster.txt", Monsters);
+			AppendList("item\\watchword.txt", WatchWords);
 			Tools.Sort((a, b) => (int)(a.ID - b.ID));
 			Equipments.Sort((a, b) => (int)(a.ID - b.ID));
 		}

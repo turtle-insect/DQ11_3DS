@@ -109,6 +109,7 @@
     <Compile Include="Technique.cs" />
     <Compile Include="TitleObtain.cs" />
     <Compile Include="Util.cs" />
+    <Compile Include="WatchWord.cs" />
     <Compile Include="YochiHat.cs" />
     <Compile Include="YochiWeapon.cs" />
     <Compile Include="Zoom.cs" />
