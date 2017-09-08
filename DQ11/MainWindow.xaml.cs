@@ -154,6 +154,7 @@ namespace DQ11
 			mAllStatusList.Add(new AllNumberStatus(TextBoxSmallMedal, 0x6FE4, 4, 0, 9999999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxTotalSmallMedal, 0x6FE8, 4, 0, 9999999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxDepositSmallMedal, 0x6FF0, 4, 0, 9999999));
+			mAllStatusList.Add(new AllNumberStatus(TextBoxJewel, 0x962C, 4, 0, 9999999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxBlackSmith, 0x67E8, 4, 0, 9999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxCamp, 0x67A8, 4, 0, 9999));
 			mAllStatusList.Add(new AllNumberStatus(TextBoxINI, 0x67AC, 4, 0, 9999));

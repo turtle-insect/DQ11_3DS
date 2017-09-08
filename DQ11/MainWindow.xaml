@@ -79,6 +79,8 @@
                         <Label Content="枚" Grid.Row="6" Grid.Column="2"/>
                         <Label Content="あずけたメダル" Grid.Row="7"/>
                         <Label Content="枚" Grid.Row="7" Grid.Column="2"/>
+                        <Label Content="うちなおしの宝珠" Grid.Row="8"/>
+                        <Label Content="こ" Grid.Row="8" Grid.Column="2"/>
                         <TextBox x:Name="TextBoxPlayHour" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxPlayMinute" Grid.Row="1" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxPlaySecond" Grid.Row="2" Grid.Column="1"/>
@@ -87,6 +89,7 @@
                         <TextBox x:Name="TextBoxCasinoCoin" Grid.Row="5" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxSmallMedal" Grid.Row="6" Grid.Column="1"/>
                         <TextBox x:Name="TextBoxDepositSmallMedal" Grid.Row="7" Grid.Column="1"/>
+                        <TextBox x:Name="TextBoxJewel" Grid.Row="8" Grid.Column="1"/>
                     </Grid>
                     <Grid Grid.Column="2">
                         <Grid.ColumnDefinitions>
