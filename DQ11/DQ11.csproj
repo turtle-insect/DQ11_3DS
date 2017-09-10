@@ -104,7 +104,6 @@
     <Compile Include="ListStatus.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="PartyOrder.cs" />
-    <Compile Include="PlayTime.cs" />
     <Compile Include="Quest.cs" />
     <Compile Include="SaveData.cs" />
     <Compile Include="Story.cs" />

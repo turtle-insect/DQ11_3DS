@@ -13,12 +13,6 @@ namespace DQ11
 
 		public override void Read()
 		{
-			mParty.Items.Clear();
-			foreach (String name in Util.GetPartyNames())
-			{
-				mParty.Items.Add(name);
-			}
-			mParty.SelectedIndex = 0;
 			uint value = SaveData.Instance().ReadNumber(Util.PartyStartAddress + Base, 1);
 			if (value == 0xFF) return;
 			mParty.SelectedIndex = (int)value;

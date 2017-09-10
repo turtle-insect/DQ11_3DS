@@ -81,15 +81,15 @@
                         <Label Content="枚" Grid.Row="7" Grid.Column="2"/>
                         <Label Content="うちなおしの宝珠" Grid.Row="8"/>
                         <Label Content="こ" Grid.Row="8" Grid.Column="2"/>
-                        <TextBox x:Name="TextBoxPlayHour" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxPlayMinute" Grid.Row="1" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxPlaySecond" Grid.Row="2" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxGoldHand" Grid.Row="3" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxGoldBank" Grid.Row="4" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCasinoCoin" Grid.Row="5" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxSmallMedal" Grid.Row="6" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxDepositSmallMedal" Grid.Row="7" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxJewel" Grid.Row="8" Grid.Column="1"/>
+                        <TextBox Grid.Column="1" Text="{Binding PlayHour, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding PlayMinute, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding PlaySecond, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding GoldHand, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding GoldBank, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding GoldCasinoCoin, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SmallMedal, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding DepositSmallMedal, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding RebuildJewel, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
                     <Grid Grid.Column="2">
                         <Grid.ColumnDefinitions>
@@ -138,17 +138,17 @@
                         <Label Content="回" Grid.Row="10" Grid.Column="2"/>
                         <Label Content="ルーレットを遊んだ回数" Grid.Row="11"/>
                         <Label Content="回" Grid.Row="11" Grid.Column="2"/>
-                        <TextBox x:Name="TextBoxKnockDownMonster" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxBlackSmith" Grid.Row="1" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxTotalGold" Grid.Row="2" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxTotalSmallMedal" Grid.Row="3" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxBreak" Grid.Row="4" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCamp" Grid.Row="5" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxINI" Grid.Row="6" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCooperation" Grid.Row="7" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxSlot" Grid.Row="9" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxPoker" Grid.Row="10" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxRoulette" Grid.Row="11" Grid.Column="1"/>
+                        <TextBox Grid.Column="1" Text="{Binding KillMonster, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding BlackSmith, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TotalGold, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding TotalSmallMedal, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Break, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Camp, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding INI, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Cooperation, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Slot, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Poker, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding Roulette, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -453,7 +453,7 @@
                         </Button>
                     </Grid>
                     <StackPanel Grid.Row="1" Grid.Column="1">
-                        <ComboBox x:Name="ComboBoxPartyOrder"/>
+                        <ComboBox x:Name="ComboBoxPartyOrder" ItemsSource="{Binding ElementName=ListBoxChar, Path=Items}" DisplayMemberPath="Name"/>
                         <Button x:Name="ButtonPartyDecision" Content="決定" Click="ButtonPartyDecision_Click"/>
                     </StackPanel>
                 </Grid>
@@ -1064,38 +1064,38 @@
                         <Label Content="Cスティック" Grid.Row="9"/>
                         <Label Content="表示モード" Grid.Row="10"/>
 
-                        <CheckBox x:Name="CheckBoxEscapeNG" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <CheckBox x:Name="CheckBoxShopNG" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <CheckBox x:Name="CheckBoxArmorNG" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <CheckBox x:Name="CheckBoxAshamed" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="ComboBoxBattleSpeed" Grid.Row="5" Grid.Column="1">
+                        <CheckBox Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding EscapeNG}"/>
+                        <CheckBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding ShopNG}"/>
+                        <CheckBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding ArmorNG}"/>
+                        <CheckBox Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding Ashamed}"/>
+                        <ComboBox Grid.Row="5" Grid.Column="1" SelectedIndex="{Binding BattleSpeed}">
                             <ComboBoxItem Content="はやい"/>
                             <ComboBoxItem Content="ふつう"/>
                             <ComboBoxItem Content="おそい"/>
                         </ComboBox>
-                        <ComboBox x:Name="ComboBoxBGMVolume" Grid.Row="6" Grid.Column="1">
+                        <ComboBox Grid.Row="6" Grid.Column="1" SelectedIndex="{Binding BGMVolume}">
                             <ComboBoxItem Content="1"/>
                             <ComboBoxItem Content="2"/>
                             <ComboBoxItem Content="3"/>
                             <ComboBoxItem Content="4"/>
                             <ComboBoxItem Content="5"/>
                         </ComboBox>
-                        <ComboBox x:Name="ComboBoxSEVolume" Grid.Row="7" Grid.Column="1">
+                        <ComboBox Grid.Row="7" Grid.Column="1" SelectedIndex="{Binding SEVolume}">
                             <ComboBoxItem Content="1"/>
                             <ComboBoxItem Content="2"/>
                             <ComboBoxItem Content="3"/>
                             <ComboBoxItem Content="4"/>
                             <ComboBoxItem Content="5"/>
                         </ComboBox>
-                        <ComboBox x:Name="ComboBoxCameraRotate" Grid.Row="8" Grid.Column="1">
+                        <ComboBox Grid.Row="8" Grid.Column="1" SelectedIndex="{Binding CameraRotate}">
                             <ComboBoxItem Content="ノーマル"/>
                             <ComboBoxItem Content="リバース"/>
                         </ComboBox>
-                        <ComboBox x:Name="ComboBoxCStickRotate" Grid.Row="9" Grid.Column="1">
+                        <ComboBox Grid.Row="9" Grid.Column="1" SelectedIndex="{Binding CStickRotate}">
                             <ComboBoxItem Content="ノーマル"/>
                             <ComboBoxItem Content="リバース"/>
                         </ComboBox>
-                        <ComboBox x:Name="ComboBoxViewMode" Grid.Row="10" Grid.Column="1">
+                        <ComboBox Grid.Row="10" Grid.Column="1" SelectedIndex="{Binding ViewMode}">
                             <ComboBoxItem Content="2D"/>
                             <ComboBoxItem Content="3D"/>
                             <ComboBoxItem Content="両方"/>

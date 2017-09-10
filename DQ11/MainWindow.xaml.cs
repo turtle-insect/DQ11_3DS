@@ -11,8 +11,6 @@ namespace DQ11
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private DataContext mContext = new DataContext();
-
 		private List<ListStatus> mYochiStatusList;
 		private List<ListStatus> mPartyStatusList;
 		private List<AllStatus> mAllStatusList;
@@ -27,34 +25,12 @@ namespace DQ11
 		public MainWindow()
 		{
 			InitializeComponent();
-			DataContext = mContext;
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			Item.Instance();
 			SaveData.Instance();
-
-			// キャラクタ.
-			//mCharStatusList.Add(new CharChoiceStatus(ComboBoxCharStrategy, 0x1C, 1));
-			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName01, ButtonCharItemChange01, 0));
-			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName02, ButtonCharItemChange02, 2));
-			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName03, ButtonCharItemChange03, 4));
-			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName04, ButtonCharItemChange04, 6));
-			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName05, ButtonCharItemChange05, 8));
-			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName06, ButtonCharItemChange06, 10));
-			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName07, ButtonCharItemChange07, 12));
-			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName08, ButtonCharItemChange08, 14));
-			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName09, ButtonCharItemChange09, 16));
-			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName10, ButtonCharItemChange10, 18));
-			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName11, ButtonCharItemChange11, 20));
-			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName12, ButtonCharItemChange12, 22));
-			//mCharStatusList.Add(new CharEquepment(ComboBoxCharRightHand, 0x54));
-			//mCharStatusList.Add(new CharEquepment(ComboBoxCharLeftHand, 0x55));
-			//mCharStatusList.Add(new CharEquepment(ComboBoxCharHead, 0x56));
-			//mCharStatusList.Add(new CharEquepment(ComboBoxCharBody, 0x57));
-			//mCharStatusList.Add(new CharEquepment(ComboBoxCharAccessory1, 0x58));
-			//mCharStatusList.Add(new CharEquepment(ComboBoxCharAccessory2, 0x59));
 
 			// ヨッチ族.
 			mYochiStatusList = new List<ListStatus>();
@@ -131,26 +107,6 @@ namespace DQ11
 			// クエスト.
 			mAllStatusList.Add(new Quest(ListBoxQuest, ComboBoxQuestState, ButtonQuestPatch));
 
-			// 基本.
-			mAllStatusList.Add(new PlayTime(TextBoxPlayHour, TextBoxPlayMinute, TextBoxPlaySecond));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldHand, 0x3E28, 4, 0, 9999999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxTotalGold, 0x3E2C, 4, 0, 9999999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxGoldBank, 0x6584, 4, 0, 9999999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxCasinoCoin, 0x6FF4, 4, 0, 9999999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxSmallMedal, 0x6FE4, 4, 0, 9999999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxTotalSmallMedal, 0x6FE8, 4, 0, 9999999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxDepositSmallMedal, 0x6FF0, 4, 0, 9999999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxJewel, 0x962C, 4, 0, 9999999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxBlackSmith, 0x67E8, 4, 0, 9999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxCamp, 0x67A8, 4, 0, 9999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxINI, 0x67AC, 4, 0, 9999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxBreak, 0x67B4, 4, 0, 9999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxCooperation, 0x6798, 4, 0, 9999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxSlot, 0x67DC, 4, 0, 9999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxPoker, 0x67C4, 4, 0, 9999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxRoulette, 0x67D0, 4, 0, 9999));
-			mAllStatusList.Add(new AllNumberStatus(TextBoxKnockDownMonster, 0x3E30, 4, 0, 9999999));
-
 			// パーティー.
 			mPartyStatusList = new List<ListStatus>();
 			mParty = new ListActionObserver(ListBoxParty,
@@ -163,18 +119,7 @@ namespace DQ11
 
 			// ストーリー.
 			mAllStatusList.Add(new Story(ListBoxStory, ButtonStoryCheck, ButtonStoryUnCheck));
-
-			// システム.
-			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxEscapeNG, 0x6A7F));
-			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxShopNG, 0x6A80));
-			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxArmorNG, 0x6A81));
-			mAllStatusList.Add(new AllCheckBoxStatus(CheckBoxAshamed, 0x6A83));
-			mAllStatusList.Add(new AllChoiceStatus(ComboBoxBattleSpeed, 0x6FBF, 1));
-			mAllStatusList.Add(new AllChoiceStatus(ComboBoxBGMVolume, 0x6FC0, 1));
-			mAllStatusList.Add(new AllChoiceStatus(ComboBoxSEVolume, 0x6FC1, 1));
-			mAllStatusList.Add(new AllChoiceStatus(ComboBoxCameraRotate, 0x6FC2, 1));
-			mAllStatusList.Add(new AllChoiceStatus(ComboBoxCStickRotate, 0x6FC3, 1));
-			mAllStatusList.Add(new AllChoiceStatus(ComboBoxViewMode, 0x6FCC, 1));
+			
 			mAllStatusList.ForEach(x => x.Init());
 		}
 
@@ -383,7 +328,7 @@ namespace DQ11
 			}
 
 			Init();
-			mContext.Init();
+			DataContext = new DataContext();
 			MessageBox.Show("読込成功");
 		}
 
