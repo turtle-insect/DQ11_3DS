@@ -17,8 +17,7 @@ namespace DQ11
 		};
 
 		public eType Type { private get; set; } = eType.All;
-		public ItemInfo Info { get; set; } = null;
-		public uint Kind { get; set; }
+		public uint ID;
 
 		public ItemSelectWindow()
 		{
@@ -28,10 +27,12 @@ namespace DQ11
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			CreateItemList("");
-			if (Info != null && Info != Item.Instance().None)
+			Item item = Item.Instance();
+			ItemInfo info = item.GetItemInfo(ID);
+			if (info != null && info != Item.Instance().None)
 			{
-				ListBoxItem.SelectedItem = Info;
-				ListBoxItem.ScrollIntoView(Info);
+				ListBoxItem.SelectedItem = info;
+				ListBoxItem.ScrollIntoView(info);
 			}
 		}
 
@@ -64,10 +65,12 @@ namespace DQ11
 
 		private void ButtonDecision_Click(object sender, RoutedEventArgs e)
 		{
-			Info = ListBoxItem.SelectedItem as ItemInfo;
+			ItemInfo info = ListBoxItem.SelectedItem as ItemInfo;
+			if (info == null) return;
+			uint value = info.ID;
 			int index = ComboBoxOption.SelectedIndex;
 			if (index < 0) index = 0;
-			Kind = (uint)index;
+			ID = (uint)(value + index);
 			Close();
 		}
 

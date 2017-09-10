@@ -41,5 +41,13 @@ namespace DQ11
 			}
 			return result;
 		}
+
+		public static void WriteNumber(uint address, uint size, String text, uint min, uint max)
+		{
+			uint value = Convert.ToUInt32(text);
+			if (value < min) value = min;
+			if (value > max) value = max;
+			SaveData.Instance().WriteNumber(address, size, value);
+		}
 	}
 }

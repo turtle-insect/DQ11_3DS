@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DQ11"
         mc:Ignorable="d"
-        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="670" Width="800"
+        Title="DQ11 セーブデータ改造(Nintendo 3DS)" Height="650" Width="800"
         WindowStartupLocation="CenterScreen"
         AllowDrop="True" Drop="Window_Drop" PreviewDragOver="Window_PreviewDragOver"
         Loaded="Window_Loaded">
@@ -160,7 +160,7 @@
                         <ColumnDefinition Width="5"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="ListBoxChar" SelectionChanged="ListBoxChar_SelectionChanged"/>
+                    <ListBox x:Name="ListBoxChar" ItemsSource="{Binding Char}" DisplayMemberPath="Name"/>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -200,22 +200,22 @@
                         <Label Content="みりょく+" Grid.Row="13"/>
                         <Label Content="スキル＋" Grid.Row="14"/>
                         <Label Content="作戦" Grid.Row="15"/>
-                        <TextBox x:Name="TextBoxCharName" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharLv" Grid.Row="1" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharExp" Grid.Row="2" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharHP" Grid.Row="3" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharMP" Grid.Row="4" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharMaxHP" Grid.Row="5" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharMaxMP" Grid.Row="6" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharAttackMagic" Grid.Row="7" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharHealMagic" Grid.Row="8" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharAttack" Grid.Row="9" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharDiffence" Grid.Row="10" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharSpeed" Grid.Row="11" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharSkillful" Grid.Row="12" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharCharm" Grid.Row="13" Grid.Column="1"/>
-                        <TextBox x:Name="TextBoxCharSkill" Grid.Row="14" Grid.Column="1"/>
-                        <ComboBox x:Name="ComboBoxCharStrategy" Grid.Row="15" Grid.Column="1">
+                        <TextBox Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Name}"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Lv}"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Exp}"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.HP}"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.MP}"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.MaxHP}"/>
+                        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.MaxMP}"/>
+                        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.AttackMagic}"/>
+                        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.HealMagic}"/>
+                        <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Attack}"/>
+                        <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Diffence}"/>
+                        <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Speed}"/>
+                        <TextBox Grid.Row="12" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Skillful}"/>
+                        <TextBox Grid.Row="13" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Charm}"/>
+                        <TextBox Grid.Row="14" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Skill}"/>
+                        <ComboBox x:Name="ComboBoxCharStrategy" Grid.Row="15" Grid.Column="1" SelectedIndex="{Binding ElementName=ListBoxChar, Path=SelectedItem.Strategy}">
                             <ComboBoxItem Content="ガンガンいこうぜ"/>
                             <ComboBoxItem Content="バッチリがんばれ"/>
                             <ComboBoxItem Content="いろいろやろうぜ"/>
@@ -224,107 +224,49 @@
                             <ComboBoxItem Content="めいれいさせろ"/>
                         </ComboBox>
                     </Grid>
-                    <StackPanel Grid.Column="3">
-                        <ComboBox x:Name="ComboBoxCharItemPage" SelectionChanged="ComboBoxCharItemPage_SelectionChanged">
-                            <ComboBoxItem Content="1 / 2"/>
-                            <ComboBoxItem Content="2 / 2"/>
-                        </ComboBox>
-                        <StackPanel Margin="0,5,0,0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition Width="40"/>
-                                </Grid.ColumnDefinitions>
-                                <Label x:Name="LabelCharItemName01" Content=""/>
-                                <Label x:Name="LabelCharItemName02" Grid.Row="1" Content=""/>
-                                <Label x:Name="LabelCharItemName03" Grid.Row="2" Content=""/>
-                                <Label x:Name="LabelCharItemName04" Grid.Row="3" Content=""/>
-                                <Label x:Name="LabelCharItemName05" Grid.Row="4" Content=""/>
-                                <Label x:Name="LabelCharItemName06" Grid.Row="5" Content=""/>
-                                <Label x:Name="LabelCharItemName07" Grid.Row="6" Content=""/>
-                                <Label x:Name="LabelCharItemName08" Grid.Row="7" Content=""/>
-                                <Label x:Name="LabelCharItemName09"  Grid.Row="8" Content=""/>
-                                <Label x:Name="LabelCharItemName10" Grid.Row="9" Content=""/>
-                                <Label x:Name="LabelCharItemName11" Grid.Row="10" Content=""/>
-                                <Label x:Name="LabelCharItemName12" Grid.Row="11" Content=""/>
-
-                                <Button x:Name="ButtonCharItemChange01" Grid.Column="1" Content="..."/>
-                                <Button x:Name="ButtonCharItemChange02" Grid.Row="1" Grid.Column="1" Content="..."/>
-                                <Button x:Name="ButtonCharItemChange03" Grid.Row="2" Grid.Column="1" Content="..."/>
-                                <Button x:Name="ButtonCharItemChange04" Grid.Row="3" Grid.Column="1" Content="..."/>
-                                <Button x:Name="ButtonCharItemChange05" Grid.Row="4" Grid.Column="1" Content="..."/>
-                                <Button x:Name="ButtonCharItemChange06" Grid.Row="5" Grid.Column="1" Content="..."/>
-                                <Button x:Name="ButtonCharItemChange07" Grid.Row="6" Grid.Column="1" Content="..."/>
-                                <Button x:Name="ButtonCharItemChange08" Grid.Row="7" Grid.Column="1" Content="..."/>
-                                <Button x:Name="ButtonCharItemChange09" Grid.Row="8" Grid.Column="1" Content="..."/>
-                                <Button x:Name="ButtonCharItemChange10" Grid.Row="9" Grid.Column="1" Content="..."/>
-                                <Button x:Name="ButtonCharItemChange11" Grid.Row="10" Grid.Column="1" Content="..."/>
-                                <Button x:Name="ButtonCharItemChange12" Grid.Row="11" Grid.Column="1" Content="..."/>
-                            </Grid>
-                            <Grid Margin="0,5,0,0">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50"/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition Width="50"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Label Content="装備"/>
-                                <Label Content="右手" Grid.Row="1"/>
-                                <Label Content="左手" Grid.Row="1" Grid.Column="2"/>
-                                <Label Content="頭" Grid.Row="2"/>
-                                <Label Content="体" Grid.Row="2" Grid.Column="2"/>
-                                <Label Content="アクセ1" Grid.Row="3"/>
-                                <Label Content="アクセ2" Grid.Row="3" Grid.Column="2"/>
-                                <ComboBox x:Name="ComboBoxCharRightHand" Grid.Row="1" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharLeftHand" Grid.Row="1" Grid.Column="3"/>
-                                <ComboBox x:Name="ComboBoxCharHead" Grid.Row="2" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharBody" Grid.Row="2" Grid.Column="3"/>
-                                <ComboBox x:Name="ComboBoxCharAccessory1" Grid.Row="3" Grid.Column="1"/>
-                                <ComboBox x:Name="ComboBoxCharAccessory2" Grid.Row="3" Grid.Column="3"/>
-                            </Grid>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Grid.Column="3" VerticalAlignment="Bottom">
-                        <Grid>
+                    <Grid Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ListBox x:Name="ListBoxCharItem" ItemsSource="{Binding ElementName=ListBoxChar, Path=SelectedItem.Item}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="ButtonCharItemChange" Content=" ... " Click="ButtonCharItemChange_Click"/>
+                                        <Label Content="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Grid Grid.Row="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
-                                <RowDefinition Height="3"/>
                                 <RowDefinition/>
-                                <RowDefinition Height="3"/>
-                                <RowDefinition Height="50"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
                                 <ColumnDefinition/>
-                                <ColumnDefinition Width="3"/>
+                                <ColumnDefinition Width="50"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="ButtonCharStatusCopy" Content="コピー" Click="ButtonCharStatusCopy_Click"/>
-                            <Button x:Name="ButtonCharStatusPaste" Content="貼付" Grid.Column="2" Click="ButtonCharStatusPaste_Click"/>
-                            <Button x:Name="ButtonCharStatusMin" Content="最弱" Grid.Row="2" Click="ButtonCharStatusMin_Click"/>
-                            <Button x:Name="ButtonCharStatusMax" Content="最強" Grid.Row="2" Grid.Column="2" Click="ButtonCharStatusMax_Click"/>
-                            <Button x:Name="ButtonCharStatusDecision" Content="決定" Grid.Row="4" Grid.ColumnSpan="3" Click="ButtonCharStatusDecision_Click"/>
+                            <Label Content="装備"/>
+                            <Label Content="右手" Grid.Row="1"/>
+                            <Label Content="左手" Grid.Row="1" Grid.Column="2"/>
+                            <Label Content="頭" Grid.Row="2"/>
+                            <Label Content="体" Grid.Row="2" Grid.Column="2"/>
+                            <Label Content="アクセ1" Grid.Row="3"/>
+                            <Label Content="アクセ2" Grid.Row="3" Grid.Column="2"/>
+                            <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ElementName=ListBoxCharItem, Path=Items}" DisplayMemberPath="Name" SelectedIndex="{Binding ElementName=ListBoxChar, Path=SelectedItem.EquipRightHand}"/>
+                            <ComboBox Grid.Row="1" Grid.Column="3" ItemsSource="{Binding ElementName=ListBoxCharItem, Path=Items}" DisplayMemberPath="Name" SelectedIndex="{Binding ElementName=ListBoxChar, Path=SelectedItem.EquipLeftHand}"/>
+                            <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding ElementName=ListBoxCharItem, Path=Items}" DisplayMemberPath="Name" SelectedIndex="{Binding ElementName=ListBoxChar, Path=SelectedItem.EquipHead}"/>
+                            <ComboBox Grid.Row="2" Grid.Column="3" ItemsSource="{Binding ElementName=ListBoxCharItem, Path=Items}" DisplayMemberPath="Name" SelectedIndex="{Binding ElementName=ListBoxChar, Path=SelectedItem.EquipBody}"/>
+                            <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding ElementName=ListBoxCharItem, Path=Items}" DisplayMemberPath="Name" SelectedIndex="{Binding ElementName=ListBoxChar, Path=SelectedItem.EquipAccessory1}"/>
+                            <ComboBox Grid.Row="3" Grid.Column="3" ItemsSource="{Binding ElementName=ListBoxCharItem, Path=Items}" DisplayMemberPath="Name" SelectedIndex="{Binding ElementName=ListBoxChar, Path=SelectedItem.EquipAccessory2}"/>
                         </Grid>
-                    </StackPanel>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="れんけい・スキル">

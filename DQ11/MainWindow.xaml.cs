@@ -11,7 +11,8 @@ namespace DQ11
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private List<ListStatus> mCharStatusList;
+		private DataContext mContext = new DataContext();
+
 		private List<ListStatus> mYochiStatusList;
 		private List<ListStatus> mPartyStatusList;
 		private List<AllStatus> mAllStatusList;
@@ -26,49 +27,34 @@ namespace DQ11
 		public MainWindow()
 		{
 			InitializeComponent();
+			DataContext = mContext;
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			Item.Instance();
 			SaveData.Instance();
+
 			// キャラクタ.
-			mCharStatusList = new List<ListStatus>();
-			mCharStatusList.Add(new CharStringStatus(TextBoxCharName, 0x2, 6));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharLv, 0x10, 1, 1, 99));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharExp, 0x14, 4, 0, 9999999));
-			mCharStatusList.Add(new CharChoiceStatus(ComboBoxCharStrategy, 0x1C, 1));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharHP, 0x20, 2, 1, 999));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharMP, 0x22, 2, 0, 999));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharMaxHP, 0x100, 2, 0, 999));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharMaxMP, 0x102, 2, 0, 999));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharAttackMagic, 0x10C, 2, 0, 999));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharHealMagic, 0x10E, 2, 0, 999));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharAttack, 0x104, 2, 0, 999));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharDiffence, 0x10A, 2, 0, 999));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharSpeed, 0x108, 2, 0, 999));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharSkillful, 0x106, 2, 0, 999));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharCharm, 0x110, 2, 0, 999));
-			mCharStatusList.Add(new CharNumberStatus(TextBoxCharSkill, 0x112, 2, 0, 999));
-			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, LabelCharItemName01, ButtonCharItemChange01, 0));
-			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, LabelCharItemName02, ButtonCharItemChange02, 2));
-			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, LabelCharItemName03, ButtonCharItemChange03, 4));
-			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, LabelCharItemName04, ButtonCharItemChange04, 6));
-			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, LabelCharItemName05, ButtonCharItemChange05, 8));
-			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, LabelCharItemName06, ButtonCharItemChange06, 10));
-			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, LabelCharItemName07, ButtonCharItemChange07, 12));
-			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, LabelCharItemName08, ButtonCharItemChange08, 14));
-			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, LabelCharItemName09, ButtonCharItemChange09, 16));
-			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, LabelCharItemName10, ButtonCharItemChange10, 18));
-			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, LabelCharItemName11, ButtonCharItemChange11, 20));
-			mCharStatusList.Add(new CharItem(ComboBoxCharItemPage, LabelCharItemName12, ButtonCharItemChange12, 22));
-			mCharStatusList.Add(new CharEquepment(ComboBoxCharRightHand, 0x54));
-			mCharStatusList.Add(new CharEquepment(ComboBoxCharLeftHand, 0x55));
-			mCharStatusList.Add(new CharEquepment(ComboBoxCharHead, 0x56));
-			mCharStatusList.Add(new CharEquepment(ComboBoxCharBody, 0x57));
-			mCharStatusList.Add(new CharEquepment(ComboBoxCharAccessory1, 0x58));
-			mCharStatusList.Add(new CharEquepment(ComboBoxCharAccessory2, 0x59));
-			mCharStatusList.ForEach(x => x.Init());
+			//mCharStatusList.Add(new CharChoiceStatus(ComboBoxCharStrategy, 0x1C, 1));
+			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName01, ButtonCharItemChange01, 0));
+			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName02, ButtonCharItemChange02, 2));
+			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName03, ButtonCharItemChange03, 4));
+			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName04, ButtonCharItemChange04, 6));
+			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName05, ButtonCharItemChange05, 8));
+			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName06, ButtonCharItemChange06, 10));
+			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName07, ButtonCharItemChange07, 12));
+			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName08, ButtonCharItemChange08, 14));
+			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName09, ButtonCharItemChange09, 16));
+			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName10, ButtonCharItemChange10, 18));
+			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName11, ButtonCharItemChange11, 20));
+			//mCharStatusList.Add(new CharItem_(ComboBoxCharItemPage, LabelCharItemName12, ButtonCharItemChange12, 22));
+			//mCharStatusList.Add(new CharEquepment(ComboBoxCharRightHand, 0x54));
+			//mCharStatusList.Add(new CharEquepment(ComboBoxCharLeftHand, 0x55));
+			//mCharStatusList.Add(new CharEquepment(ComboBoxCharHead, 0x56));
+			//mCharStatusList.Add(new CharEquepment(ComboBoxCharBody, 0x57));
+			//mCharStatusList.Add(new CharEquepment(ComboBoxCharAccessory1, 0x58));
+			//mCharStatusList.Add(new CharEquepment(ComboBoxCharAccessory2, 0x59));
 
 			// ヨッチ族.
 			mYochiStatusList = new List<ListStatus>();
@@ -260,30 +246,14 @@ namespace DQ11
 			new AboutWindow().ShowDialog();
 		}
 
-		private void ButtonCharStatusCopy_Click(object sender, RoutedEventArgs e)
+		private void ButtonCharItemChange_Click(object sender, RoutedEventArgs e)
 		{
-			mCharStatusList.ForEach(x => x.Copy());
-		}
-
-		private void ButtonCharStatusPaste_Click(object sender, RoutedEventArgs e)
-		{
-			mCharStatusList.ForEach(x => x.Paste());
-		}
-
-		private void ButtonCharStatusMin_Click(object sender, RoutedEventArgs e)
-		{
-			mCharStatusList.ForEach(x => x.Min());
-		}
-
-		private void ButtonCharStatusMax_Click(object sender, RoutedEventArgs e)
-		{
-			mCharStatusList.ForEach(x => x.Max());
-		}
-
-		private void ButtonCharStatusDecision_Click(object sender, RoutedEventArgs e)
-		{
-			if (ListBoxChar.SelectedIndex < 0) return;
-			mCharStatusList.ForEach(x => x.Write());
+			CharItem item = (sender as Button)?.DataContext as CharItem;
+			if (item == null) return;
+			ItemSelectWindow window = new ItemSelectWindow();
+			window.ID = item.ID;
+			window.ShowDialog();
+			item.ID = window.ID;
 		}
 
 		private void ButtonYochiStatusDecision_Click(object sender, RoutedEventArgs e)
@@ -385,14 +355,6 @@ namespace DQ11
 			MessageBox.Show("適応");
 		}
 
-		private void ListBoxChar_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			int index = ListBoxChar.SelectedIndex;
-			if (index < 0) return;
-			mCharStatusList.ForEach(x => x.Load((uint)index * Util.CharDateSize));
-			mCharStatusList.ForEach(x => x.Read());
-		}
-
 		private void ListBoxYochi_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			int index = ListBoxYochi.SelectedIndex;
@@ -409,14 +371,6 @@ namespace DQ11
 			mPartyStatusList.ForEach(x => x.Read());
 		}
 
-		private void ComboBoxCharItemPage_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			int index = ListBoxChar.SelectedIndex;
-			if (index < 0) return;
-			mCharStatusList.ForEach(x => x.Load((uint)index * Util.CharDateSize));
-			mCharStatusList.ForEach(x => x.Read());
-		}
-
 		private void Load(bool force)
 		{
 			OpenFileDialog dlg = new OpenFileDialog();
@@ -429,6 +383,7 @@ namespace DQ11
 			}
 
 			Init();
+			mContext.Init();
 			MessageBox.Show("読込成功");
 		}
 
@@ -441,16 +396,6 @@ namespace DQ11
 
 		private void Init()
 		{
-			ListBoxChar.Items.Clear();
-			ComboBoxCharItemPage.SelectedIndex = 0;
-			List<String> names = Util.GetPartyNames();
-			for (int i = 0; i < names.Count; i++)
-			{
-				ListBoxItem item = new ListBoxItem();
-				item.Content = names[i];
-				ListBoxChar.Items.Add(item);
-			}
-
 			mParty.Load();
 			mYochi.Load();
 

@@ -1,70 +1,46 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.ComponentModel;
 
 namespace DQ11
 {
-	class CharItem : ListStatus
+	class CharItem : INotifyPropertyChanged
 	{
-		private readonly ComboBox mPage;
-		private readonly Label mItem;
-		private readonly uint mAddress;
-		private ItemInfo mInfo;
-		private uint mKind;
+		private readonly uint mBaseAddress;
 
-		public CharItem(ComboBox page, Label item, Button change, uint address)
+		public CharItem(uint address)
 		{
-			mPage = page;
-			mItem = item;
-			mAddress = address;
-
-			change.Click += ItemChange_Click;
+			mBaseAddress = address;
 		}
-
-		private void ItemChange_Click(object sender, System.Windows.RoutedEventArgs e)
+		public uint ID
 		{
-			var dialog = new ItemSelectWindow();
-			dialog.Info = mInfo;
-			dialog.Kind = mKind;
-			dialog.ShowDialog();
-			if(dialog.Info != null)
+			get
 			{
-				mInfo = dialog.Info;
-				mKind = dialog.Kind;
-				setItemName();
+				return SaveData.Instance().ReadNumber(mBaseAddress, 2);
+			}
+			set
+			{
+				SaveData.Instance().WriteNumber(mBaseAddress, 2, value);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ID"));
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Name"));
 			}
 		}
 
-		public override void Read()
+		public String Name
 		{
-			uint id = SaveData.Instance().ReadNumber((uint)mPage.SelectedIndex * 24 + 0x24 + Base + mAddress, 2);
-			Item item = Item.Instance();
-
-			mInfo = item.GetItemInfo(id);
-			mKind = id - mInfo.ID;
-			setItemName();
-		}
-
-		public override void Write()
-		{
-			if (mInfo == null) return;
-
-			SaveData.Instance().WriteNumber((uint)mPage.SelectedIndex * 24 + 0x24 + Base + mAddress, 2, mInfo.ID + mKind);
-		}
-
-		private void setItemName()
-		{
-			if (mInfo == null)
+			get
 			{
-				mItem.Content = "不明";
-			}
-			else
-			{
-				mItem.Content = mInfo.Name;
-				if (mKind > 0)
+				uint id = ID;
+				Item item = Item.Instance();
+				ItemInfo info = item.GetItemInfo(id);
+				String value = info.Name;
+				if(id > info.ID)
 				{
-
-					mItem.Content += "+" + mKind.ToString();
+					value += " +" + (id - info.ID).ToString();
 				}
+				return value;
 			}
 		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
 	}
 }
