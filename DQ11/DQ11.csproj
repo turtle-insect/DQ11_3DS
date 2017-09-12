@@ -83,7 +83,6 @@
     <Compile Include="ButtonCheckObserver.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CharChoiceStatus.cs" />
-    <Compile Include="CharEquepment.cs" />
     <Compile Include="CharItem.cs" />
     <Compile Include="CharStringStatus.cs" />
     <Compile Include="CharNumberStatus.cs" />
