@@ -142,6 +142,19 @@ namespace DQ11
 			}
 		}
 
+		public void Swap(uint from, uint to, uint size)
+		{
+			if (mBuffer == null) return;
+			if (from + size > mBuffer.Length) return;
+			if (to + size > mBuffer.Length) return;
+			for (uint i = 0; i < size; i++)
+			{
+				Byte tmp = mBuffer[to + i];
+				mBuffer[to + i] = mBuffer[from + i];
+				mBuffer[from + i] = tmp;
+			}
+		}
+
 		private void Backup()
 		{
 			DateTime now = DateTime.Now;
