@@ -12,12 +12,10 @@ namespace DQ11
 	public partial class MainWindow : Window
 	{
 		private List<ListStatus> mYochiStatusList;
-		private List<ListStatus> mPartyStatusList;
 		private List<AllStatus> mAllStatusList;
 
 		BagToolMgr mBagTool;
 		BagEquipmentMgr mBagEquipment;
-		ListActionObserver mParty;
 		ListActionObserver mYochi;
 
 		ButtonCheckObserver mHatButtonCheck;
@@ -108,11 +106,11 @@ namespace DQ11
 			mAllStatusList.Add(new Quest(ListBoxQuest, ComboBoxQuestState, ButtonQuestPatch));
 
 			// パーティー.
-			mPartyStatusList = new List<ListStatus>();
-			mParty = new ListActionObserver(ListBoxParty,
-							ButtonPartyUp, ButtonPartyDown, ButtonPartyAppend, ButtonPartyRemove, new ListControlParty());
-			mPartyStatusList.Add(new PartyOrder(ComboBoxPartyOrder));
-			mPartyStatusList.ForEach(x => x.Init());
+			//mPartyStatusList = new List<ListStatus>();
+			//mParty = new ListActionObserver(ListBoxParty,
+			//				ButtonPartyUp, ButtonPartyDown, ButtonPartyAppend, ButtonPartyRemove, new ListControlParty());
+			//mPartyStatusList.Add(new PartyOrder(ComboBoxPartyOrder));
+			//mPartyStatusList.ForEach(x => x.Init());
 
 			// ルーラ.
 			mAllStatusList.Add(new Zoom(ListBoxZoom, ButtonZoomCheck, ButtonZoomUnCheck));
@@ -208,13 +206,6 @@ namespace DQ11
 			mYochi.Load();
 		}
 
-		private void ButtonPartyDecision_Click(object sender, RoutedEventArgs e)
-		{
-			if (ListBoxParty.SelectedIndex < 0) return;
-			mPartyStatusList.ForEach(x => x.Write());
-			mParty.Load();
-		}
-
 		private void ButtonPatchReflection_Click(object sender, RoutedEventArgs e)
 		{
 			String patch = TextBoxPatchCode.Text;
@@ -308,14 +299,6 @@ namespace DQ11
 			mYochiStatusList.ForEach(x => x.Read());
 		}
 
-		private void ListBoxParty_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			int index = ListBoxParty.SelectedIndex;
-			if (index < 0) return;
-			mPartyStatusList.ForEach(x => x.Load((uint)index));
-			mPartyStatusList.ForEach(x => x.Read());
-		}
-
 		private void Load(bool force)
 		{
 			OpenFileDialog dlg = new OpenFileDialog();
@@ -341,7 +324,6 @@ namespace DQ11
 
 		private void Init()
 		{
-			mParty.Load();
 			mYochi.Load();
 
 			mAllStatusList.ForEach(x => x.Open());
@@ -383,6 +365,46 @@ namespace DQ11
 				obtain.Content = info.Name;
 				list.Items.Add(obtain);
 			}
+		}
+
+		private void ButtonPartyUp_Click(object sender, RoutedEventArgs e)
+		{
+			if (ListBoxParty.SelectedIndex < 0) return;
+			DataContext context = DataContext as DataContext;
+			if (context == null) return;
+			context.Party.Up(ListBoxParty.SelectedIndex);
+			context.PartyInit();
+		}
+
+		private void ButtonPartyDown_Click(object sender, RoutedEventArgs e)
+		{
+			if (ListBoxParty.SelectedIndex < 0) return;
+			if (ListBoxParty.SelectedIndex == ListBoxParty.Items.Count - 1) return;
+			DataContext context = DataContext as DataContext;
+			if (context == null) return;
+			context.Party.Down(ListBoxParty.SelectedIndex);
+			context.PartyInit();
+		}
+
+		private void ButtonPartyAppend_Click(object sender, RoutedEventArgs e)
+		{
+			if (ListBoxParty.Items.Count >= 31) return;
+
+			DataContext context = DataContext as DataContext;
+			if (context == null) return;
+			context.PartyAppend();
+			SaveData.Instance().WriteNumber(0x6580, 1, (uint)ListBoxParty.Items.Count);
+		}
+
+		private void ButtonPartyRemove_Click(object sender, RoutedEventArgs e)
+		{
+			if (ListBoxParty.SelectedIndex < 0) return;
+			if (ListBoxParty.Items.Count <= 1) return;
+			DataContext context = DataContext as DataContext;
+			if (context == null) return;
+			context.Party.Remove(ListBoxParty.SelectedIndex);
+			context.PartyInit();
+			SaveData.Instance().WriteNumber(0x6580, 1, (uint)ListBoxParty.Items.Count);
 		}
 	}
 }

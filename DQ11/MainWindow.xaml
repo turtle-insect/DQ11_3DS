@@ -428,7 +428,7 @@
                     </Grid.RowDefinitions>
                     <Label Content="一覧"/>
                     <Label Content="対象" Grid.Column="1"/>
-                    <ListBox x:Name="ListBoxParty" Grid.Row="1" SelectionChanged="ListBoxParty_SelectionChanged"/>
+                    <ListBox x:Name="ListBoxParty" Grid.Row="1" ItemsSource="{Binding Party.List}" DisplayMemberPath="Name"/>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -436,25 +436,24 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="ButtonPartyUp">
+                        <Button x:Name="ButtonPartyUp" Click="ButtonPartyUp_Click">
                             <Image Source="{StaticResource Arrow}"/>
                         </Button>
-                        <Button x:Name="ButtonPartyDown" Grid.Column="1" RenderTransformOrigin="0.5, 0.5">
+                        <Button x:Name="ButtonPartyDown" Grid.Column="1" RenderTransformOrigin="0.5, 0.5" Click="ButtonPartyDown_Click">
                             <Button.RenderTransform>
                                 <ScaleTransform ScaleY="-1"/>
                             </Button.RenderTransform>
                             <Image Source="{StaticResource Arrow}"/>
                         </Button>
-                        <Button x:Name="ButtonPartyAppend" Grid.Column="2">
+                        <Button x:Name="ButtonPartyAppend" Grid.Column="2" Click="ButtonPartyAppend_Click">
                             <Image Source="{StaticResource Append}"/>
                         </Button>
-                        <Button x:Name="ButtonPartyRemove" Grid.Column="3">
+                        <Button x:Name="ButtonPartyRemove" Grid.Column="3" Click="ButtonPartyRemove_Click">
                             <Image Source="{StaticResource Remove}"/>
                         </Button>
                     </Grid>
                     <StackPanel Grid.Row="1" Grid.Column="1">
-                        <ComboBox x:Name="ComboBoxPartyOrder" ItemsSource="{Binding ElementName=ListBoxChar, Path=Items}" DisplayMemberPath="Name"/>
-                        <Button x:Name="ButtonPartyDecision" Content="決定" Click="ButtonPartyDecision_Click"/>
+                        <ComboBox ItemsSource="{Binding ElementName=ListBoxChar, Path=Items}" DisplayMemberPath="Name" SelectedIndex="{Binding ElementName=ListBoxParty, Path=SelectedItem.ID}"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

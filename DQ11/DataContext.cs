@@ -6,6 +6,7 @@ namespace DQ11
 	class DataContext
 	{
 		public List<Character> Char { get; set; } = new List<Character>();
+		public ListMediator Party { get; set; } = new ListMediator();
 
 		public String PlayHour
 		{
@@ -406,6 +407,30 @@ namespace DQ11
 			{
 				Char.Add(new Character(i * 0x200));
 			}
+
+
+			PartyInit();
+		}
+
+		public void PartyInit()
+		{
+			Party.Clear();
+			for (uint i = 0; i < Util.CharCount; i++)
+			{
+				uint address = Util.PartyStartAddress + i;
+				uint value = SaveData.Instance().ReadNumber(address, 1);
+				if (value == 0xFF) break;
+				Party.Append(new Party(Char, address));
+			}
+		}
+
+		public void PartyAppend()
+		{
+			uint address = Util.PartyStartAddress + (uint)Party.List.Count;
+			uint value = SaveData.Instance().ReadNumber(address, 1);
+			Party charctor = new Party(Char, address);
+			charctor.Create();
+			Party.Append(charctor);
 		}
 	}
 }

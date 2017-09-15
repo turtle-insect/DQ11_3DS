@@ -99,11 +99,12 @@
       <DependentUpon>ItemSelectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ListActionObserver.cs" />
-    <Compile Include="ListTemplate.cs" />
     <Compile Include="ListControlParty.cs" />
     <Compile Include="ListControlYochi.cs" />
+    <Compile Include="ListMediator.cs" />
     <Compile Include="ListStatus.cs" />
     <Compile Include="Monster.cs" />
+    <Compile Include="Party.cs" />
     <Compile Include="PartyOrder.cs" />
     <Compile Include="Quest.cs" />
     <Compile Include="SaveData.cs" />

@@ -8,8 +8,10 @@ namespace DQ11
 {
 	interface IListItem
 	{
-		void Copy(IListItem item);
+		uint Address();
+		void Clear();
+		void Create();
+		void Remove(IListItem item);
 		void Swap(IListItem item);
-		void Init();
 	}
 }
