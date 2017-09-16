@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
 
 namespace DQ11
 {
 	class Party : IListItem ,INotifyPropertyChanged
 	{
-		
+		public event PropertyChangedEventHandler PropertyChanged;
+
 		private const uint mSize = 1;
 		private readonly List<Character> mChars;
 		private readonly uint mBaseAddress;
@@ -67,7 +65,5 @@ namespace DQ11
 			SaveData savedate = SaveData.Instance();
 			savedate.Swap(Address(), item.Address(), mSize);
 		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
 	}
 }

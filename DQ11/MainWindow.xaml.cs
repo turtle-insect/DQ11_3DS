@@ -11,12 +11,10 @@ namespace DQ11
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private List<ListStatus> mYochiStatusList;
 		private List<AllStatus> mAllStatusList;
 
 		BagToolMgr mBagTool;
 		BagEquipmentMgr mBagEquipment;
-		ListActionObserver mYochi;
 
 		ButtonCheckObserver mHatButtonCheck;
 		ButtonCheckObserver mTitleButtonCheck;
@@ -29,42 +27,6 @@ namespace DQ11
 		{
 			Item.Instance();
 			SaveData.Instance();
-
-			// ヨッチ族.
-			mYochiStatusList = new List<ListStatus>();
-			mYochi = new ListActionObserver(ListBoxYochi,
-							ButtonYochiUp, ButtonYochiDown, ButtonYochiAppend, ButtonYochiRemove, new ListControlYochi());
-			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiName, 0x0, 6));
-			mYochiStatusList.Add(new CharNumberStatus(TextBoxYochiMotivation, 0x78, 2, 1, 999));
-			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiRank, 0x7A, 1, 1));
-			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiColor, 0x7B, 1));
-			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxHowToCall, 0x80, 1));
-			mYochiStatusList.Add(new YochiHat(ComboBoxYochiHat));
-			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiInfo, 0x84, 1));
-			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiBoost, 0x85, 1));
-			mYochiStatusList.Add(new YochiWeapon(ComboBoxYochiWeapon));
-			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiSecond, 0x0E, 6));
-			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiThird, 0x1C, 6));
-			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiFour, 0x2A, 6));
-			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiFirst, 0x3C, 6));
-
-			// ヨッチ・プロフィール
-			mYochiStatusList.Add(new CharStringStatus(TextBoxYochiPassMessage, 0x4A, 16));
-			mYochiStatusList.Add(new CharNumberStatus(TextBoxYochiPassStory, 0x6C, 1, 1, 0xFF));
-			mYochiStatusList.Add(new CharNumberStatus(TextBoxYochiPassLv, 0x70, 1, 1, 99));
-			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiPassSex, 0x6E, 1));
-			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiPassGraduate, 0x6F, 1));
-			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiPassAge, 0x71, 1));
-			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiPassPersonality, 0x72, 1));
-			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiPassHobby, 0x73, 1));
-			mYochiStatusList.Add(new CharChoiceStatus(ComboBoxYochiPassHistory, 0x74, 1));
-			mYochiStatusList.Add(new CheckStatusBit(CheckBoxYochiPassEscapeNG, 0x75, 0));
-			mYochiStatusList.Add(new CheckStatusBit(CheckBoxYochiPassShopNG, 0x75, 1));
-			mYochiStatusList.Add(new CheckStatusBit(CheckBoxYochiPassArmorNG, 0x75, 2));
-			mYochiStatusList.Add(new CheckStatusBit(CheckBoxYochiPassAshamed, 0x75, 3));
-
-			mYochiStatusList.ForEach(x => x.Init());
-
 
 			// 全体の設定.
 			mAllStatusList = new List<AllStatus>();
@@ -104,13 +66,6 @@ namespace DQ11
 
 			// クエスト.
 			mAllStatusList.Add(new Quest(ListBoxQuest, ComboBoxQuestState, ButtonQuestPatch));
-
-			// パーティー.
-			//mPartyStatusList = new List<ListStatus>();
-			//mParty = new ListActionObserver(ListBoxParty,
-			//				ButtonPartyUp, ButtonPartyDown, ButtonPartyAppend, ButtonPartyRemove, new ListControlParty());
-			//mPartyStatusList.Add(new PartyOrder(ComboBoxPartyOrder));
-			//mPartyStatusList.ForEach(x => x.Init());
 
 			// ルーラ.
 			mAllStatusList.Add(new Zoom(ListBoxZoom, ButtonZoomCheck, ButtonZoomUnCheck));
@@ -199,13 +154,6 @@ namespace DQ11
 			item.ID = window.ID;
 		}
 
-		private void ButtonYochiStatusDecision_Click(object sender, RoutedEventArgs e)
-		{
-			if (ListBoxYochi.SelectedIndex < 0) return;
-			mYochiStatusList.ForEach(x => x.Write());
-			mYochi.Load();
-		}
-
 		private void ButtonPatchReflection_Click(object sender, RoutedEventArgs e)
 		{
 			String patch = TextBoxPatchCode.Text;
@@ -291,14 +239,6 @@ namespace DQ11
 			MessageBox.Show("適応");
 		}
 
-		private void ListBoxYochi_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			int index = ListBoxYochi.SelectedIndex;
-			if (index < 0) return;
-			mYochiStatusList.ForEach(x => x.Load((uint)index * Util.YochiDateSize + Util.YochiStartAddress));
-			mYochiStatusList.ForEach(x => x.Read());
-		}
-
 		private void Load(bool force)
 		{
 			OpenFileDialog dlg = new OpenFileDialog();
@@ -324,8 +264,6 @@ namespace DQ11
 
 		private void Init()
 		{
-			mYochi.Load();
-
 			mAllStatusList.ForEach(x => x.Open());
 		}
 

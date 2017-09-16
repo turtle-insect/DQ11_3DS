@@ -91,21 +91,16 @@
     <Compile Include="Crc32.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="HatObtain.cs" />
-    <Compile Include="IListControl.cs" />
     <Compile Include="IListItem.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemInfo.cs" />
     <Compile Include="ItemSelectWindow.xaml.cs">
       <DependentUpon>ItemSelectWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ListActionObserver.cs" />
-    <Compile Include="ListControlParty.cs" />
-    <Compile Include="ListControlYochi.cs" />
     <Compile Include="ListMediator.cs" />
     <Compile Include="ListStatus.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="Party.cs" />
-    <Compile Include="PartyOrder.cs" />
     <Compile Include="Quest.cs" />
     <Compile Include="SaveData.cs" />
     <Compile Include="Story.cs" />
@@ -113,6 +108,7 @@
     <Compile Include="TitleObtain.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="WatchWord.cs" />
+    <Compile Include="Yochi.cs" />
     <Compile Include="YochiHat.cs" />
     <Compile Include="YochiWeapon.cs" />
     <Compile Include="Zoom.cs" />

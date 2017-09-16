@@ -7,6 +7,9 @@ namespace DQ11
 	{
 		public List<Character> Char { get; set; } = new List<Character>();
 		public ListMediator Party { get; set; } = new ListMediator();
+		public ListMediator Yochi { get; set; } = new ListMediator();
+		public Item Item { get; } = Item.Instance();
+		public List<ItemInfo> YochiHat { get; } = new List<ItemInfo>();
 
 		public String PlayHour
 		{
@@ -402,6 +405,13 @@ namespace DQ11
 
 		public DataContext()
 		{
+			YochiHat.Add(Item.Instance().None);
+			Item.Instance().Hats.ForEach(x => { YochiHat.Add(x); });
+			YochiHat.Add(new ItemInfo(118, "魔王の剣", 0));
+			YochiHat.Add(new ItemInfo(119, "テスト用アイテム2", 0));
+			YochiHat.Add(new ItemInfo(120, "テスト用アイテム3", 0));
+			YochiHat.Add(new ItemInfo(121, "テスト用アイテム4", 0));
+
 			Char.Clear();
 			for(uint i = 0; i < Util.CharCount; i++)
 			{
@@ -410,6 +420,7 @@ namespace DQ11
 
 
 			PartyInit();
+			YochiInit();
 		}
 
 		public void PartyInit()
@@ -431,6 +442,18 @@ namespace DQ11
 			Party charctor = new Party(Char, address);
 			charctor.Create();
 			Party.Append(charctor);
+		}
+
+		public void YochiInit()
+		{
+			Yochi.Clear();
+			for (uint i = 0; i < Util.YochiCount; i++)
+			{
+				uint address = Util.YochiStartAddress + i * Util.YochiDateSize;
+				uint value = SaveData.Instance().ReadNumber(address + Util.YochiDateSize - 4, 4);
+				if (value == 0xFFFFFFFF) break;
+				Yochi.Append(new Yochi(address));
+			}
 		}
 	}
 }
