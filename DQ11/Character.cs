@@ -30,11 +30,11 @@ namespace DQ11
 			}
 		}
 
-		public String Lv
+		public uint Lv
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x10, 1).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x10, 1);
 			}
 			set
 			{
@@ -42,11 +42,11 @@ namespace DQ11
 			}
 		}
 
-		public String Exp
+		public uint Exp
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x14, 4).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x14, 4);
 			}
 			set
 			{
@@ -54,11 +54,11 @@ namespace DQ11
 			}
 		}
 
-		public String HP
+		public uint HP
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x20, 2).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x20, 2);
 			}
 			set
 			{
@@ -66,11 +66,11 @@ namespace DQ11
 			}
 		}
 
-		public String MP
+		public uint MP
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x22, 2).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x22, 2);
 			}
 			set
 			{
@@ -78,11 +78,11 @@ namespace DQ11
 			}
 		}
 
-		public String MaxHP
+		public uint MaxHP
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x100, 2).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x100, 2);
 			}
 			set
 			{
@@ -90,11 +90,11 @@ namespace DQ11
 			}
 		}
 
-		public String MaxMP
+		public uint MaxMP
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x102, 2).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x102, 2);
 			}
 			set
 			{
@@ -102,11 +102,11 @@ namespace DQ11
 			}
 		}
 
-		public String AttackMagic
+		public uint AttackMagic
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x10C, 2).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x10C, 2);
 			}
 			set
 			{
@@ -114,11 +114,11 @@ namespace DQ11
 			}
 		}
 
-		public String HealMagic
+		public uint HealMagic
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x10E, 2).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x10E, 2);
 			}
 			set
 			{
@@ -126,11 +126,11 @@ namespace DQ11
 			}
 		}
 
-		public String Attack
+		public uint Attack
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x104, 2).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x104, 2);
 			}
 			set
 			{
@@ -138,11 +138,11 @@ namespace DQ11
 			}
 		}
 
-		public String Diffence
+		public uint Diffence
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x10A, 2).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x10A, 2);
 			}
 			set
 			{
@@ -150,11 +150,11 @@ namespace DQ11
 			}
 		}
 
-		public String Speed
+		public uint Speed
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x108, 2).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x108, 2);
 			}
 			set
 			{
@@ -162,11 +162,11 @@ namespace DQ11
 			}
 		}
 
-		public String Skillful
+		public uint Skillful
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x106, 2).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x106, 2);
 			}
 			set
 			{
@@ -174,11 +174,11 @@ namespace DQ11
 			}
 		}
 
-		public String Charm
+		public uint Charm
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x110, 2).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x110, 2);
 			}
 			set
 			{
@@ -186,11 +186,11 @@ namespace DQ11
 			}
 		}
 
-		public String Skill
+		public uint Skill
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x112, 2).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x112, 2);
 			}
 			set
 			{

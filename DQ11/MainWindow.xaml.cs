@@ -154,6 +154,83 @@ namespace DQ11
 			item.ID = window.ID;
 		}
 
+		private void ButtonPartyUp_Click(object sender, RoutedEventArgs e)
+		{
+			if (ListBoxParty.SelectedIndex < 0) return;
+			DataContext context = DataContext as DataContext;
+			if (context == null) return;
+			context.Party.Up(ListBoxParty.SelectedIndex);
+			context.PartyInit();
+		}
+
+		private void ButtonPartyDown_Click(object sender, RoutedEventArgs e)
+		{
+			if (ListBoxParty.SelectedIndex < 0) return;
+			if (ListBoxParty.SelectedIndex >= ListBoxParty.Items.Count - 1) return;
+			DataContext context = DataContext as DataContext;
+			if (context == null) return;
+			context.Party.Down(ListBoxParty.SelectedIndex);
+			context.PartyInit();
+		}
+
+		private void ButtonPartyAppend_Click(object sender, RoutedEventArgs e)
+		{
+			if (ListBoxParty.Items.Count >= Util.CharCount) return;
+
+			DataContext context = DataContext as DataContext;
+			if (context == null) return;
+			context.PartyAppend();
+			SaveData.Instance().WriteNumber(0x6580, 1, (uint)ListBoxParty.Items.Count);
+		}
+
+		private void ButtonPartyRemove_Click(object sender, RoutedEventArgs e)
+		{
+			if (ListBoxParty.SelectedIndex < 0) return;
+			if (ListBoxParty.Items.Count <= 1) return;
+			DataContext context = DataContext as DataContext;
+			if (context == null) return;
+			context.Party.Remove(ListBoxParty.SelectedIndex);
+			context.PartyInit();
+			SaveData.Instance().WriteNumber(0x6580, 1, (uint)ListBoxParty.Items.Count);
+		}
+
+		private void ButtonYochiUp_Click(object sender, RoutedEventArgs e)
+		{
+			if (ListBoxYochi.SelectedIndex < 0) return;
+			DataContext context = DataContext as DataContext;
+			if (context == null) return;
+			context.Yochi.Up(ListBoxYochi.SelectedIndex);
+			context.YochiInit();
+		}
+
+		private void ButtonYochiDown_Click(object sender, RoutedEventArgs e)
+		{
+			if (ListBoxYochi.SelectedIndex < 0) return;
+			if (ListBoxYochi.SelectedIndex >= ListBoxYochi.Items.Count - 1) return;
+			DataContext context = DataContext as DataContext;
+			if (context == null) return;
+			context.Yochi.Down(ListBoxYochi.SelectedIndex);
+			context.YochiInit();
+		}
+
+		private void ButtonYochiAppend_Click(object sender, RoutedEventArgs e)
+		{
+			if (ListBoxYochi.Items.Count >= Util.YochiCount) return;
+
+			DataContext context = DataContext as DataContext;
+			if (context == null) return;
+			context.YochiAppend();
+		}
+
+		private void ButtonYochiRemove_Click(object sender, RoutedEventArgs e)
+		{
+			if (ListBoxYochi.SelectedIndex < 0) return;
+			DataContext context = DataContext as DataContext;
+			if (context == null) return;
+			context.Yochi.Remove(ListBoxYochi.SelectedIndex);
+			context.YochiInit();
+		}
+
 		private void ButtonPatchReflection_Click(object sender, RoutedEventArgs e)
 		{
 			String patch = TextBoxPatchCode.Text;
@@ -251,7 +328,6 @@ namespace DQ11
 			}
 
 			Init();
-			DataContext = new DataContext();
 			MessageBox.Show("読込成功");
 		}
 
@@ -264,6 +340,7 @@ namespace DQ11
 
 		private void Init()
 		{
+			DataContext = new DataContext();
 			mAllStatusList.ForEach(x => x.Open());
 		}
 
@@ -303,46 +380,6 @@ namespace DQ11
 				obtain.Content = info.Name;
 				list.Items.Add(obtain);
 			}
-		}
-
-		private void ButtonPartyUp_Click(object sender, RoutedEventArgs e)
-		{
-			if (ListBoxParty.SelectedIndex < 0) return;
-			DataContext context = DataContext as DataContext;
-			if (context == null) return;
-			context.Party.Up(ListBoxParty.SelectedIndex);
-			context.PartyInit();
-		}
-
-		private void ButtonPartyDown_Click(object sender, RoutedEventArgs e)
-		{
-			if (ListBoxParty.SelectedIndex < 0) return;
-			if (ListBoxParty.SelectedIndex == ListBoxParty.Items.Count - 1) return;
-			DataContext context = DataContext as DataContext;
-			if (context == null) return;
-			context.Party.Down(ListBoxParty.SelectedIndex);
-			context.PartyInit();
-		}
-
-		private void ButtonPartyAppend_Click(object sender, RoutedEventArgs e)
-		{
-			if (ListBoxParty.Items.Count >= 31) return;
-
-			DataContext context = DataContext as DataContext;
-			if (context == null) return;
-			context.PartyAppend();
-			SaveData.Instance().WriteNumber(0x6580, 1, (uint)ListBoxParty.Items.Count);
-		}
-
-		private void ButtonPartyRemove_Click(object sender, RoutedEventArgs e)
-		{
-			if (ListBoxParty.SelectedIndex < 0) return;
-			if (ListBoxParty.Items.Count <= 1) return;
-			DataContext context = DataContext as DataContext;
-			if (context == null) return;
-			context.Party.Remove(ListBoxParty.SelectedIndex);
-			context.PartyInit();
-			SaveData.Instance().WriteNumber(0x6580, 1, (uint)ListBoxParty.Items.Count);
 		}
 	}
 }

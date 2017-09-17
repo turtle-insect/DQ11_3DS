@@ -11,58 +11,52 @@ namespace DQ11
 		public Item Item { get; } = Item.Instance();
 		public List<ItemInfo> YochiHat { get; } = new List<ItemInfo>();
 
-		public String PlayHour
+		public uint PlayHour
 		{
 			get
 			{
-				return (SaveData.Instance().ReadNumber(0x3E24, 4) / 3600).ToString();
+				return SaveData.Instance().ReadNumber(0x3E24, 4) / 3600;
 			}
 			set
 			{
-				uint hour;
-				if (!uint.TryParse(value, out hour)) return;
 				uint number = SaveData.Instance().ReadNumber(0x3E24, 4) % 3600;
-				SaveData.Instance().WriteNumber(0x3E24, 4, hour * 3600 + number);
+				SaveData.Instance().WriteNumber(0x3E24, 4, value * 3600 + number);
 			}
 		}
 
-		public String PlayMinute
+		public uint PlayMinute
 		{
 			get
 			{
-				return (SaveData.Instance().ReadNumber(0x3E24, 4) % 3600 / 60).ToString();
+				return SaveData.Instance().ReadNumber(0x3E24, 4) % 3600 / 60;
 			}
 			set
 			{
-				uint minute;
-				if (!uint.TryParse(value, out minute)) return;
 				uint number = SaveData.Instance().ReadNumber(0x3E24, 4);
 				number = number / 3600 * 3600 + number % 60;
-				SaveData.Instance().WriteNumber(0x3E24, 4, minute * 60 + number);
+				SaveData.Instance().WriteNumber(0x3E24, 4, value * 60 + number);
 			}
 		}
 
-		public String PlaySecond
+		public uint PlaySecond
 		{
 			get
 			{
-				return (SaveData.Instance().ReadNumber(0x3E24, 4) % 60).ToString();
+				return SaveData.Instance().ReadNumber(0x3E24, 4) % 60;
 			}
 			set
 			{
-				uint second;
-				if (!uint.TryParse(value, out second)) return;
 				uint number = SaveData.Instance().ReadNumber(0x3E24, 4);
 				number = number / 60 * 60;
-				SaveData.Instance().WriteNumber(0x3E24, 4, second + number);
+				SaveData.Instance().WriteNumber(0x3E24, 4, value + number);
 			}
 		}
 
-		public String GoldHand
+		public uint GoldHand
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x3E28, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x3E28, 4);
 			}
 
 			set
@@ -71,11 +65,11 @@ namespace DQ11
 			}
 		}
 
-		public String TotalGold
+		public uint TotalGold
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x3E2C, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x3E2C, 4);
 			}
 
 			set
@@ -84,11 +78,11 @@ namespace DQ11
 			}
 		}
 
-		public String GoldBank
+		public uint GoldBank
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x6584, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x6584, 4);
 			}
 
 			set
@@ -97,11 +91,11 @@ namespace DQ11
 			}
 		}
 
-		public String CasinoCoin
+		public uint CasinoCoin
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x6FF4, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x6FF4, 4);
 			}
 
 			set
@@ -110,11 +104,11 @@ namespace DQ11
 			}
 		}
 
-		public String SmallMedal
+		public uint SmallMedal
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x6FE4, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x6FE4, 4);
 			}
 
 			set
@@ -123,11 +117,11 @@ namespace DQ11
 			}
 		}
 
-		public String TotalSmallMedal
+		public uint TotalSmallMedal
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x6FE8, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x6FE8, 4);
 			}
 
 			set
@@ -136,11 +130,11 @@ namespace DQ11
 			}
 		}
 
-		public String DepositSmallMedal
+		public uint DepositSmallMedal
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x6FF0, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x6FF0, 4);
 			}
 
 			set
@@ -149,11 +143,11 @@ namespace DQ11
 			}
 		}
 
-		public String RebuildJewel
+		public uint RebuildJewel
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x962C, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x962C, 4);
 			}
 
 			set
@@ -162,11 +156,11 @@ namespace DQ11
 			}
 		}
 
-		public String BlackSmith
+		public uint BlackSmith
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x67E8, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x67E8, 4);
 			}
 
 			set
@@ -175,11 +169,11 @@ namespace DQ11
 			}
 		}
 
-		public String Camp
+		public uint Camp
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x67A8, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x67A8, 4);
 			}
 
 			set
@@ -188,11 +182,11 @@ namespace DQ11
 			}
 		}
 
-		public String INI
+		public uint INI
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x67AC, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x67AC, 4);
 			}
 
 			set
@@ -201,11 +195,11 @@ namespace DQ11
 			}
 		}
 
-		public String Break
+		public uint Break
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x67B4, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x67B4, 4);
 			}
 
 			set
@@ -214,11 +208,11 @@ namespace DQ11
 			}
 		}
 
-		public String Cooperation
+		public uint Cooperation
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x6798, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x6798, 4);
 			}
 
 			set
@@ -227,11 +221,11 @@ namespace DQ11
 			}
 		}
 
-		public String Slot
+		public uint Slot
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x67DC, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x67DC, 4);
 			}
 
 			set
@@ -240,11 +234,11 @@ namespace DQ11
 			}
 		}
 
-		public String Poker
+		public uint Poker
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x67C4, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x67C4, 4);
 			}
 
 			set
@@ -253,11 +247,11 @@ namespace DQ11
 			}
 		}
 
-		public String Roulette
+		public uint Roulette
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x67D0, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x67D0, 4);
 			}
 
 			set
@@ -266,11 +260,11 @@ namespace DQ11
 			}
 		}
 
-		public String KillMonster
+		public uint KillMonster
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x3E30, 4).ToString();
+				return SaveData.Instance().ReadNumber(0x3E30, 4);
 			}
 
 			set
@@ -438,10 +432,9 @@ namespace DQ11
 		public void PartyAppend()
 		{
 			uint address = Util.PartyStartAddress + (uint)Party.List.Count;
-			uint value = SaveData.Instance().ReadNumber(address, 1);
-			Party charctor = new Party(Char, address);
-			charctor.Create();
-			Party.Append(charctor);
+			Party item = new Party(Char, address);
+			item.Create();
+			Party.Append(item);
 		}
 
 		public void YochiInit()
@@ -454,6 +447,14 @@ namespace DQ11
 				if (value == 0xFFFFFFFF) break;
 				Yochi.Append(new Yochi(address));
 			}
+		}
+
+		public void YochiAppend()
+		{
+			uint address = Util.YochiStartAddress + (uint)Yochi.List.Count * Util.YochiDateSize;
+			Yochi item = new Yochi(address);
+			item.Create();
+			Yochi.Append(item);
 		}
 	}
 }

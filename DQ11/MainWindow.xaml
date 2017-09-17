@@ -86,7 +86,7 @@
                         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding PlaySecond, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding GoldHand, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding GoldBank, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding GoldCasinoCoin, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CasinoCoin, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SmallMedal, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding DepositSmallMedal, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding RebuildJewel, UpdateSourceTrigger=PropertyChanged}"/>
@@ -512,19 +512,19 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="ButtonYochiUp">
+                            <Button x:Name="ButtonYochiUp" Click="ButtonYochiUp_Click">
                                 <Image Source="{StaticResource Arrow}"/>
                             </Button>
-                            <Button x:Name="ButtonYochiDown" Grid.Column="1" RenderTransformOrigin="0.5, 0.5">
+                            <Button x:Name="ButtonYochiDown" Grid.Column="1" RenderTransformOrigin="0.5, 0.5" Click="ButtonYochiDown_Click">
                                 <Button.RenderTransform>
                                     <ScaleTransform ScaleY="-1"/>
                                 </Button.RenderTransform>
                                 <Image Source="{StaticResource Arrow}"/>
                             </Button>
-                            <Button x:Name="ButtonYochiAppend" Grid.Column="2">
+                            <Button x:Name="ButtonYochiAppend" Grid.Column="2" Click="ButtonYochiAppend_Click">
                                 <Image Source="{StaticResource Append}"/>
                             </Button>
-                            <Button x:Name="ButtonYochiRemove" Grid.Column="3">
+                            <Button x:Name="ButtonYochiRemove" Grid.Column="3" Click="ButtonYochiRemove_Click">
                                 <Image Source="{StaticResource Remove}"/>
                             </Button>
                         </Grid>
@@ -567,6 +567,7 @@
                                 <Label Content="配信2人目" Grid.Row="10"/>
                                 <Label Content="配信3人目" Grid.Row="11"/>
                                 <Label Content="配信4人目" Grid.Row="12"/>
+                                <Label Content="ユニークID" Grid.Row="13"/>
                                 <TextBox Grid.Column="1" Text="{Binding ElementName=ListBoxYochi, Path=SelectedItem.Name ,UpdateSourceTrigger=PropertyChanged}"/>
                                 <ComboBox Grid.Row="1" Grid.Column="1" SelectedIndex="{Binding ElementName=ListBoxYochi, Path=SelectedItem.Color}">
                                     <ComboBoxItem Content="赤"/>
@@ -644,6 +645,7 @@
                                 <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding ElementName=ListBoxYochi, Path=SelectedItem.Second ,UpdateSourceTrigger=PropertyChanged}"/>
                                 <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding ElementName=ListBoxYochi, Path=SelectedItem.Third ,UpdateSourceTrigger=PropertyChanged}"/>
                                 <TextBox Grid.Row="12" Grid.Column="1" Text="{Binding ElementName=ListBoxYochi, Path=SelectedItem.Four ,UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBox Grid.Row="13" Grid.Column="1" Text="{Binding ElementName=ListBoxYochi, Path=SelectedItem.ID ,UpdateSourceTrigger=PropertyChanged}"/>
                             </Grid>
                         </TabItem>
                         <TabItem Header="プロフィール">

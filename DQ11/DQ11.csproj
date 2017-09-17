@@ -82,12 +82,8 @@
     <Compile Include="BagToolMgr.cs" />
     <Compile Include="ButtonCheckObserver.cs" />
     <Compile Include="Character.cs" />
-    <Compile Include="CharChoiceStatus.cs" />
     <Compile Include="CharItem.cs" />
-    <Compile Include="CharStringStatus.cs" />
-    <Compile Include="CharNumberStatus.cs" />
     <Compile Include="CheckBoxListItem.cs" />
-    <Compile Include="CheckStatusBit.cs" />
     <Compile Include="Crc32.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="HatObtain.cs" />
@@ -98,7 +94,6 @@
       <DependentUpon>ItemSelectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ListMediator.cs" />
-    <Compile Include="ListStatus.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="Party.cs" />
     <Compile Include="Quest.cs" />
@@ -109,8 +104,6 @@
     <Compile Include="Util.cs" />
     <Compile Include="WatchWord.cs" />
     <Compile Include="Yochi.cs" />
-    <Compile Include="YochiHat.cs" />
-    <Compile Include="YochiWeapon.cs" />
     <Compile Include="Zoom.cs" />
     <Page Include="AboutWindow.xaml">
       <SubType>Designer</SubType>

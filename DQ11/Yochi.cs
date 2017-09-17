@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
 
 namespace DQ11
 {
@@ -47,11 +42,11 @@ namespace DQ11
 			}
 		}
 
-		public String Motivation
+		public uint Motivation
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x78, 2).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x78, 2);
 			}
 			set
 			{
@@ -176,11 +171,23 @@ namespace DQ11
 			}
 		}
 
-		public String PassLv
+		public uint ID
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x70, 1).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + Util.YochiDateSize - 4, 4);
+			}
+			set
+			{
+				SaveData.Instance().WriteNumber(mBaseAddress + Util.YochiDateSize - 4, 4, value);
+			}
+		}
+
+		public uint PassLv
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x70, 1);
 			}
 			set
 			{
@@ -188,11 +195,11 @@ namespace DQ11
 			}
 		}
 
-		public String PassStory
+		public uint PassStory
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mBaseAddress + 0x6C, 1).ToString();
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x6C, 1);
 			}
 			set
 			{
@@ -375,7 +382,7 @@ namespace DQ11
 				savedata.WriteNumber(mBaseAddress + i, 1, prof[i]);
 			}
 			// Random Better ?
-			//savedata.WriteNumber(mBaseAddress + Util.YochiDateSize - 4, 4, index);
+			savedata.WriteNumber(mBaseAddress + Util.YochiDateSize - 4, 4, (uint)new Random().Next());
 		}
 
 		public void Remove(IListItem item)
