@@ -13,8 +13,8 @@ namespace DQ11
 	{
 		private List<AllStatus> mAllStatusList;
 
-		BagToolMgr mBagTool;
-		BagEquipmentMgr mBagEquipment;
+		Bag mBagTool;
+		Bag mBagEquipment;
 
 		ButtonCheckObserver mHatButtonCheck;
 		ButtonCheckObserver mTitleButtonCheck;
@@ -38,10 +38,8 @@ namespace DQ11
 			mAllStatusList.Add(new Monster(StackPanelMonster, RadioButtonAll, RadioButtonNone, RadioButtonHave, TextBoxMonsterCount, ButtonMonsterDecision));
 
 			// ふくろ.
-			mBagTool = new BagToolMgr();
-			mBagTool.Init(mAllStatusList, StackPanelBagTool, ComboBoxBagToolPage, 0x3E34, 168);
-			mBagEquipment = new BagEquipmentMgr();
-			mBagEquipment.Init(mAllStatusList, StackPanelBagEquipment, ComboBoxBagEquipmentPage, 0x40EC, 2340);
+			mBagTool = new Bag(mAllStatusList, StackPanelBagTool, ItemSelectWindow.eType.Tool, ComboBoxBagToolPage, 0x3E34, 168);
+			mBagEquipment = new Bag(mAllStatusList, StackPanelBagEquipment, ItemSelectWindow.eType.Equipment, ComboBoxBagEquipmentPage, 0x40EC, 2340);
 
 			// だいじなもの.
 			mAllStatusList.Add(new CheckBoxListItem(ListBoxImportant, ButtonImportantCheck, ButtonImportantUnCheck, Item.Instance().Importants, 0x65C4, 90));

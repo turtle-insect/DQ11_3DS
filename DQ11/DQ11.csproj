@@ -75,11 +75,8 @@
     <Compile Include="AllNumberStatus.cs" />
     <Compile Include="AllStatus.cs" />
     <Compile Include="AllStringStatus.cs" />
-    <Compile Include="BagBaseMgr.cs" />
-    <Compile Include="BagEquipmentItem.cs" />
-    <Compile Include="BagEquipmentMgr.cs" />
-    <Compile Include="BagToolItem.cs" />
-    <Compile Include="BagToolMgr.cs" />
+    <Compile Include="Bag.cs" />
+    <Compile Include="BagItem.cs" />
     <Compile Include="ButtonCheckObserver.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CharItem.cs" />

@@ -385,6 +385,7 @@
                             <ComboBoxItem Content="詳細不明"/>
                             <ComboBoxItem Content="詳細判明"/>
                             <ComboBoxItem Content="受注中"/>
+                            <ComboBoxItem Content="達成"/>
                             <ComboBoxItem Content="クリア"/>
                             <ComboBoxItem Content="見えない"/>
                             <ComboBoxItem Content="不定"/>

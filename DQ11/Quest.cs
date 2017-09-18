@@ -60,14 +60,17 @@ namespace DQ11
 					case 0x02:
 						status.SelectedIndex = 2;
 						break;
-					case 0x09:
+					case 0x08:
 						status.SelectedIndex = 3;
 						break;
-					case 0xFF:
+					case 0x09:
 						status.SelectedIndex = 4;
 						break;
-					default:
+					case 0xFF:
 						status.SelectedIndex = 5;
+						break;
+					default:
+						status.SelectedIndex = -1;
 						break;
 				}
 			}
@@ -87,9 +90,12 @@ namespace DQ11
 				switch(index)
 				{
 					case 3:
-						value = 9;
+						value = 8;
 						break;
 					case 4:
+						value = 9;
+						break;
+					case 5:
 						value = 0xFF;
 						break;
 					default:
