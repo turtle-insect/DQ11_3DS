@@ -18,6 +18,7 @@ namespace DQ11
 
 		ButtonCheckObserver mHatButtonCheck;
 		ButtonCheckObserver mTitleButtonCheck;
+		ButtonCheckObserver mSmithButtonCheck;
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -53,6 +54,10 @@ namespace DQ11
 
 			// 冒険の書の合言葉.
 			mAllStatusList.Add(new WatchWord(ListBoxWatchWorld, ButtonWatchWorldCheck, ButtonWatchWorldUnCheck));
+
+			// 鍛冶.
+			mSmithButtonCheck = new ButtonCheckObserver(ButtonSmithCheck, ButtonSmithUnCheck);
+			CreateSmith(mAllStatusList, ListBoxSmith);
 
 			// すれちがい.
 			mAllStatusList.Add(new AllStringStatus(TextBoxPassName, 0xC46C, 6));
@@ -377,6 +382,32 @@ namespace DQ11
 				mTitleButtonCheck.Append(obtain);
 				obtain.Content = info.Name;
 				list.Items.Add(obtain);
+			}
+		}
+
+		private void CreateSmith(List<AllStatus> status, ListBox list)
+		{
+			uint number = 4;
+			foreach (var info in Item.Instance().Equipments)
+			{
+				StackPanel panel = new StackPanel();
+				panel.Orientation = Orientation.Horizontal;
+
+				Label label = new Label();
+				label.Content = info;
+				label.Width = 150;
+				panel.Children.Add(label);
+
+				for (int i = 0; i < info.Count; i++)
+				{
+					CheckBox check = new CheckBox();
+					panel.Children.Add(check);
+					mSmithButtonCheck.Append(check);
+					status.Add(new AllCheckBoxBitStatus(check, 0x9644 + number / 8, number % 8));
+					number++;
+				}
+
+				list.Items.Add(panel);
 			}
 		}
 	}

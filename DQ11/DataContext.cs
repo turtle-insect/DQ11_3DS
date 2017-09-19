@@ -156,7 +156,7 @@ namespace DQ11
 			}
 		}
 
-		public uint BlackSmith
+		public uint Smith
 		{
 			get
 			{

@@ -70,6 +70,7 @@
     <Compile Include="AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AllCheckBoxBitStatus.cs" />
     <Compile Include="AllCheckBoxStatus.cs" />
     <Compile Include="AllChoiceStatus.cs" />
     <Compile Include="AllNumberStatus.cs" />
