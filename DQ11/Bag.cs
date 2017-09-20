@@ -106,8 +106,16 @@ namespace DQ11
 			window.ID = id;
 			window.Type = mType;
 			window.ShowDialog();
-			saveData.WriteNumber(mAddress + i * 4, 2, window.ID);
-			mItems.ForEach(x => x.Open());
+			if (window.ID == item.None.ID)
+			{
+				ButtonDelete_Click(sender, e);
+			}
+			else
+			{
+				saveData.WriteNumber(mAddress + i * 4, 2, window.ID);
+				saveData.WriteNumber(mAddress + i * 4 + 2, 1, 1);
+				mItems.ForEach(x => x.Open());
+			}
 		}
 	}
 }
