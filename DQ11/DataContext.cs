@@ -325,75 +325,88 @@ namespace DQ11
 			}
 		}
 
-		public int BattleSpeed
+		public uint BattleSpeed
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(0x6FBF, 1);
+				return SaveData.Instance().ReadNumber(0x6FBF, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(0x6FBF, 1, (uint)value);
+				SaveData.Instance().WriteNumber(0x6FBF, 1, value);
 			}
 		}
 
-		public int BGMVolume
+		public uint BGMVolume
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(0x6FC0, 1);
+				return SaveData.Instance().ReadNumber(0x6FC0, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(0x6FC0, 1, (uint)value);
+				SaveData.Instance().WriteNumber(0x6FC0, 1, value);
 			}
 		}
 
-		public int SEVolume
+		public uint SEVolume
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(0x6FC1, 1);
+				return SaveData.Instance().ReadNumber(0x6FC1, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(0x6FC1, 1, (uint)value);
+				SaveData.Instance().WriteNumber(0x6FC1, 1, value);
 			}
 		}
 
-		public int CameraRotate
+		public uint CameraRotate
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(0x6FC2, 1);
+				return SaveData.Instance().ReadNumber(0x6FC2, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(0x6FC2, 1, (uint)value);
+				SaveData.Instance().WriteNumber(0x6FC2, 1, value);
 			}
 		}
 
-		public int CStickRotate
+		public uint CStickRotate
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(0x6FC3, 1);
+				return SaveData.Instance().ReadNumber(0x6FC3, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(0x6FC3, 1, (uint)value);
+				SaveData.Instance().WriteNumber(0x6FC3, 1, value);
 			}
 		}
 
-		public int ViewMode
+		public uint ViewMode
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(0x6FCC, 1);
+				return SaveData.Instance().ReadNumber(0x6FCC, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(0x6FCC, 1, (uint)value);
+				SaveData.Instance().WriteNumber(0x6FCC, 1, value);
+			}
+		}
+
+		public uint Hierarchy
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x69F1, 1);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x69F1, 1, value);
 			}
 		}
 

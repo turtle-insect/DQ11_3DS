@@ -1,9 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace DQ11
 {
-	class Yochi : IListItem
+	class Yochi : IListItem, INotifyPropertyChanged
 	{
+		public event PropertyChangedEventHandler PropertyChanged;
+
 		private readonly uint mBaseAddress;
 
 		public String Name
@@ -18,27 +21,27 @@ namespace DQ11
 			}
 		}
 
-		public int Color
+		public uint Color
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(mBaseAddress + 0x7B, 1);
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x7B, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x7B, 1, (uint)value);
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x7B, 1, value);
 			}
 		}
 
-		public int Rank
+		public uint Rank
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(mBaseAddress + 0x7A, 1) - 1;
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x7A, 1) - 1;
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x7A, 1, (uint)value + 1);
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x7A, 1, value + 1);
 			}
 		}
 
@@ -54,72 +57,82 @@ namespace DQ11
 			}
 		}
 
-		public int Hat
+		public uint Hat
 		{
 			get
 			{
 				uint id = SaveData.Instance().ReadNumber(mBaseAddress + 0x7C, 2);
 				if (id == 0) return 0;
-				return (int)id - 2722;
+				return id - 2722;
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x7C, 2, value == 0 ? 0U : (uint)value + 2722);
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x7C, 2, value == 0 ? 0U : value + 2722);
 			}
 		}
 
-		public int Weapon
+		public uint Weapon
 		{
 			get
 			{
-				uint id = SaveData.Instance().ReadNumber(mBaseAddress + 0x7E, 2);
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x7E, 2);
+			}
+			set
+			{
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x7E, 2, value);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("WeaponName"));
+			}
+		}
+
+		public String WeaponName
+		{
+			get
+			{
+				uint id = Weapon;
 				Item item = Item.Instance();
-				ItemInfo wapon = item.GetEquipmentInfo(id);
-				for(int i = 0; i < item.Equipments.Count; i++)
+				ItemInfo info = item.GetEquipmentInfo(id);
+				String value = info.Name;
+				if (id > info.ID)
 				{
-					if (item.Equipments[i].ID == wapon.ID) return i;
+					value += " +" + (id - info.ID).ToString();
 				}
-				return -1;
-			}
-			set
-			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x7E, 2, Item.Instance().Equipments[value].ID);
+				return value;
 			}
 		}
 
-		public int Info
+		public uint Info
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(mBaseAddress + 0x84, 1);
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x84, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x84, 1, (uint)value);
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x84, 1, value);
 			}
 		}
 
-		public int Boost
+		public uint Boost
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(mBaseAddress + 0x85, 1);
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x85, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x85, 1, (uint)value);
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x85, 1, value);
 			}
 		}
 
-		public int FirstPerson
+		public uint FirstPerson
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(mBaseAddress + 0x80, 1);
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x80, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x80, 1, (uint)value);
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x80, 1, value);
 			}
 		}
 
@@ -207,75 +220,75 @@ namespace DQ11
 			}
 		}
 
-		public int PassSex
+		public uint PassSex
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(mBaseAddress + 0x6E, 1);
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x6E, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x6E, 1, (uint)value);
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x6E, 1, value);
 			}
 		}
 
-		public int PassGraduate
+		public uint PassGraduate
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(mBaseAddress + 0x6F, 1);
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x6F, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x6F, 1, (uint)value);
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x6F, 1, value);
 			}
 		}
 
-		public int PassAge
+		public uint PassAge
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(mBaseAddress + 0x71, 1);
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x71, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x71, 1, (uint)value);
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x71, 1, value);
 			}
 		}
 
-		public int PassPersonality
+		public uint PassPersonality
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(mBaseAddress + 0x72, 1);
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x72, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x72, 1, (uint)value);
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x72, 1, value);
 			}
 		}
 
-		public int PassHobby
+		public uint PassHobby
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(mBaseAddress + 0x73, 1);
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x73, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x73, 1, (uint)value);
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x73, 1, value);
 			}
 		}
 
-		public int PassHistory
+		public uint PassHistory
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(mBaseAddress + 0x74, 1);
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x74, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x74, 1, (uint)value);
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x74, 1, value);
 			}
 		}
 

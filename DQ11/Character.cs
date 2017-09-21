@@ -198,15 +198,15 @@ namespace DQ11
 			}
 		}
 
-		public int Strategy
+		public uint Strategy
 		{
 			get
 			{
-				return (int)SaveData.Instance().ReadNumber(mBaseAddress + 0x1C, 1);
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x1C, 1);
 			}
 			set
 			{
-				SaveData.Instance().WriteNumber(mBaseAddress + 0x1C, 1, (uint)value);
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x1C, 1, value);
 			}
 		}
 

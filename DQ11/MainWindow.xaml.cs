@@ -157,6 +157,17 @@ namespace DQ11
 			item.ID = window.ID;
 		}
 
+		private void ButtonYochiWeaponChange_Click(object sender, RoutedEventArgs e)
+		{
+			Yochi yochi = ListBoxYochi.SelectedItem as Yochi;
+			if (yochi == null) return;
+			ItemSelectWindow window = new ItemSelectWindow();
+			window.Type = ItemSelectWindow.eType.Equipment;
+			window.ID = yochi.Weapon;
+			window.ShowDialog();
+			yochi.Weapon = window.ID;
+		}
+
 		private void ButtonPartyUp_Click(object sender, RoutedEventArgs e)
 		{
 			if (ListBoxParty.SelectedIndex < 0) return;
