@@ -296,6 +296,8 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="5"/>
                         <ColumnDefinition/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <DockPanel>
                         <Label Content="どうぐぶくろ" DockPanel.Dock="Top"/>
@@ -307,6 +309,21 @@
                         <ComboBox x:Name="ComboBoxBagEquipmentPage"  DockPanel.Dock="Top"/>
                         <StackPanel x:Name="StackPanelBagEquipment" Margin="0,5,0,0"/>
                     </DockPanel>
+                    <StackPanel Grid.Column="4">
+                        <Label Content="■ふくろの種類"/>
+                        <RadioButton x:Name="RadioButtonBagTypeTool" Content="どうぐ" GroupName="Type"/>
+                        <RadioButton x:Name="RadioButtonBagTypeEquipment" Content="そうび" GroupName="Type"/>
+                        <Label Content="■何をする？"/>
+                        <RadioButton x:Name="RadioButtonBagChangeCount" Content="個数変更" GroupName="Action"/>
+                        <RadioButton x:Name="RadioButtonBagClear" Content="全て削除" GroupName="Action"/>
+                        <RadioButton x:Name="RadioButtonBagAppend" Content="全て追加" GroupName="Action"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="個数"/>
+                            <TextBox x:Name="TextBoxBagItemCount" Text="1"/>
+                            <Label Content="個"/>
+                        </StackPanel>
+                        <Button x:Name="ButtonBagChange" Content="実行" Click="ButtonBagChange_Click"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="だいじなもの">

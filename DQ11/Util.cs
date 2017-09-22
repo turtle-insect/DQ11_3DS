@@ -16,6 +16,10 @@ namespace DQ11
 		public static readonly uint HatStartAddress = 0xC66C;
 		public static readonly uint HatObtainStartAddress = 0x6754;
 		public static readonly uint TitleObtainStartAddress = 0x6764;
+		public static readonly uint BagToolStartAddress = 0x3E34;
+		public static readonly uint BagToolCount = 168;
+		public static readonly uint BagEquipmentStartAddress = 0x40EC;
+		public static readonly uint BagEquipmentCount = 2340;
 
 		public static List<String> GetPartyNames()
 		{

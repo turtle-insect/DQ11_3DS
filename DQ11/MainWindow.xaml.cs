@@ -39,8 +39,8 @@ namespace DQ11
 			mAllStatusList.Add(new Monster(StackPanelMonster, RadioButtonAll, RadioButtonNone, RadioButtonHave, TextBoxMonsterCount, ButtonMonsterDecision));
 
 			// ふくろ.
-			mBagTool = new Bag(mAllStatusList, StackPanelBagTool, ItemSelectWindow.eType.Tool, ComboBoxBagToolPage, 0x3E34, 168);
-			mBagEquipment = new Bag(mAllStatusList, StackPanelBagEquipment, ItemSelectWindow.eType.Equipment, ComboBoxBagEquipmentPage, 0x40EC, 2340);
+			mBagTool = new Bag(mAllStatusList, StackPanelBagTool, ItemSelectWindow.eType.Tool, ComboBoxBagToolPage, Util.BagToolStartAddress, Util.BagToolCount);
+			mBagEquipment = new Bag(mAllStatusList, StackPanelBagEquipment, ItemSelectWindow.eType.Equipment, ComboBoxBagEquipmentPage, Util.BagEquipmentStartAddress, Util.BagEquipmentCount);
 
 			// だいじなもの.
 			mAllStatusList.Add(new CheckBoxListItem(ListBoxImportant, ButtonImportantCheck, ButtonImportantUnCheck, Item.Instance().Importants, 0x65C4, 90));
@@ -166,6 +166,64 @@ namespace DQ11
 			window.ID = yochi.Weapon;
 			window.ShowDialog();
 			yochi.Weapon = window.ID;
+		}
+
+		private void ButtonBagChange_Click(object sender, RoutedEventArgs e)
+		{
+			SaveData save = SaveData.Instance();
+			uint address = Util.BagToolStartAddress;
+			uint count = Util.BagToolCount;
+			List<ItemInfo> infos = Item.Instance().Tools;
+			if (RadioButtonBagTypeEquipment.IsChecked == true)
+			{
+				address = Util.BagEquipmentStartAddress;
+				count = Util.BagEquipmentCount;
+				infos = Item.Instance().Equipments;
+			}
+
+
+			if (RadioButtonBagClear.IsChecked == true)
+			{
+				for (uint i = 0; i < count; i++)
+				{
+					save.WriteNumber(address + i * 4, 4, 0xFFFF);
+				}
+			}
+			else if (RadioButtonBagAppend.IsChecked == true)
+			{
+				uint number;
+				if (!uint.TryParse(TextBoxBagItemCount.Text, out number))
+				{
+					return;
+				}
+
+				for (uint i = 0; i < infos.Count; i++)
+				{
+					ItemInfo info = infos[(int)i];
+
+					for (uint j = 0; j < info.Count; j++)
+					{
+						save.WriteNumber(address, 2, info.ID + j);
+						save.WriteNumber(address + 2, 2, number);
+						address += 4;
+					}
+				}
+			}
+			else
+			{
+				uint number;
+				if (!uint.TryParse(TextBoxBagItemCount.Text, out number))
+				{
+					return;
+				}
+				for (uint i = 0; i < count; i++)
+				{
+					uint id = save.ReadNumber(address + i * 4, 4);
+					if (id == Item.Instance().None.ID) break;
+					save.WriteNumber(address + i * 4 + 2, 2, number);
+				}
+			}
+			Init();
 		}
 
 		private void ButtonPartyUp_Click(object sender, RoutedEventArgs e)
