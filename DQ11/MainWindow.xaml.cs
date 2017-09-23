@@ -19,6 +19,7 @@ namespace DQ11
 		ButtonCheckObserver mHatButtonCheck;
 		ButtonCheckObserver mTitleButtonCheck;
 		ButtonCheckObserver mSmithButtonCheck;
+		ButtonCheckObserver mCollectionButtonCheck;
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -58,6 +59,10 @@ namespace DQ11
 			// 鍛冶.
 			mSmithButtonCheck = new ButtonCheckObserver(ButtonSmithCheck, ButtonSmithUnCheck);
 			CreateSmith(mAllStatusList, ListBoxSmith);
+
+			// アイテム収集.
+			mCollectionButtonCheck = new ButtonCheckObserver(ButtonCollectionCheck, ButtonCollectionUnCheck);
+			CreateCollection(mAllStatusList, ListBoxCollection);
 
 			// すれちがい.
 			mAllStatusList.Add(new AllStringStatus(TextBoxPassName, 0xC46C, 6));
@@ -477,6 +482,35 @@ namespace DQ11
 				}
 
 				list.Items.Add(panel);
+			}
+		}
+
+		private void CreateCollection(List<AllStatus> status, ListBox list)
+		{
+			Item item = Item.Instance();
+			List<ItemInfo>[] itemInfoList = { item.Tools, item.Equipments, item.Importants, item.Recipes };
+			foreach (var itemInfos in itemInfoList)
+			{
+				foreach (var info in itemInfos)
+				{
+					StackPanel panel = new StackPanel();
+					panel.Orientation = Orientation.Horizontal;
+
+					Label label = new Label();
+					label.Content = info;
+					label.Width = 150;
+					panel.Children.Add(label);
+
+					for (uint j = 0; j < info.Count; j++)
+					{
+						CheckBox check = new CheckBox();
+						panel.Children.Add(check);
+						mCollectionButtonCheck.Append(check);
+						status.Add(new AllCheckBoxBitStatus(check, 0x8930 + (info.ID + j) / 8, (info.ID + j) % 8));
+					}
+
+					list.Items.Add(panel);
+				}
 			}
 		}
 	}

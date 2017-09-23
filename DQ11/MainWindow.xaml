@@ -1037,6 +1037,7 @@
                             <ComboBoxItem Content="8階層"/>
                             <ComboBoxItem Content="9階層"/>
                             <ComboBoxItem Content="10階層"/>
+                            <ComboBoxItem Content="全踏破"/>
                         </ComboBox>
                     </Grid>
                 </Grid>
@@ -1057,6 +1058,27 @@
                             <Image Source="{StaticResource Check}"/>
                         </Button>
                         <Button x:Name="ButtonSmithUnCheck" Grid.Column="1">
+                            <Image Source="{StaticResource UnCheck}"/>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="アイテム収集">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="13*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="ListBoxCollection"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ButtonCollectionCheck">
+                            <Image Source="{StaticResource Check}"/>
+                        </Button>
+                        <Button x:Name="ButtonCollectionUnCheck" Grid.Column="1">
                             <Image Source="{StaticResource UnCheck}"/>
                         </Button>
                     </Grid>
