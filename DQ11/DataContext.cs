@@ -397,7 +397,27 @@ namespace DQ11
 			}
 		}
 
-		public uint Hierarchy
+		public uint VillageState
+		{
+			get
+			{
+				uint value = SaveData.Instance().ReadNumber(0x6F51, 1);
+				uint[] table = { 0xFF, 0x00, 0x03, 0x0B, 0x10 };
+				for(int i = 0; i < table.Length; i++)
+				{
+					if (value == table[i]) return (uint)i;
+				}
+				return uint.MaxValue;
+			}
+
+			set
+			{
+				uint[] table = { 0xFF, 0x00, 0x03, 0x0B, 0x10 };
+				SaveData.Instance().WriteNumber(0x6F51, 1, table[value]);
+			}
+		}
+
+		public uint VillageHierarchy
 		{
 			get
 			{
@@ -407,6 +427,136 @@ namespace DQ11
 			set
 			{
 				SaveData.Instance().WriteNumber(0x69F1, 1, value);
+			}
+		}
+
+		public bool VillageDQ1
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x69F5, 1) == 2;
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x69F5, 1, value ? 2U : 0);
+			}
+		}
+
+		public bool VillageDQ2
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x69F6, 1) == 2;
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x69F6, 1, value ? 2U : 0);
+			}
+		}
+
+		public bool VillageDQ3
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x69F7, 1) == 2;
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x69F7, 1, value ? 2U : 0);
+			}
+		}
+
+		public bool VillageDQ4
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x69F8, 1) == 2;
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x69F8, 1, value ? 2U : 0);
+			}
+		}
+
+		public bool VillageDQ5
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x69F9, 1) == 2;
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x69F9, 1, value ? 2U : 0);
+			}
+		}
+
+		public bool VillageDQ6
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x69FA, 1) == 2;
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x69FA, 1, value ? 2U : 0);
+			}
+		}
+
+		public bool VillageDQ7
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x69FB, 1) == 2;
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x69FB, 1, value ? 2U : 0);
+			}
+		}
+
+		public bool VillageDQ8
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x69FC, 1) == 2;
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x69FC, 1, value ? 2U : 0);
+			}
+		}
+
+		public bool VillageDQ9
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x69FD, 1) == 2;
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x69FD, 1, value ? 2U : 0);
+			}
+		}
+
+		public bool VillageDQ10
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x69FE, 1) == 2;
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x69FE, 1, value ? 2U : 0);
 			}
 		}
 
