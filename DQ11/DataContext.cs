@@ -52,6 +52,19 @@ namespace DQ11
 			}
 		}
 
+		public bool GameClear
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x6D35, 1) == 0x22;
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x6D35, 1, value ? 0x22U : 0xFF);
+			}
+		}
+
 		public uint GoldHand
 		{
 			get
@@ -557,6 +570,161 @@ namespace DQ11
 			set
 			{
 				SaveData.Instance().WriteNumber(0x69FE, 1, value ? 2U : 0);
+			}
+		}
+
+		public uint TrialFirstStep
+		{
+			get
+			{
+				uint value = SaveData.Instance().ReadNumber(0xC6ED, 1);
+				if (value == 0xFF) value = 0;
+				else value += 1;
+				return value;
+			}
+
+			set
+			{
+				if (value == 0) value = 0xFF;
+				else value -= 1;
+				SaveData.Instance().WriteNumber(0xC6ED, 1, value);
+			}
+		}
+
+		public uint TrialFirstScore
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0xC6F2, 1);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0xC6F2, 1, value);
+			}
+		}
+
+		public uint TrialSecondStep
+		{
+			get
+			{
+				uint value = SaveData.Instance().ReadNumber(0xC6EE, 1);
+				if (value == 0xFF) value = 0;
+				else value += 1;
+				return value;
+			}
+
+			set
+			{
+				if (value == 0) value = 0xFF;
+				else value -= 1;
+				SaveData.Instance().WriteNumber(0xC6EE, 1, value);
+			}
+		}
+
+		public uint TrialSecondScore
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0xC6F3, 1);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0xC6F3, 1, value);
+			}
+		}
+
+		public uint TrialThirdStep
+		{
+			get
+			{
+				uint value = SaveData.Instance().ReadNumber(0xC6EF, 1);
+				if (value == 0xFF) value = 0;
+				else value += 1;
+				return value;
+			}
+
+			set
+			{
+				if (value == 0) value = 0xFF;
+				else value -= 1;
+				SaveData.Instance().WriteNumber(0xC6EF, 1, value);
+			}
+		}
+
+		public uint TrialThirdScore
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0xC6F4, 1);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0xC6F4, 1, value);
+			}
+		}
+
+		public uint TrialFourStep
+		{
+			get
+			{
+				uint value = SaveData.Instance().ReadNumber(0xC6F0, 1);
+				if (value == 0xFF) value = 0;
+				else value += 1;
+				return value;
+			}
+
+			set
+			{
+				if (value == 0) value = 0xFF;
+				else value -= 1;
+				SaveData.Instance().WriteNumber(0xC6F0, 1, value);
+			}
+		}
+
+		public uint TrialFourScore
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0xC6F5, 1);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0xC6F5, 1, value);
+			}
+		}
+
+		public uint TrialFinalStep
+		{
+			get
+			{
+				uint value = SaveData.Instance().ReadNumber(0xC6F1, 1);
+				if (value == 0xFF) value = 0;
+				else value += 1;
+				return value;
+			}
+
+			set
+			{
+				if (value == 0) value = 0xFF;
+				else value -= 1;
+				SaveData.Instance().WriteNumber(0xC6F1, 1, value);
+			}
+		}
+
+		public uint TrialFinalScore
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0xC6F6, 1);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0xC6F6, 1, value);
 			}
 		}
 

@@ -81,6 +81,7 @@
                         <Label Content="枚" Grid.Row="7" Grid.Column="2"/>
                         <Label Content="うちなおしの宝珠" Grid.Row="8"/>
                         <Label Content="こ" Grid.Row="8" Grid.Column="2"/>
+                        <Label Content="クリア" Grid.Row="10"/>
                         <TextBox Grid.Column="1" Text="{Binding PlayHour, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding PlayMinute, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding PlaySecond, UpdateSourceTrigger=PropertyChanged}"/>
@@ -90,6 +91,7 @@
                         <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SmallMedal, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding DepositSmallMedal, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding RebuildJewel, UpdateSourceTrigger=PropertyChanged}"/>
+                        <CheckBox Grid.Row="10" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding GameClear}"/>
                     </Grid>
                     <Grid Grid.Column="2">
                         <Grid.ColumnDefinitions>
@@ -1081,6 +1083,71 @@
                         <Label Grid.Row="12" Content="DQ10勇者の像"/>
                         <CheckBox Grid.Row="12" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding VillageDQ10}"/>
                     </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="大修練場">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="12*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="1" Content="最速スコア"/>
+                    <Label Grid.Row="2" Content="ごほうび"/>
+                    <Label Grid.Column="1" Content="壱の試練"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TrialFirstScore}"/>
+                    <ComboBox Grid.Row="2" Grid.Column="1" SelectedIndex="{Binding TrialFirstStep}">
+                        <ComboBoxItem Content="未チャレンジ"/>
+                        <ComboBoxItem Content="初回クリア"/>
+                        <ComboBoxItem Content="16手以内"/>
+                        <ComboBoxItem Content="12手以内"/>
+                        <ComboBoxItem Content="8手以内"/>
+                    </ComboBox>
+                    <Label Grid.Column="2" Content="弐の試練"/>
+                    <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding TrialSecondScore}"/>
+                    <ComboBox Grid.Row="2" Grid.Column="2" SelectedIndex="{Binding TrialSecondStep}">
+                        <ComboBoxItem Content="未チャレンジ"/>
+                        <ComboBoxItem Content="初回クリア"/>
+                        <ComboBoxItem Content="20手以内"/>
+                        <ComboBoxItem Content="15手以内"/>
+                        <ComboBoxItem Content="10手以内"/>
+                    </ComboBox>
+                    <Label Grid.Column="3" Content="参の試練"/>
+                    <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding TrialThirdScore}"/>
+                    <ComboBox Grid.Row="2" Grid.Column="3" SelectedIndex="{Binding TrialThirdStep}">
+                        <ComboBoxItem Content="未チャレンジ"/>
+                        <ComboBoxItem Content="初回クリア"/>
+                        <ComboBoxItem Content="25手以内"/>
+                        <ComboBoxItem Content="20手以内"/>
+                        <ComboBoxItem Content="15手以内"/>
+                    </ComboBox>
+                    <Label Grid.Column="4" Content="四の試練"/>
+                    <TextBox Grid.Row="1" Grid.Column="4" Text="{Binding TrialFourScore}"/>
+                    <ComboBox Grid.Row="2" Grid.Column="4" SelectedIndex="{Binding TrialFourStep}">
+                        <ComboBoxItem Content="未チャレンジ"/>
+                        <ComboBoxItem Content="初回クリア"/>
+                        <ComboBoxItem Content="30手以内"/>
+                        <ComboBoxItem Content="25手以内"/>
+                        <ComboBoxItem Content="20手以内"/>
+                    </ComboBox>
+                    <Label Grid.Column="5" Content="最終試練"/>
+                    <TextBox Grid.Row="1" Grid.Column="5" Text="{Binding TrialFinalScore}"/>
+                    <ComboBox Grid.Row="2" Grid.Column="5" SelectedIndex="{Binding TrialFinalStep}">
+                        <ComboBoxItem Content="未チャレンジ"/>
+                        <ComboBoxItem Content="初回クリア"/>
+                        <ComboBoxItem Content="40手以内"/>
+                        <ComboBoxItem Content="35手以内"/>
+                        <ComboBoxItem Content="30手以内"/>
+                    </ComboBox>
                 </Grid>
             </TabItem>
             <TabItem Header="ふしぎな鍛冶">
