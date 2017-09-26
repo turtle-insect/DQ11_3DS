@@ -210,6 +210,18 @@ namespace DQ11
 			}
 		}
 
+		public bool Zone
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(mBaseAddress + 0x12, 1) == 0x80;
+			}
+			set
+			{
+				SaveData.Instance().WriteNumber(mBaseAddress + 0x12, 1, value ? 0x80U : 0);
+			}
+		}
+
 		public int EquipRightHand
 		{
 			get

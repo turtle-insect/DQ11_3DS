@@ -132,8 +132,6 @@
                         <Label Content="回" Grid.Row="6" Grid.Column="2"/>
                         <Label Content="れんけいを使用した回数" Grid.Row="7"/>
                         <Label Content="回" Grid.Row="7" Grid.Column="2"/>
-                        <Label Content="メタル撃破" Grid.Row="8"/>
-                        <Label Content="匹" Grid.Row="8" Grid.Column="2"/>
                         <Label Content="スロットを遊んだ回数" Grid.Row="9"/>
                         <Label Content="回" Grid.Row="9" Grid.Column="2"/>
                         <Label Content="ポーカーを遊んだ回数" Grid.Row="10"/>
@@ -181,6 +179,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="80"/>
@@ -202,6 +201,7 @@
                         <Label Content="みりょく+" Grid.Row="13"/>
                         <Label Content="スキル＋" Grid.Row="14"/>
                         <Label Content="作戦" Grid.Row="15"/>
+                        <Label Content="ゾーン" Grid.Row="16"/>
                         <TextBox Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Name ,UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Lv ,UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Exp ,UpdateSourceTrigger=PropertyChanged}"/>
@@ -225,6 +225,7 @@
                             <ComboBoxItem Content="MPつかうな"/>
                             <ComboBoxItem Content="めいれいさせろ"/>
                         </ComboBox>
+                        <CheckBox Grid.Row="16" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding ElementName=ListBoxChar, Path=SelectedItem.Zone}"/>
                     </Grid>
                     <Grid Grid.Column="3">
                         <Grid.RowDefinitions>
