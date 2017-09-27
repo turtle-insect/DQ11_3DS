@@ -24,8 +24,3 @@ http://www.dq11.jp/
 * 任意の編集を行う
 * Data0(Data1、Data2)を書き出す
 * saveDataを書き戻す
-
-# TODO
-* 鍛冶便利機能
-* 袋便利機能
-
