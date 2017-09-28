@@ -294,6 +294,16 @@ namespace DQ11
 			}
 		}
 
+		public void Min()
+		{
+
+		}
+
+		public void Max()
+		{
+
+		}
+
 		private void Equip(uint address, int value)
 		{
 			if (value == -1) value = 0xFF;

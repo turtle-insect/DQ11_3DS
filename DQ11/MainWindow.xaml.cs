@@ -162,6 +162,18 @@ namespace DQ11
 			item.ID = window.ID;
 		}
 
+		private void ButtonCharStatusMin_Click(object sender, RoutedEventArgs e)
+		{
+			Character ch = ListBoxChar.SelectedItem as Character;
+			ch?.Min();
+		}
+
+		private void ButtonCharStatusMax_Click(object sender, RoutedEventArgs e)
+		{
+			Character ch = ListBoxChar.SelectedItem as Character;
+			ch?.Max();
+		}
+
 		private void ButtonYochiWeaponChange_Click(object sender, RoutedEventArgs e)
 		{
 			Yochi yochi = ListBoxYochi.SelectedItem as Yochi;
