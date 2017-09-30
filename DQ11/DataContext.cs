@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace DQ11
 {
 	class DataContext
 	{
-		public List<Character> Char { get; set; } = new List<Character>();
+		public ObservableCollection<Character> Char { get; set; } = new ObservableCollection<Character>();
 		public ListMediator Party { get; set; } = new ListMediator();
 		public ListMediator Yochi { get; set; } = new ListMediator();
 		public Item Item { get; } = Item.Instance();

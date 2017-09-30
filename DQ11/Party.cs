@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace DQ11
 {
@@ -9,7 +10,7 @@ namespace DQ11
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		private const uint mSize = 1;
-		private readonly List<Character> mChars;
+		private readonly ObservableCollection<Character> mChars;
 		private readonly uint mBaseAddress;
 
 		public String Name
@@ -33,7 +34,7 @@ namespace DQ11
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Name"));
 			}
 		}
-		public Party(List<Character> chars, uint address)
+		public Party(ObservableCollection<Character> chars, uint address)
 		{
 			mChars = chars;
 			mBaseAddress = address;

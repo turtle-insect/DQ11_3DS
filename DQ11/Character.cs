@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace DQ11
 {
-	class Character
+	class Character : INotifyPropertyChanged
 	{
 		private readonly uint mBaseAddress;
+
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		public ObservableCollection<CharItem> Item { get; set; } = new ObservableCollection<CharItem>();
 
@@ -39,6 +42,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x10, 1, value, 1, 99);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Lv"));
 			}
 		}
 
@@ -51,6 +55,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x14, 4, value, 0, 9999999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Exp"));
 			}
 		}
 
@@ -63,6 +68,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x20, 2, value, 0, 999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("HP"));
 			}
 		}
 
@@ -75,6 +81,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x22, 2, value, 0, 999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MP"));
 			}
 		}
 
@@ -87,6 +94,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x100, 2, value, 0, 999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MaxHP"));
 			}
 		}
 
@@ -99,6 +107,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x102, 2, value, 0, 999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MaxMP"));
 			}
 		}
 
@@ -111,6 +120,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x10C, 2, value, 0, 999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AttackMagic"));
 			}
 		}
 
@@ -123,6 +133,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x10E, 2, value, 0, 999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("HealMagic"));
 			}
 		}
 
@@ -135,6 +146,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x104, 2, value, 0, 999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Attack"));
 			}
 		}
 
@@ -147,6 +159,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x10A, 2, value, 0, 999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Diffence"));
 			}
 		}
 
@@ -159,6 +172,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x108, 2, value, 0, 999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Speed"));
 			}
 		}
 
@@ -171,6 +185,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x106, 2, value, 0, 999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Skillful"));
 			}
 		}
 
@@ -183,6 +198,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x110, 2, value, 0, 999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Charm"));
 			}
 		}
 
@@ -195,6 +211,7 @@ namespace DQ11
 			set
 			{
 				Util.WriteNumber(mBaseAddress + 0x112, 2, value, 0, 999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Skill"));
 			}
 		}
 
@@ -296,12 +313,38 @@ namespace DQ11
 
 		public void Min()
 		{
-
+			Lv = 1;
+			Exp = 0;
+			HP = 1;
+			MP = 0;
+			MaxHP = 0;
+			MaxMP = 0;
+			AttackMagic = 0;
+			HealMagic = 0;
+			Attack = 0;
+			Diffence = 0;
+			Speed = 0;
+			Skillful = 0;
+			Charm = 0;
+			Skill = 0;
 		}
 
 		public void Max()
 		{
-
+			Lv = 99;
+			Exp = 9999999;
+			HP = 999;
+			MP = 999;
+			MaxHP = 999;
+			MaxMP = 999;
+			AttackMagic = 999;
+			HealMagic = 999;
+			Attack = 999;
+			Diffence = 999;
+			Speed = 999;
+			Skillful = 999;
+			Charm = 999;
+			Skill = 999;
 		}
 
 		private void Equip(uint address, int value)
