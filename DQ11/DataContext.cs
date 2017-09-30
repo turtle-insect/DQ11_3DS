@@ -66,6 +66,19 @@ namespace DQ11
 			}
 		}
 
+		public uint Vehicle
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x955C, 1);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x955C, 1, value);
+			}
+		}
+
 		public uint GoldHand
 		{
 			get

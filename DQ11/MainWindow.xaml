@@ -81,7 +81,8 @@
                         <Label Content="枚" Grid.Row="7" Grid.Column="2"/>
                         <Label Content="うちなおしの宝珠" Grid.Row="8"/>
                         <Label Content="こ" Grid.Row="8" Grid.Column="2"/>
-                        <Label Content="クリア" Grid.Row="10"/>
+                        <Label Content="乗り物" Grid.Row="10"/>
+                        <Label Content="クリア" Grid.Row="11"/>
                         <TextBox Grid.Column="1" Text="{Binding PlayHour, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding PlayMinute, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding PlaySecond, UpdateSourceTrigger=PropertyChanged}"/>
@@ -91,7 +92,18 @@
                         <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SmallMedal, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding DepositSmallMedal, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding RebuildJewel, UpdateSourceTrigger=PropertyChanged}"/>
-                        <CheckBox Grid.Row="10" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding GameClear}"/>
+                        <ComboBox Grid.Row="10" Grid.Column="1" SelectedIndex="{Binding Vehicle}">
+                            <ComboBoxItem Content="無し"/>
+                            <ComboBoxItem Content="馬"/>
+                            <ComboBoxItem Content="パールモービル"/>
+                            <ComboBoxItem Content="スカルライダー"/>
+                            <ComboBoxItem Content="ビーライダー"/>
+                            <ComboBoxItem Content="ドラゴンライダー"/>
+                            <ComboBoxItem Content="デュラハンナイト"/>
+                            <ComboBoxItem Content="バロンナイト"/>
+                            <ComboBoxItem Content="船"/>
+                        </ComboBox>
+                        <CheckBox Grid.Row="11" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding GameClear}"/>
                     </Grid>
                     <Grid Grid.Column="2">
                         <Grid.ColumnDefinitions>
