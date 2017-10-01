@@ -81,6 +81,7 @@
     <Compile Include="ButtonCheckObserver.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CharItem.cs" />
+    <Compile Include="CharStatus.cs" />
     <Compile Include="CheckBoxListItem.cs" />
     <Compile Include="Crc32.cs" />
     <Compile Include="DataContext.cs" />

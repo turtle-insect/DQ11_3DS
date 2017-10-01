@@ -192,6 +192,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="80"/>
@@ -213,7 +214,7 @@
                         <Label Content="みりょく+" Grid.Row="13"/>
                         <Label Content="スキル＋" Grid.Row="14"/>
                         <Label Content="作戦" Grid.Row="15"/>
-                        <Label Content="ゾーン" Grid.Row="16"/>
+                        <Label Content="ステータス" Grid.Row="16"/>
                         <TextBox Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Name ,UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Lv ,UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxChar, Path=SelectedItem.Exp ,UpdateSourceTrigger=PropertyChanged}"/>
@@ -237,7 +238,13 @@
                             <ComboBoxItem Content="MPつかうな"/>
                             <ComboBoxItem Content="めいれいさせろ"/>
                         </ComboBox>
-                        <CheckBox Grid.Row="16" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding ElementName=ListBoxChar, Path=SelectedItem.Zone}"/>
+                        <ListBox Grid.Row="16" Grid.Column="1" Grid.RowSpan="2" ItemsSource="{Binding ElementName=ListBoxChar, Path=SelectedItem.Status}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="{Binding Name}" IsChecked="{Binding Value}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </Grid>
                     <Grid Grid.Column="3">
                         <Grid.RowDefinitions>

@@ -12,6 +12,7 @@ namespace DQ11
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		public ObservableCollection<CharItem> Item { get; set; } = new ObservableCollection<CharItem>();
+		public List<CharStatus> Status { get; set; } = new List<CharStatus>();
 
 		public Character(uint address)
 		{
@@ -20,6 +21,12 @@ namespace DQ11
 			{
 				Item.Add(new CharItem(mBaseAddress + 0x24 + i * 2));
 			}
+
+			Status.Add(new CharStatus(mBaseAddress + 0x12, 7) { Name = "ゾーン" });
+			Status.Add(new CharStatus(mBaseAddress + 0x12, 1) { Name = "どく" });
+			Status.Add(new CharStatus(mBaseAddress + 0x12, 2) { Name = "のろい" });
+			Status.Add(new CharStatus(mBaseAddress + 0x12, 3) { Name = "のろい" });
+			Status.Add(new CharStatus(mBaseAddress + 0x12, 4) { Name = "しに" });
 		}
 		public String Name
 		{
