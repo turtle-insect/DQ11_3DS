@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DQ11
 {
-    class CharStatus
+	class CharStatus
     {
 		private readonly uint mAddress;
 		private readonly uint mBit;
