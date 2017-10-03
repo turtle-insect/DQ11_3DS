@@ -394,7 +394,6 @@ namespace DQ11
 			{
 				savedata.WriteNumber(mBaseAddress + i, 1, prof[i]);
 			}
-			// Random Better ?
 			savedata.WriteNumber(mBaseAddress + Util.YochiDateSize - 4, 4, (uint)new Random().Next());
 		}
 

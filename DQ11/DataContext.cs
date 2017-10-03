@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace DQ11
@@ -738,6 +739,30 @@ namespace DQ11
 			set
 			{
 				SaveData.Instance().WriteNumber(0xC6F6, 1, value);
+			}
+		}
+
+		public String PassName
+		{
+			get
+			{
+				return SaveData.Instance().ReadUnicode(0xC46C, 12);
+			}
+			set
+			{
+				SaveData.Instance().WriteUnicode(0xC46C, 12, value);
+			}
+		}
+
+		public String PassMessage
+		{
+			get
+			{
+				return SaveData.Instance().ReadUnicode(0xC47A, 32);
+			}
+			set
+			{
+				SaveData.Instance().WriteUnicode(0xC47A, 32, value);
 			}
 		}
 

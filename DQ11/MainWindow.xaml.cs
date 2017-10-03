@@ -64,10 +64,6 @@ namespace DQ11
 			mCollectionButtonCheck = new ButtonCheckObserver(ButtonCollectionCheck, ButtonCollectionUnCheck);
 			CreateCollection(mAllStatusList, ListBoxCollection);
 
-			// すれちがい.
-			mAllStatusList.Add(new AllStringStatus(TextBoxPassName, 0xC46C, 6));
-			mAllStatusList.Add(new AllStringStatus(TextBoxPassMessage, 0xC47A, 16));
-
 			// 称号.
 			mTitleButtonCheck = new ButtonCheckObserver(ButtonTitleCheck, ButtonTitleUnCheck);
 			CreateTitle(mAllStatusList, ListBoxTitle);
