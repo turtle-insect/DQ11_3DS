@@ -72,7 +72,6 @@
     </Compile>
     <Compile Include="AllCheckBoxBitStatus.cs" />
     <Compile Include="AllCheckBoxStatus.cs" />
-    <Compile Include="AllChoiceStatus.cs" />
     <Compile Include="AllNumberStatus.cs" />
     <Compile Include="AllStatus.cs" />
     <Compile Include="Bag.cs" />
