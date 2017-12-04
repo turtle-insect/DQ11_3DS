@@ -429,7 +429,7 @@ namespace DQ11
 			get
 			{
 				uint value = SaveData.Instance().ReadNumber(0x6F51, 1);
-				uint[] table = { 0xFF, 0x00, 0x03, 0x0B, 0x10 };
+				uint[] table = { 0xFF, 0x00, 0x03, 0x0B, 0x10, 0x11 };
 				for(int i = 0; i < table.Length; i++)
 				{
 					if (value == table[i]) return (uint)i;
@@ -439,7 +439,7 @@ namespace DQ11
 
 			set
 			{
-				uint[] table = { 0xFF, 0x00, 0x03, 0x0B, 0x10 };
+				uint[] table = { 0xFF, 0x00, 0x03, 0x0B, 0x10, 0x11 };
 				SaveData.Instance().WriteNumber(0x6F51, 1, table[value]);
 			}
 		}

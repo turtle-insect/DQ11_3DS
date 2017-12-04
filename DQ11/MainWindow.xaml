@@ -1076,6 +1076,7 @@
                             <ComboBoxItem Content="長老と話した"/>
                             <ComboBoxItem Content="冒険の書収集中"/>
                             <ComboBoxItem Content="祭壇奥開放"/>
+                            <ComboBoxItem Content="制覇"/>
                         </ComboBox>
                         <Label Grid.Row="1" Content="階層"/>
                         <ComboBox Grid.Row="1" Grid.Column="1" SelectedIndex="{Binding VillageHierarchy}">
