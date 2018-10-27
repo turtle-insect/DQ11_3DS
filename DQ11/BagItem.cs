@@ -25,6 +25,7 @@ namespace DQ11
 			uint id = saveData.ReadNumber(address, 2);
 			Item item = Item.Instance();
 			ItemInfo info = item.GetItemInfo(id);
+			if (info == null) return;
 			mItem.Content = info.Name;
 			if(info.Count > 0 && id - info.ID > 0)
 			{
